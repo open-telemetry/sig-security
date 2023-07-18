@@ -71,7 +71,7 @@ SIG Security’s scope does not include:
 - Developing any new telemetry signals, SDKs, APIs etc.
 - Defining security semantic conventions
 - Security audit for other CNCF projects (e.g., etcd, CoreDNS, CRI-O,
-  containerd) (Belongs to the CNCF’s SIG Security.)
+  containerd). These belong to the CNCF’s SIG Security.
 - Any projects outside of the OpenTelemetry project and community repos
 - Vendor or distribution specific guidelines and vulnerability coverage
 - Recommendations or endorsements of specific commercial product vendors or
