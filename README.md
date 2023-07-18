@@ -16,4 +16,4 @@ The [charter](https://docs.google.com/document/d/1fHuqKLeWwKYf5KBCpySqFTwCKuD2i8
 
 ## Contact
 
-* Slack: [#otel-security](https://cloud-native.slack.com/archives/C05A85QC281)
+* Slack: [#otel-sig-security](https://cloud-native.slack.com/archives/C05A85QC281)
