@@ -9,7 +9,7 @@ components.
 This includes preparing the project for regular security audits, improving the
 vulnerability management process, producing cross-cutting security
 documentation, serving as a security community touch point, managing the
-non-emnargoed (public) vulnerability process, default repo configurations, and
+non-embargoed (public) vulnerability process, default repo configurations, and
 defining the bug bounty.
 
 As a process-oriented SIG, SIG Security does not directly own OpenTelemetry component
