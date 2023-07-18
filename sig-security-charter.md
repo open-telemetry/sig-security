@@ -21,7 +21,7 @@ code.
 
 Work with the OpenTelemetry Technical Committee (TC) to define the processes for fixing and disclosing vulnerabilities. For example:
 
-- The default level for OTel repo Github security configuration and tooling
+- The default level for OTel repo GitHub security configuration and tooling
 - When the private fix & release process is invoked
 - How vulnerabilities are rated
 - The scope of the bug bounty
