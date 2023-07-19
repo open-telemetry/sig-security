@@ -18,6 +18,7 @@ of the Security Special Interest Group.
 
 * [Carter Socha](https://github.com/cartersocha), Lightstep
 * [Juraci Paixão Kröhling](https://github.com/jpkrohling), Grafana Labs
+* [Reiley Yang](https://github.com/reyang), Microsoft
 
 ## Contact
 
