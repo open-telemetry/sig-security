@@ -4,9 +4,8 @@ Covers horizontal security initiatives for the OpenTelemetry project, including
 regular security audits, the vulnerability management process, cross-cutting
 security documentation, and security community management.
 
-The
-[charter](https://docs.google.com/document/d/1fHuqKLeWwKYf5KBCpySqFTwCKuD2i8kK2D2RF3sVh4g/edit)
-draft defines the scope and governance of the Security Special Interest Group.
+The [charter](./sig-security-charter.md) draft defines the scope and governance
+of the Security Special Interest Group.
 
 ## Meetings
 
