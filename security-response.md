@@ -46,7 +46,9 @@ If you know of a publicly disclosed security vulnerability please IMMEDIATELY
 email
 [cncf-opentelemetry-tc@lists.cncf.io](mailto:cncf-opentelemetry-tc@lists.cncf.io)
 to inform the Security Response Committee (SRC) about the vulnerability so they
-may start the patch, release, and communication process.
+may start the patch, release, and communication process. Please include any relevant
+information about current public exploitations of this vulnerability if known to
+help with scoring and priortization.
 
 The TC should receive the message and re-direct it to the relevant repo
 maintainers for ownership. If possible the repo maintainers will engage and ask
@@ -58,27 +60,47 @@ make a public disclosure less damaging.
 
 ## Patch, Release, and Public Communication
 
-For each vulnerability, a member of the TC will volunteer track issue resolution
-with the relevant repo owners. This TC member will be referred to as the Fix
-Lead and is not responsible for incident remediation or implementation.
-
-The role of Fix Lead should rotate round-robin across the TC.
-
 ### Fix Team Organization
 
-The Fix Team is made up of the Fix Team Lead and the relevant repo maintainers as Fix Responders.
+The Fix Team is made up of the relevant repo maintainers.
+
+### TC Role
+
+- Add the relevant repo maintainers to open incidents
+- A member of the TC will need to review the proposed CVSS score and severity from the Fix Team
+- Acknowledge when a proposed fix is completed
 
 ### Fix Development Process
 
-All of the timelines below are suggestions that assume a Private Disclosure and that the report is accepted as valid. These steps should be completed within the 1-7 days of Disclosure.
+All of the timelines below are suggestions that assume a Private Disclosure and
+that the report is accepted as valid.
 
-- The TC is notified of an incident, a member volunteers to track the issue as Fix Lead, and the relevant repo maintainers are added as the Fix Team to the issue.
-- The Fix Responders will create a
-  [CVSS](https://www.first.org/cvss/specification-document) score using the
-  [CVSS Calculator](https://www.first.org/cvss/calculator/3.0) and share it with the Fix Lead.
-- The Fix Responders will request a CVE from GitHub.
-- The Fix Responders will notify the Fix Lead that work on the fix branch is complete
-  once there are LGTMs on all commits in the temporary private fork created for the GitHub Security Advisory.
+#### Initial Incident Response
+
+The initial response steps should be completed within the 1-14 days of Disclosure.
+
+- The TC is notified of an incident and the relevant repo maintainers are added
+  as the Fix Team to the issue.
+- The Fix Team acknowledges the incident to the reporter, asks for further
+  details if necessary, and begins mitigation planning.
+- The Fix Team creates a temporary private branch to start work on the fix.
+- The Fix Team will create a
+  [CVSS](https://www.first.org/cvss/specification-document) Base score using the
+  [CVSS Calculator](https://www.first.org/cvss/calculator/3.1) and ping the TC
+  GitHub team for confirmation.
+- The Fix Team will request a CVE from GitHub.
+
+#### Incident Mitigation
+
+The incident mitigation timeline depends on the severity of the incident and
+repo release cadence.
+
+- The Fix Team will ping the TC GitHub team to alert them that work on the fix
+  branch is complete once there are LGTMs on all commits in the temporary
+  private fork created for the GitHub Security Advisory.
+- The updated version is released with the fix.
+- The incident is published to the GitHub Security Advisory Database and
+  affected users are automatically notified using GitHub security alerts.
 
 ### Fix Disclosure Process
 
@@ -89,13 +111,13 @@ all repositories that use the package and have alerts on.
 
 #### Fix Release Day
 
-The Fix Responders as repo owners will release an updated version after confirming
-approval with the Fix Lead.
+The Fix Team as repo owners will release an updated version and optionally
+notify their communities via Slack.
 
 ## Severity
 
-The Technical Committee evaluates vulnerability severity on a case-by-case
-basis, guided by CVSS 3.1.
+The Fix Team evaluates vulnerability severity on a case-by-case
+basis, guided by CVSS 3.1 and is subject to TC review.
 
 ## Retrospective
 
