@@ -77,8 +77,6 @@ that the report is accepted as valid.
 
 #### Initial Incident Response
 
-The initial response steps should be completed within the 1-14 days of Disclosure.
-
 - The TC is notified of an incident and the relevant repo maintainers are added
   as the Fix Team to the issue.
 - The Fix Team acknowledges the incident to the reporter, asks for further
@@ -88,7 +86,7 @@ The initial response steps should be completed within the 1-14 days of Disclosur
   [CVSS](https://www.first.org/cvss/specification-document) Base score using the
   [CVSS Calculator](https://www.first.org/cvss/calculator/3.1) and ping the TC
   GitHub team for confirmation.
-- The Fix Team will request a CVE from GitHub.
+- The Fix Team will request a CVE from GitHub and follow up with the reporter.
 
 #### Incident Mitigation
 
