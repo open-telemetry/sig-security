@@ -81,6 +81,8 @@ that the report is accepted as valid.
   as the Fix Team to the issue.
 - The Fix Team acknowledges the incident to the reporter, asks for further
   details if necessary, and begins mitigation planning.
+- The Fix Team confirms with the reporter if the incident is valid and requires
+  a fix.
 - The Fix Team creates a temporary private branch to start work on the fix.
 - The Fix Team will create a
   [CVSS](https://www.first.org/cvss/specification-document) Base score using the
