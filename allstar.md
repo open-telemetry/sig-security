@@ -1,7 +1,7 @@
 I have investigated what Allstar is about, it's capabilities and how it aligns with the needs of this project as inidicated in the checklist in issue #12.
-Allstar is a security policy engine that helps organizations automate and enforce security best practices. Allstar can be used to scan code, dependencies, andinfrastructure for vulnerabilities. Allstar can also be used to enforce best practices for code reviews, security testing, and vulnerability management.
+## Allstar is a security policy engine that helps organizations automate and enforce security best practices. Allstar can be used to scan code, dependencies, andinfrastructure for vulnerabilities. Allstar can also be used to enforce best practices for code reviews, security testing, and vulnerability management.
 
-##Based on the checklist on issue #12, All star can cover everything on the checklist.
+## Based on the checklist on issue #12, All star can cover everything on the checklist.
 
 - CodeQL enabled via GitHub Actions: Allstar can be integrated with GitHub Actions to automatically scan code for vulnerabilities using CodeQL.
 - Static code analysis:  Allstar can be integrated with govulncheck to automatically scan Go code for vulnerabilities.
@@ -16,7 +16,7 @@ Allstar is a security policy engine that helps organizations automate and enforc
 - Dependabot alerts
 - Code scanning alerts
 
-###Allstar can also configure the following that were not listed on the checklist
+### Allstar can also configure the following that were not listed on the checklist
 - Branch protection
 - Security testing
 - Code review requirements
