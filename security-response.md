@@ -89,6 +89,8 @@ that the report is accepted as valid.
   [CVSS Calculator](https://www.first.org/cvss/calculator/3.1) and ping the TC
   GitHub team for confirmation.
 - The Fix Team will request a CVE from GitHub and follow up with the reporter.
+- The Fix Team publishes the CVE to the GitHub Security Advisory Database for
+  user notification.
 
 #### Incident Mitigation
 
