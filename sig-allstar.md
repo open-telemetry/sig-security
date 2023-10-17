@@ -1,6 +1,6 @@
 ## SIG Security's use of Allstar for the OpenTelemetry project
 
-Allstar is a security policy engine that helps organizations automate and enforce security best practices. It can be used to scan code, dependencies, and infrastructure for vulnerabilities. It can also be used to enforce best practices for code reviews, security testing, and vulnerability management. 
+[Allstar](https://openssf.org/blog/2021/08/11/introducing-the-allstar-github-app/) is a security policy engine that helps organizations automate and enforce security best practices. It can be used to scan code, dependencies, and infrastructure for vulnerabilities. It can also be used to enforce best practices for code reviews, security testing, and vulnerability management. 
 
 SIG Security uses Allstar to improve and enforce security best practices for the OpenTelemetry(OTEL) project.This includes;
 - Scanning code, dependencies, and infrastructure for vulnerabilities.
