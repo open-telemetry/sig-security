@@ -1,7 +1,7 @@
 ## Binding to Network Interfaces
 ### Recommendation: 
 Always bind to localhost rather than to 0.0.0.0 or any interface, unless there is a specific need to do otherwise. Binding to localhost reduces the attack surface of your application by making it only accessible to devices on the same machine.
-Binding to 0.0.0.0 or any interface can make your application more vulnerable to attacks that exploit vulnerabilities in other applications or services on your network.
+Binding to 0.0.0.0 or "all" interfaces can make your application respond on all current and future network interfaces.
 
 
 ### Exemptions on when to bind to 0.0.0.0 or any interface:
