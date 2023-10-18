@@ -26,17 +26,17 @@ Issue: ([#15](https://github.com/open-telemetry/sig-security/issues/15))
 ## let's propose steps to enable "Allstar" across your organization and open issues in the appropriate repositories:
 
   ### Enable "Allstar" Across the Organization:
-    First, determine if "Allstar" is already set up in your organization. If not, you can set it up as a GitHub App with appropriate permissions.
-    Configure "Allstar" to integrate with the organization's repositories.
+  First, determine if "Allstar" is already set up in your organization. If not, you can set it up as a GitHub App with appropriate permissions.
+  Configure "Allstar" to integrate with the organization's repositories.
 
   ### Configure "Allstar" for Security Checks:
-      Create or configure "Allstar" checks that align with your organization's security policies.
-      Ensure that "Allstar" runs as part of your GitHub Actions workflows for code scanning and security checks.
+  Create or configure "Allstar" checks that align with your organization's security policies.
+  Ensure that "Allstar" runs as part of your GitHub Actions workflows for code scanning and security checks.
 
   ### Open Issues in Repositories:
-      Use "Allstar" to scan and identify repositories that do not meet the security checklist requirements.
-      For repositories that need manual configuration, open issues with detailed instructions on what needs to be done to align with the security checklist items.
+  Use "Allstar" to scan and identify repositories that do not meet the security checklist requirements.
+  For repositories that need manual configuration, open issues with detailed instructions on what needs to be done to align with the security checklist items.
 
   ### Documentation in Security SIG Repository:
-        Document the usage of "Allstar" in your organization's Security SIG repository.
-        Include instructions on how to configure "Allstar" for security checks and provide guidance on interpreting its reports.
+  Document the usage of "Allstar" in your organization's Security SIG repository.
+  Include instructions on how to configure "Allstar" for security checks and provide guidance on interpreting its reports.
