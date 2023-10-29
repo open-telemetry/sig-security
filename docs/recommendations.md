@@ -12,47 +12,41 @@ pull request and on every commit to the main branch.
 Issue: ([#15](https://github.com/open-telemetry/sig-security/issues/15))
 
 
-### Code signing is a security practice used in the software industry to verify the authenticity and integrity of software applications and code. It involves digitally signing software or code with a cryptographic signature, which can be used to confirm that the code has not been tampered with and was indeed created by the purported author or organization.
+# Investigate code signing OS-specific packages (deb/rpm/...)
 
-## Here's an investigation into code signing:
+Code signing is a critical security practice for ensuring the authenticity and integrity of software packages, regardless of the operating system or package format. Different operating systems and package management systems have their own methods for code signing. 
 
-### Purpose of Code Signing:
+### code signing in OS-specific package formats like DEB (Debian) and RPM (Red Hat Package Manager):
 
-Code signing primarily serves the following purposes: Authentication: It ensures that the software or code is from a trusted source. Integrity: It guarantees that the code has not been altered or corrupted since it was signed. Non-repudiation: It prevents the author from denying their responsibility for the code. Malware Prevention: It helps in preventing the execution of unsigned or tampered code.
+1. DEB (Debian/Ubuntu):
 
-### How Code Signing Works:
+    DEB packages are used in Debian-based Linux distributions like Debian, Ubuntu, and their derivatives.
+    Code signing in DEB packages is primarily managed through the use of GPG (GNU Privacy Guard) keys. The steps typically include:
+        Maintainers sign the source packages with their GPG key.
+        Maintainers or build systems sign the resulting binary packages (the DEB files) with their GPG keys.
+    A signature file is included alongside the package, typically with a .dsc or .changes file extension.
+    Users can verify the signature of a DEB package using GPG to ensure it was not tampered with during download or distribution.
 
-Code signing involves using a digital certificate and a private key. The process typically includes the following steps: The developer generates a cryptographic hash (checksum) of the code. The developer signs the hash with their private key to create a digital signature. The digital signature is attached to the code or software. Users or systems can verify the signature using the developer's public key to ensure it matches the code's hash.
+2. RPM (Red Hat Package Manager):
 
-### Types of Code Signing Certificates:
+    RPM packages are used in Red Hat-based Linux distributions such as Red Hat Enterprise Linux (RHEL), CentOS, Fedora, and openSUSE.
+    RPM package signing involves the use of GPG keys as well. Here's how it works:
+        Maintainers or build systems sign the RPM packages with their GPG keys.
+        The signature is embedded within the RPM package file.
+    Users can use RPM package management tools like rpm or dnf to verify the package's signature.
 
-There are two main types of code signing certificates: Self-signed certificates: Typically used for testing purposes but not suitable for production environments. Certificate Authority (CA)-issued certificates: Provided by trusted third-party CAs. These are used for production code and are recognized by major operating systems and platforms.
+3. Snap Packages (Ubuntu):
 
-### Platforms and Environments:
+    Ubuntu's Snap packages use a different approach to code signing. Each snap is signed by the developer, and the signature is verified by the Snap Store during installation.
+    Snap developers create a snap package and sign it with their credentials, and the Snap Store maintains a list of trusted developers.
+    Users can trust that the package hasn't been tampered with, as the Snap Store verifies the signature during installation.
 
-Code signing is used across various platforms and environments, including: Windows: Authenticode is used for signing Windows executables and scripts. macOS: Code signing with Apple Developer IDs is essential for distributing macOS applications. Linux: GPG (GNU Privacy Guard) signatures are common for package repositories and open-source projects. Mobile Platforms: Both Android and iOS require code signing for app distribution.
+4. Flatpak (Cross-Distribution):
 
-### Code Signing Challenges:
+    Flatpak, designed for cross-distribution use, also employs code signing.
+    Flatpak bundles an application along with its dependencies and signs the entire package. This provides a degree of isolation and security.
+    Users can verify the signature of a Flatpak package to ensure that it's authentic and unaltered.
 
-Code signing can present challenges, including: Managing and securing private keys. Expired certificates can break functionality. Revocation of certificates due to security breaches. Balancing security with user experience, as code signing may generate security prompts.
+In all these package formats, code signing is used to verify the authenticity and integrity of the software packages. Developers and maintainers sign packages with their cryptographic keys, and users can use package management tools to check the signatures. The use of trusted cryptographic keys ensures that the packages have not been tampered with during distribution, enhancing security and trust in the software ecosystem.
 
-### Code Signing Best Practices:
-
-To ensure the effectiveness of code signing, developers and organizations should follow best practices, including: Regularly update certificates and keys. Use hardware security modules (HSMs) to secure private keys. Implement a process for revoking compromised certificates. Securely store code signing artifacts.
-
-### Open Source and Code Signing:
-
-Some open-source projects also use code signing to enhance trust in their codebase. However, this practice may vary among open-source communities.
-
-### Regulatory Compliance:
-
-Code signing may be required or recommended for compliance with industry regulations and standards, such as PCI DSS and HIPAA.
-
-### Code Signing and Malware:
-
-While code signing helps prevent the execution of unsigned or tampered code, it's not a guarantee against malware. Attackers may obtain compromised certificates or exploit vulnerabilities.
-
-### Code Signing in DevOps:
-
-Code signing can be integrated into DevOps pipelines to automate the signing process and ensure signed code is deployed.
-
+Issue: ([#10](https://github.com/open-telemetry/sig-security/issues/10))
