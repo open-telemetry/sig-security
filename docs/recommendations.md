@@ -11,6 +11,7 @@ pull request and on every commit to the main branch.
 
 Issue: ([#15](https://github.com/open-telemetry/sig-security/issues/15))
 
+ sig-security/#10
 
 # Investigate code signing OS-specific packages (deb/rpm/...)
 
@@ -50,3 +51,5 @@ Code signing is a critical security practice for ensuring the authenticity and i
 In all these package formats, code signing is used to verify the authenticity and integrity of the software packages. Developers and maintainers sign packages with their cryptographic keys, and users can use package management tools to check the signatures. The use of trusted cryptographic keys ensures that the packages have not been tampered with during distribution, enhancing security and trust in the software ecosystem.
 
 Issue: ([#10](https://github.com/open-telemetry/sig-security/issues/10))
+
+
