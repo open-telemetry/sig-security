@@ -7,4 +7,4 @@ Here is the list of learning sessions hosted by the sig-security community:
 
 | **Date**   | **Topic**                                                              | **Speaker(s)**                                                                                          | **Link**                                     |
 | ---------- | :--------------------------------------------------------------------: | ------------------------------------------------------------------------------------------------------- | :------------------------------------------: |
-| TBD        | [cosign](https://github.com/sigstore/cosign)                           | [Carlos Tadeu Panato Junior](https://github.com/cpanato)                                                |                                              |
+| 2023-12-10 | [cosign](https://github.com/sigstore/cosign)                           | [Carlos Tadeu Panato Junior](https://github.com/cpanato)                                                |                                              |
