@@ -68,4 +68,4 @@ filtered_json = df_filled[df_filled['state'] == 'published']
 json_file_path = 'published_output.json'
 
 # Write DataFrame to JSON file for published incidents
-filtered_json.to_json(json_file_path, orient='records', lines=True)
+filtered_json.to_json(json_file_path, orient='records')
