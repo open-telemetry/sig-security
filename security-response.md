@@ -48,7 +48,7 @@ email
 to inform the Security Response Committee (SRC) about the vulnerability so they
 may start the patch, release, and communication process. Please include any relevant
 information about current public exploitations of this vulnerability if known to
-help with scoring and priortization.
+help with scoring and prioritization.
 
 The TC should receive the message and re-direct it to the relevant repo
 maintainers for ownership. If possible the repo maintainers will engage and ask
