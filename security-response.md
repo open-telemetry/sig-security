@@ -66,7 +66,6 @@ The Fix Team is made up of the relevant repo maintainers.
 
 ### TC Role
 
-- Add the relevant repo maintainers to open incidents
 - A member of the TC will need to review the proposed CVSS score and severity from the Fix Team
 - Acknowledge when a proposed fix is completed
 
@@ -78,7 +77,7 @@ that the report is accepted as valid.
 #### Initial Incident Response
 
 - The TC is notified of an incident and the relevant repo maintainers are added
-  as the Fix Team to the issue.
+  automatically using a Zapier workflow as the Fix Team to the issue.
 - The Fix Team acknowledges the incident to the reporter, asks for further
   details if necessary, and begins mitigation planning.
 - The Fix Team confirms with the reporter if the incident is valid and requires
@@ -109,7 +108,9 @@ repo release cadence.
 OTel relies on GitHub tooling to notify the affected repositories and publish a
 security advisory. GitHub will publish the CVE to the CVE List, broadcast the
 Security Advisory via the GitHub Advisory Database, and send security alerts to
-all repositories that use the package and have alerts on.
+all repositories that use the package and have alerts on. The CVE will also be
+added to the [OTel website's CVE
+feed](https://opentelemetry.io/docs/security/cve/).
 
 #### Fix Release Day
 
