@@ -4,7 +4,7 @@ Security vulnerabilities should be handled quickly and sometimes privately. The
 primary goal of this process is to reduce the total time users are vulnerable to
 publicly known exploits.
 
-The OpenTelemetry Technical Committee (OTel TC) and relevant repo maintainers,
+The OpenTelemetry Technical Committee (OTel TC) and relevant repository maintainers,
 supported by tooling provided by the SIG-Security, are responsible for
 responding to the incident organizing the entire response including internal
 communication and external disclosure.
@@ -38,8 +38,6 @@ reporting workflow, please reach out to the Technical Committee using
 and we will provide instruction on how to report the vulnerability using an
 encrypted message, if desired.
 
-[gh-organization]: https://github.com/open-telemetry
-
 ### Public Disclosure Processes
 
 If you know of a publicly disclosed security vulnerability please IMMEDIATELY
@@ -48,12 +46,12 @@ email
 to inform the Security Response Committee (SRC) about the vulnerability so they
 may start the patch, release, and communication process. Please include any relevant
 information about current public exploitations of this vulnerability if known to
-help with scoring and priortization.
+help with scoring and prioritization.
 
-The TC should receive the message and re-direct it to the relevant repo
-maintainers for ownership. If possible the repo maintainers will engage and ask
+The TC should receive the message and re-direct it to the relevant repository
+maintainers for ownership. If possible the repository maintainers will engage and ask
 the person making the public report if the issue can be handled via a private
-disclosure process. If the reporter denies the request, the repo maintainers
+disclosure process. If the reporter denies the request, the repository maintainers
 will move swiftly with the fix and release process. In extreme cases you can ask
 GitHub to delete the issue but this generally isn't necessary and is unlikely to
 make a public disclosure less damaging.
@@ -62,11 +60,10 @@ make a public disclosure less damaging.
 
 ### Fix Team Organization
 
-The Fix Team is made up of the relevant repo maintainers.
+The Fix Team is made up of the relevant repository maintainers.
 
 ### TC Role
 
-- Add the relevant repo maintainers to open incidents
 - A member of the TC will need to review the proposed CVSS score and severity from the Fix Team
 - Acknowledge when a proposed fix is completed
 
@@ -77,8 +74,8 @@ that the report is accepted as valid.
 
 #### Initial Incident Response
 
-- The TC is notified of an incident and the relevant repo maintainers are added
-  as the Fix Team to the issue.
+- The TC is notified of an incident and the relevant repository maintainers are added
+  automatically using a Zapier workflow as the Fix Team to the issue.
 - The Fix Team acknowledges the incident to the reporter, asks for further
   details if necessary, and begins mitigation planning.
 - The Fix Team confirms with the reporter if the incident is valid and requires
@@ -95,7 +92,7 @@ that the report is accepted as valid.
 #### Incident Mitigation
 
 The incident mitigation timeline depends on the severity of the incident and
-repo release cadence.
+repository release cadence.
 
 - The Fix Team will ping the TC GitHub team to alert them that work on the fix
   branch is complete once there are LGTMs on all commits in the temporary
@@ -109,11 +106,13 @@ repo release cadence.
 OTel relies on GitHub tooling to notify the affected repositories and publish a
 security advisory. GitHub will publish the CVE to the CVE List, broadcast the
 Security Advisory via the GitHub Advisory Database, and send security alerts to
-all repositories that use the package and have alerts on.
+all repositories that use the package and have alerts on. The CVE will also be
+added to the [OTel website's CVE
+feed](https://opentelemetry.io/docs/security/cve/).
 
 #### Fix Release Day
 
-The Fix Team as repo owners will release an updated version and optionally
+The Fix Team as repository owners will release an updated version and optionally
 notify their communities via Slack.
 
 ## Severity
