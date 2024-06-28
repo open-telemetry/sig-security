@@ -16,9 +16,12 @@ of the Security Special Interest Group.
 
 ## Project Leadership
 
-* [Carter Socha](https://github.com/cartersocha), Lightstep
 * [Juraci Paixão Kröhling](https://github.com/jpkrohling), Grafana Labs
 * [Reiley Yang](https://github.com/reyang), Microsoft
+
+## Emeritus
+
+* [Carter Socha](https://github.com/cartersocha)
 
 ## Contact
 
