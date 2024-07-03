@@ -9,10 +9,8 @@ of the Security Special Interest Group.
 
 ## Meetings
 
-* Regular SIG Meeting: Wednesday at 8:30 PT (Pacific Time). [Convert to your
-  timezone](http://www.thetimezoneconverter.com/?t=8:30&tz=PT%20%28Pacific%20Time%29).
-  * [Meeting notes and
-    Agenda](https://docs.google.com/document/d/1P2xejC7lEkOV_Z-8E0oZPXLK5HOnUPNuRqKP0ZQ5fpg).
+* Regular SIG Meeting: Wednesday at 12:00 UTC. [Convert to your timezone](https://dateful.com/convert/utc?t=12).
+  * [Meeting notes and Agenda](https://docs.google.com/document/d/1P2xejC7lEkOV_Z-8E0oZPXLK5HOnUPNuRqKP0ZQ5fpg).
 
 ## Project Leadership
 
