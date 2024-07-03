@@ -12,8 +12,8 @@ https://github.com/open-telemetry-private/private-incident-tracking
 
 The following people have access to this repository:
 
-* @jpkrohling
 * @codeboten
+* @jpkrohling
 * @reyang
 
 SIG Security, OTel GC, and OTel TC members are welcome to request access. To do so, please open an issue on this repository.
@@ -26,8 +26,8 @@ The following people have access to this dashboard:
 
 * @arminru
 * @jack-berg
-* @jsuereth
 * @jpkrohling
+* @jsuereth
 * @lmolkova
 * @tigrannajaryan
 
