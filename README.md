@@ -9,11 +9,14 @@ of the Security Special Interest Group.
 
 ## Meetings
 
-* Regular SIG Meeting: Wednesday at 12:00 UTC. [Convert to your timezone](https://dateful.com/convert/utc?t=12).
-  * [Meeting notes and Agenda](https://docs.google.com/document/d/1P2xejC7lEkOV_Z-8E0oZPXLK5HOnUPNuRqKP0ZQ5fpg).
+* Regular SIG Meeting: Bi-weekly on Wednesdays at [12:00
+  UTC](https://dateful.com/convert/utc?t=12).
+  * [Meeting notes and
+    Agenda](https://docs.google.com/document/d/1P2xejC7lEkOV_Z-8E0oZPXLK5HOnUPNuRqKP0ZQ5fpg).
 
 ## Project Leadership
 
+* [Alex Boten](https://github.com/codeboten), Honeycomb
 * [Juraci Paixão Kröhling](https://github.com/jpkrohling), Grafana Labs
 * [Reiley Yang](https://github.com/reyang), Microsoft
 
