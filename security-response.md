@@ -80,7 +80,8 @@ that the report is accepted as valid.
   details if necessary, and begins mitigation planning.
 - The Fix Team confirms with the reporter if the incident is valid and requires
   a fix.
-- The Fix Team creates a temporary private branch to start work on the fix.
+- The Fix Team creates a temporary Slack channel and private branch to start work
+  on the fix.
 - The Fix Team will create a
   [CVSS](https://www.first.org/cvss/specification-document) Base score using the
   [CVSS Calculator](https://www.first.org/cvss/calculator/3.1) and ping the TC
