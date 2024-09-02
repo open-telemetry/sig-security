@@ -60,10 +60,12 @@ make a public disclosure less damaging.
 
 ### Fix Team Organization
 
-The Fix Team is made up of the relevant repository maintainers.
+The Fix Team is made up of the relevant repository maintainers and a Fix lead is
+responsible for ensuring the successful execution of the incident response.
 
 ### TC Role
 
+- Assign a Fix Lead, typically a code owner or maintainer for the affected code
 - A member of the TC will need to review the proposed CVSS score and severity from the Fix Team
 - Acknowledge when a proposed fix is completed
 
