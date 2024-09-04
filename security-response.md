@@ -60,7 +60,7 @@ make a public disclosure less damaging.
 
 ### Fix Team Organization
 
-The Fix Team is made up of the relevant repository maintainers and a Fix lead is
+The Fix Team is made up of the relevant repository maintainers and a Fix Lead is
 responsible for ensuring the successful execution of the incident response.
 
 ### TC Role
