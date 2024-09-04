@@ -13,7 +13,8 @@ Currently on the opentelemetry-collector-distros list are representatives from:
 
 ## Membership Criteria
 
-To be eligible for (opentelemetry-)distros list membership, your distro should:
+The membership is initially decided by sig-security members. To be eligible
+for (opentelemetry-)distros list membership, your distro should:
 
 * Be an actively maintained Open Source OpenTelemetry distribution
 * Have a user base not limited to your own organization
