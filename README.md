@@ -16,12 +16,12 @@ of the Security Special Interest Group.
 
 ## Project Leadership
 
-* [Alex Boten](https://github.com/codeboten), Honeycomb
 * [Juraci Paixão Kröhling](https://github.com/jpkrohling), Grafana Labs
 * [Reiley Yang](https://github.com/reyang), Microsoft
 
 ## Emeritus
 
+* [Alex Boten](https://github.com/codeboten)
 * [Carter Socha](https://github.com/cartersocha)
 
 ## Contact
