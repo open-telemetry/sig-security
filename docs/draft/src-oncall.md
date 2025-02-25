@@ -1,6 +1,6 @@
 # Security Response Committee Oncall
 
-SRC Oncall is a business-hours only oncall. That means you are not expected to
+Security Response Committee (SRC) Oncall is a business-hours only oncall. That means you are not expected to
 respond to issues outside of your normal daily working hours or on weekends or
 holidays. If you are taking vacation or will be unable to perform your oncall
 duties, please swap oncalls or find coverage for that week. See [managing oncall

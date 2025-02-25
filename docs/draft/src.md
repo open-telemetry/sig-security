@@ -4,8 +4,7 @@ The SRC is responsible for organizing the entire response including internal com
 
 ### Security Response Committee Membership
 
-New SRC members are nominated by current SRC members, and selected by 
-[TBD]
+New SRC members are nominated by current SRC members, and selected by [TBD]
 
 The SRC is capped at 10 members.
 
@@ -18,7 +17,7 @@ OpenTelemetry community.
 To encourage diversity members will also abide by a 1/2 maximal representation from any one company at any time. If representation changes due to job shifts or mergers, then members are encouraged to grow the team or replace themselves through mentoring new members. Being overlimit should not continue for longer than 12 months to give time to identify and mentor new members.
 
 A nomination should include:
-1. Relevant credentials, including OpenTelemetry and security experience
+1. Relevant credentials, including OpenTelemetry and security experience.
 2. Statement of support from the nominating SRC member(s): ~1-3 sentences of why this person is a good candidate.
 3. Statement of intent from the nominee: ~1-3 sentences of why they want to join the committee and are a good fit.
 
