@@ -1,0 +1,134 @@
+vars:
+  token: {{ TOKEN }} # GH classic token with all repo: read permissions
+  owner: open-telemetry
+
+policy:
+  catalogs:
+    - OSPS_B
+  applicability:
+    - Maturity Level 1
+    - Maturity Level 2
+    - Maturity Level 3
+
+write-directory: evaluation_results
+services:
+  opentelemetry-python-contrib:
+    plugin: github-repo
+    vars:
+      repo: opentelemetry-python-contrib
+  opentelemetry-java-instrumentation:
+    plugin: github-repo
+    vars:
+      repo: opentelemetry-java-instrumentation
+  opentelemetry-go-contrib:
+    plugin: github-repo
+    vars:
+      repo: opentelemetry-go-contrib
+  opentelemetry-java-contrib:
+    plugin: github-repo
+    vars:
+      repo: opentelemetry-java-contrib
+  opentelemetry.io:
+    plugin: github-repo
+    vars:
+      repo: opentelemetry.io
+  opentelemetry-android:
+    plugin: github-repo
+    vars:
+      repo: opentelemetry-android
+  opentelemetry-operator:
+    plugin: github-repo
+    vars:
+      repo: opentelemetry-operator
+  opentelemetry-proto-java:
+    plugin: github-repo
+    vars:
+      repo: opentelemetry-proto-java
+  semantic-conventions-java:
+    plugin: github-repo
+    vars:
+      repo: semantic-conventions-java
+  opentelemetry-collector:
+    plugin: github-repo
+    vars:
+      repo: opentelemetry-collector
+  opentelemetry-go:
+    plugin: github-repo
+    vars:
+      repo: opentelemetry-go
+  opentelemetry-java:
+    plugin: github-repo
+    vars:
+      repo: opentelemetry-java
+  opentelemetry-collector-contrib:
+    plugin: github-repo
+    vars:
+      repo: opentelemetry-collector-contrib
+  semantic-conventions:
+    plugin: github-repo
+    vars:
+      repo: semantic-conventions
+  opentelemetry-rust-contrib:
+    plugin: github-repo
+    vars:
+      repo: opentelemetry-rust-contrib
+  opentelemetry-cpp:
+    plugin: github-repo
+    vars:
+      repo: opentelemetry-cpp
+  opentelemetry-go-instrumentation:
+    plugin: github-repo
+    vars:
+      repo: opentelemetry-go-instrumentation
+  opentelemetry-php:
+    plugin: github-repo
+    vars:
+      repo: opentelemetry-php
+  opentelemetry-go-build-tools:
+    plugin: github-repo
+    vars:
+      repo: opentelemetry-go-build-tools
+  opentelemetry-network:
+    plugin: github-repo
+    vars:
+      repo: opentelemetry-network
+  opentelemetry-python:
+    plugin: github-repo
+    vars:
+      repo: opentelemetry-python
+  opentelemetry-rust:
+    plugin: github-repo
+    vars:
+      repo: opentelemetry-rust
+  opentelemetry-helm-charts:
+    plugin: github-repo
+    vars:
+      repo: opentelemetry-helm-charts
+  weaver:
+    plugin: github-repo
+    vars:
+      repo: weaver
+  opentelemetry-dotnet-contrib:
+    plugin: github-repo
+    vars:
+      repo: opentelemetry-dotnet-contrib
+  opentelemetry-ebpf-profiler:
+    plugin: github-repo
+    vars:
+      repo: opentelemetry-ebpf-profiler
+  opentelemetry-specification:
+    plugin: github-repo
+    vars:
+      repo: opentelemetry-specification
+  opentelemetry-proto:
+    plugin: github-repo
+    vars:
+      repo: opentelemetry-proto
+  otel-arrow:
+    plugin: github-repo
+    vars:
+      repo: otel-arrow
+  opentelemetry-js-contrib:
+    plugin: github-repo
+    vars:
+      repo: opentelemetry-js-contrib
