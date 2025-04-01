@@ -11,12 +11,12 @@ policy:
     - Maturity Level 3
 
 write-directory: evaluation_results
-# list below generated using
-# gh repo list open-telemetry --json name,visibility,isArchived
-#    --jq '.[] | select(.visibility == "PUBLIC" and .isArchived == false) | .name'
-#    | sort
-#    | awk '{print "  "$1":\n    plugin: github-repo\n    vars:\n      repo: "$1}'
 services:
+  # list below generated using
+  # gh repo list open-telemetry --json name,visibility,isArchived
+  #    --jq '.[] | select(.visibility == "PUBLIC" and .isArchived == false) | .name'
+  #    | sort
+  #    | awk '{print "  "$1":\n    plugin: github-repo\n    vars:\n      repo: "$1}'
   opamp-go:
     plugin: github-repo
     vars:
