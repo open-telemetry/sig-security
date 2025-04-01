@@ -16,6 +16,7 @@ of the Security Special Interest Group.
 
 ## Project Leadership
 
+* [Jeremy Corley](https://github.com/ms-jcorley), Microsoft
 * [Reiley Yang](https://github.com/reyang), Microsoft
 
 ## Emeritus
