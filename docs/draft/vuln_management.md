@@ -151,7 +151,7 @@ within 1-4 weeks prior to public disclosure):
   Lead will make the call to release earlier or continue with the plan. When in
   doubt push forward and go public ASAP.
 
-**Fix Release Day**
+### Fix Release Day
 
 Release process:
 

@@ -1,6 +1,8 @@
 # Security Policies and Procedures
 
-The Technical Committee (TC) has delegated to the Security SIG defining OpenTelemetry's Security Policies and Procedures.  The TC maintains veto power over what is defined here.
+The Technical Committee (TC) has delegated to the Security SIG defining
+OpenTelemetry's Security Policies and Procedures.  The TC maintains veto power
+over what is defined here.
 
 The SP&P covers the following topics:
 
