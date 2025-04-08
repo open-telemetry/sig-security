@@ -4,9 +4,9 @@ Security vulnerabilities should be handled quickly and sometimes privately. The
 primary goal of this process is to reduce the total time users are vulnerable to
 publicly known exploits.
 
-The OpenTelemetry Technical Committee (OTel TC) and relevant repository maintainers,
-supported by tooling provided by the SIG-Security, are responsible for
-responding to the incident organizing the entire response including internal
+The OpenTelemetry Technical Committee (OTel TC) and relevant repository
+maintainers, supported by tooling provided by the SIG-Security, are responsible
+for responding to the incident organizing the entire response including internal
 communication and external disclosure.
 
 ## Supported Versions
@@ -44,17 +44,17 @@ If you know of a publicly disclosed security vulnerability please IMMEDIATELY
 email
 [cncf-opentelemetry-tc@lists.cncf.io](mailto:cncf-opentelemetry-tc@lists.cncf.io)
 to inform the Security Response Committee (SRC) about the vulnerability so they
-may start the patch, release, and communication process. Please include any relevant
-information about current public exploitations of this vulnerability if known to
-help with scoring and prioritization.
+may start the patch, release, and communication process. Please include any
+relevant information about current public exploitations of this vulnerability if
+known to help with scoring and prioritization.
 
 The TC should receive the message and re-direct it to the relevant repository
-maintainers for ownership. If possible the repository maintainers will engage and ask
-the person making the public report if the issue can be handled via a private
-disclosure process. If the reporter denies the request, the repository maintainers
-will move swiftly with the fix and release process. In extreme cases you can ask
-GitHub to delete the issue but this generally isn't necessary and is unlikely to
-make a public disclosure less damaging.
+maintainers for ownership. If possible the repository maintainers will engage
+and ask the person making the public report if the issue can be handled via a
+private disclosure process. If the reporter denies the request, the repository
+maintainers will move swiftly with the fix and release process. In extreme cases
+you can ask GitHub to delete the issue but this generally isn't necessary and is
+unlikely to make a public disclosure less damaging.
 
 ## Patch, Release, and Public Communication
 
@@ -66,7 +66,8 @@ responsible for ensuring the successful execution of the incident response.
 ### TC Role
 
 - Assign a Fix Lead, typically a code owner or maintainer for the affected code
-- A member of the TC will need to review the proposed CVSS score and severity from the Fix Team
+- A member of the TC will need to review the proposed CVSS score and severity
+  from the Fix Team
 - Acknowledge when a proposed fix is completed
 
 ### Fix Development Process
@@ -76,21 +77,21 @@ that the report is accepted as valid.
 
 #### Initial Incident Response
 
-- The TC is notified of an incident and the relevant repository maintainers are added
-  automatically using a Zapier workflow as the Fix Team to the issue.
+- The TC is notified of an incident and the relevant repository maintainers are
+  added automatically using a Zapier workflow as the Fix Team to the issue.
 - The Fix Team acknowledges the incident to the reporter, asks for further
   details if necessary, and begins mitigation planning.
 - The Fix Team confirms with the reporter if the incident is valid and requires
   a fix.
-- The Fix Team creates a temporary Slack channel and private branch to start work
-  on the fix.
+- The Fix Team creates a temporary Slack channel and private branch to start
+  work on the fix.
 - The Fix Team will create a
   [CVSS](https://www.first.org/cvss/specification-document) Base score using the
   [CVSS Calculator](https://www.first.org/cvss/calculator/3.1) and ping the TC
   GitHub team for confirmation.
 - The Fix Team will request a CVE from GitHub and follow up with the reporter.
-- The Fix Team will report the CVE to the [security contact list](./docs/contact-list.md) 
-  if applicable.
+- The Fix Team will report the CVE to the [security contact
+  list](./docs/contact-list.md) if applicable.
 - The Fix Team publishes the CVE to the GitHub Security Advisory Database for
   user notification.
 
@@ -122,8 +123,8 @@ notify their communities via Slack.
 
 ## Severity
 
-The Fix Team evaluates vulnerability severity on a case-by-case
-basis, guided by CVSS 3.1 and is subject to TC review.
+The Fix Team evaluates vulnerability severity on a case-by-case basis, guided by
+CVSS 3.1 and is subject to TC review.
 
 ## Retrospective
 
