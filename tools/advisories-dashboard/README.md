@@ -18,7 +18,7 @@ The following people have access to this repository:
 
 SIG Security, OTel GC, and OTel TC members are welcome to request access. To do so, please open an issue on this repository.
 
-# Grafana dashboard
+## Grafana dashboard
 
 https://otelsigsecurity.grafana.net
 
