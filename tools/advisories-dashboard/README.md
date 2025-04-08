@@ -12,7 +12,7 @@ The script is triggered either daily or manually by a GitHub Action.
 
 ## Private repository
 
-https://github.com/open-telemetry-private/private-incident-tracking
+[https://github.com/open-telemetry-private/private-incident-tracking](https://github.com/open-telemetry-private/private-incident-tracking)
 
 The following people have access to this repository:
 
@@ -25,7 +25,7 @@ so, please open an issue on this repository.
 
 ## Grafana dashboard
 
-https://otelsigsecurity.grafana.net
+[https://otelsigsecurity.grafana.net](https://otelsigsecurity.grafana.net)
 
 The following people have access to this dashboard:
 

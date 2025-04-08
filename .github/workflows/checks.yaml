@@ -1,5 +1,8 @@
 name: Checks
 
+permissions:
+  contents: read
+
 on:
   pull_request:
     branches: [ main ]
@@ -8,6 +11,11 @@ jobs:
   markdownlint:
     runs-on: ubuntu-latest
     steps:
+    - name: Harden the runner (Audit all outbound calls)
+      uses: step-security/harden-runner@c6295a65d1254861815972266d5933fd6e532bdf # v2.11.1
+      with:
+        egress-policy: audit
+
     - name: check out code
       uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
