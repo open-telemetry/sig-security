@@ -87,11 +87,10 @@ These steps should be completed within the 1-7 days of Disclosure.
 - The Fix Lead and the Fix Team will create a
   [CVSS](https://www.first.org/cvss/specification-document) score using the
   [CVSS Calculator](https://www.first.org/cvss/calculator/3.0). They will also
-  use the [Severity Thresholds - How We Do Vulnerability
-  Scoring](#severity-thresholds---how-we-do-vulnerability-scoring) to determine
-  the effect and severity of the bug. The Fix Lead makes the final call on the
-  calculated risk; it is better to move quickly than make the perfect
-  assessment.
+  use the [Severity Thresholds - How We Do Vulnerability Scoring](TBD) to
+  determine the effect and severity of the bug. The Fix Lead makes the final
+  call on the calculated risk; it is better to move quickly than make the
+  perfect assessment.
 - The Fix Lead will assign a CVE ID to the vulnerability from the CVE Numbering
   Authority (CNA).
 - The Fix Team will notify the Fix Lead that work on the fix branch is complete
