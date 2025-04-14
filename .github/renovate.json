@@ -5,6 +5,21 @@
     "docker:pinDigests",
     "helpers:pinGitHubActionDigestsToSemver"
   ],
+  "packageRules": [
+    {
+      "groupName": "all patch versions",
+      "matchUpdateTypes": ["patch"],
+      "schedule": ["before 8am every weekday"]
+    },
+    {
+      "matchUpdateTypes": ["major"],
+      "schedule": ["before 8am on Monday"]
+    },
+    {
+      "matchUpdateTypes": ["minor"],
+      "schedule": ["before 8am on Monday"]
+    }
+  ],
   "labels": [
     "dependencies"
   ]
