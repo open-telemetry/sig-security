@@ -2,7 +2,7 @@
 
 ## Status
 
-<!-- Update propsed to accepted if the pr is approved and remove this comment. -->
+<!-- Update proposed to accepted if the pr is approved and remove this comment. -->
 
 Proposed
 
@@ -10,7 +10,7 @@ Proposed
 
 As part of the [recommendation][rcmd] to ensure Renovate is enabled for
 OpenTelemetry repositories, a [comment][cmt] was opened encouraging the
-addition of simple documentation for future generatations on why we've chosen
+addition of simple documentation for future generations on why we've chosen
 to use RenovateBot instead of Dependebot. This is a great example of what a
 lightweight ADR process is intent on doing.
 
