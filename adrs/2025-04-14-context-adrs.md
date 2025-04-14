@@ -1,4 +1,4 @@
-# Using ADRs to document architecture decisions within the Security SIG.
+# Using ADRs to document architecture decisions within the Security SIG
 
 ## Status
 
@@ -13,7 +13,6 @@ OpenTelemetry repositories, a [comment][cmt] was opened encouraging the
 addition of simple documentation for future generations on why we've chosen
 to use RenovateBot instead of Dependebot. This is a great example of what a
 lightweight ADR process is intent on doing.
-
 
 ## Decision
 
