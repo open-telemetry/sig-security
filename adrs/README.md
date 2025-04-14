@@ -10,13 +10,18 @@ written record can simply help us to remember.
 
 ## Getting Started
 
-To make a new ADR, you can use the `adr-new` make target. This will create a
-new ADR with the branch name and the date.
+1. Review the [CONTRIBUTING.md][ctrb] document for general contributing
+   guideliens.
+2. In your fork, create a new branch for your ADR.
+3. Use the `adr-new` make target. This will create a new ADR with the branch
+   name and the date.
 
 ```bash
 make adr-new
 ```
 
-From there you can edit your template in the [./adrs/](./adrs/) directory.
+4. Edit your template in the [./adrs/](./adrs/) directory.
+5. Open a pull request against the `main` branch from your fork.
 
+[ctrb]: ../CONTRIBUTING.md
 [adrs]: https://github.com/joelparkerhenderson/architecture-decision-record
