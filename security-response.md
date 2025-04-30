@@ -4,7 +4,7 @@ Security vulnerabilities should be handled quickly and sometimes privately. The
 primary goal of this process is to reduce the total time users are vulnerable to
 publicly known exploits.
 
-The relevant OTEL repository maintainers, supported by the SIG-Security and
+The relevant OTel repository maintainers, supported by the Security SIG and
 OpenTelemetry Technical Committee (OTel TC), are responsible for responding to
 the incident including internal communication and external disclosure.
 
@@ -20,7 +20,7 @@ branch at the moment of the release. For instance, if the latest version is
 Security fixes are given priority and might be enough to cause a new version to
 be released. Each repository is entitled to establish their own complementary
 processes. SIG-Security in conjunction with the TC can advise in case
-clarifications are required.  
+clarifications are required.
 
 ## Reporting Process - For Vulnerability Reporters
 
@@ -35,7 +35,7 @@ If you are unable to or have strong reasons not to use the GitHub
 reporting workflow, please reach out to the Technical Committee using
 [cncf-opentelemetry-tc@lists.cncf.io](mailto:cncf-opentelemetry-tc@lists.cncf.io)
 and we will provide instruction on how to report the vulnerability using an
-encrypted message, if desired.  The TC should receive the message and re-direct
+encrypted message, if desired. The TC should receive the message and re-direct
 it to the relevant repository maintainers for ownership.
 
 Reports should be acknowledged within 3 working days.
@@ -47,7 +47,7 @@ Given the public visibility of GitHub issues, reporting a vulnerability as a
 GitHub issue would be public disclosure. If this is done accidentally or if you
 notice a vulnerability reported this way, please immediately re-report the
 vulnerability using "Report a vulnerability" and note the public disclosure as
-part of that report.  You can ask GitHub to delete the issue but this shouldn't
+part of that report. You can ask GitHub to delete the issue but this shouldn't
 be considered a sufficient mitigation and the vulnerability should be considered
 publicly disclosed.
 
@@ -56,7 +56,7 @@ publicly disclosed.
 If a vulnerability appears to be not publicly known or disclosed, the repository
 maintainers will engage and the reporter is requested to honor an embargo period
 in which the vulnerability is keep private until a fix can be released and
-disclosed in an orderly manner.  If the reporter has a need to disclose the
+disclosed in an orderly manner. If the reporter has a need to disclose the
 vulnerability further, perhaps for a security conference or other obligation,
 they are asked to negotiate the disclosure date with the maintainers fixing the
 vulnerability. The repository maintainers will in any case do their best to move

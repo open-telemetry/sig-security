@@ -9,8 +9,8 @@ of the Security Special Interest Group.
 
 ## Meetings
 
-* Regular SIG Meeting: Weekly on Mondays at [16:00
-  UTC](https://dateful.com/convert/utc?t=16).
+* Regular SIG Meeting: Weekly on Mondays at [09:00
+PT](https://dateful.com/convert/pst-pdt-pacific-time?t=0900).
   * [Meeting notes, Agenda and Zoom
   link](https://docs.google.com/document/d/1P2xejC7lEkOV_Z-8E0oZPXLK5HOnUPNuRqKP0ZQ5fpg).
 
