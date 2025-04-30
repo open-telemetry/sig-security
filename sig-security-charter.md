@@ -12,9 +12,7 @@ This includes:
 * improving the vulnerability management process
 * producing cross-cutting security documentation
 * serving as a security community touch point
-* managing the non-embargoed (public) vulnerability process
-* default repo configurations
-* defining the bug bounty
+* default repo configurations related to security
 
 As a process-oriented SIG, SIG Security does not directly own OpenTelemetry
 component code.
@@ -26,10 +24,9 @@ component code.
 Work with the OpenTelemetry Technical Committee (TC) to define the processes for
 fixing and disclosing vulnerabilities. For example:
 
-* The default level for OTel repo GitHub security configuration and tooling
+* The default OTel repo GitHub security configuration and tooling
 * When the private fix & release process is invoked
 * How vulnerabilities are rated
-* The scope of the bug bounty
 * Post-announcement follow-ups, such as additional fixes, mitigations,
   preventions or documentation after a vulnerability is made public
 * Distributor announcement policies, such as timelines, criteria for joining the
@@ -81,8 +78,4 @@ SIG Security’s scope does not include:
 * Vendor or distribution specific guidelines and vulnerability coverage
 * Recommendations or endorsements of specific commercial product vendors or
   cloud providers
-* Private vulnerability response (belongs to the relevant repo owners),
-  including:
-  * Embargoed vulnerability management
-  * Bug bounty submission triage and management
-  * Non-public vulnerability collection, triage, and disclosure
+* Direct vulnerability response, this belongs to the relevant repo owners.

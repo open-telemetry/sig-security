@@ -4,10 +4,9 @@ Security vulnerabilities should be handled quickly and sometimes privately. The
 primary goal of this process is to reduce the total time users are vulnerable to
 publicly known exploits.
 
-The OpenTelemetry Technical Committee (OTel TC) and relevant repository
-maintainers, supported by tooling provided by the SIG-Security, are responsible
-for responding to the incident organizing the entire response including internal
-communication and external disclosure.
+The relevant OTEL repository maintainers, supported by the SIG-Security and
+OpenTelemetry Technical Committee (OTel TC), are responsible for responding to
+the incident including internal communication and external disclosure.
 
 ## Supported Versions
 
@@ -23,38 +22,53 @@ be released. Each repository is entitled to establish their own complementary
 processes. SIG-Security in conjunction with the TC can advise in case
 clarifications are required.  
 
-## Disclosures
+## Reporting Process - For Vulnerability Reporters
 
-### Private Disclosure Processes
+### Reporting Methods
 
 In order for the vulnerability reports to reach maintainers as soon as possible,
 the preferred way is to use the `Report a vulnerability` button on the
 `Security` tab in the respective GitHub repository. It creates a private
 communication channel between the reporter and the maintainers.
 
-If you are absolutely unable to or have strong reasons not to use GitHub
+If you are unable to or have strong reasons not to use the GitHub
 reporting workflow, please reach out to the Technical Committee using
 [cncf-opentelemetry-tc@lists.cncf.io](mailto:cncf-opentelemetry-tc@lists.cncf.io)
 and we will provide instruction on how to report the vulnerability using an
-encrypted message, if desired.
+encrypted message, if desired.  The TC should receive the message and re-direct
+it to the relevant repository maintainers for ownership.
 
-### Public Disclosure Processes
+Reports should be acknowledged within 3 working days.
 
-If you know of a publicly disclosed security vulnerability please IMMEDIATELY
-email
-[cncf-opentelemetry-tc@lists.cncf.io](mailto:cncf-opentelemetry-tc@lists.cncf.io)
-to inform the Security Response Committee (SRC) about the vulnerability so they
-may start the patch, release, and communication process. Please include any
-relevant information about current public exploitations of this vulnerability if
-known to help with scoring and prioritization.
+**Please avoid reporting any vulnerabilities as a generic public "Issue" in
+GitHub.**
 
-The TC should receive the message and re-direct it to the relevant repository
-maintainers for ownership. If possible the repository maintainers will engage
-and ask the person making the public report if the issue can be handled via a
-private disclosure process. If the reporter denies the request, the repository
-maintainers will move swiftly with the fix and release process. In extreme cases
-you can ask GitHub to delete the issue but this generally isn't necessary and is
-unlikely to make a public disclosure less damaging.
+Given the public visibility of GitHub issues, reporting a vulnerability as a
+GitHub issue would be public disclosure. If this is done accidentally or if you
+notice a vulnerability reported this way, please immediately re-report the
+vulnerability using "Report a vulnerability" and note the public disclosure as
+part of that report.  You can ask GitHub to delete the issue but this shouldn't
+be considered a sufficient mitigation and the vulnerability should be considered
+publicly disclosed.
+
+### Non-Public Vulnerabilities
+
+If a vulnerability appears to be not publicly known or disclosed, the repository
+maintainers will engage and the reporter is requested to honor an embargo period
+in which the vulnerability is keep private until a fix can be released and
+disclosed in an orderly manner.  If the reporter has a need to disclose the
+vulnerability further, perhaps for a security conference or other obligation,
+they are asked to negotiate the disclosure date with the maintainers fixing the
+vulnerability. The repository maintainers will in any case do their best to move
+swiftly with the fix and release process.
+
+### Publicly Known Vulnerabilities
+
+If you discover an unreported publicly disclosed/known vulnerability please
+IMMEDIATELY use the reporting methods above to inform the team about the
+vulnerability so they may start the patch, release and communication process.
+Please include any relevant information about current public exploitations of
+this vulnerability, if known, to help with scoring and prioritization.
 
 ## Patch, Release, and Public Communication
 
