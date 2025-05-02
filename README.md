@@ -23,7 +23,7 @@ PT](https://dateful.com/convert/pst-pdt-pacific-time?t=0900).
 
 * [Alex Boten](https://github.com/codeboten)
 * [Carter Socha](https://github.com/cartersocha)
-* [Juraci Paixão Kröhling](https://github.com/jpkrohling)
+* [Juraci Paix&#xE3;o Kr&#xF6;hling](https://github.com/jpkrohling)
 
 ## Contact
 

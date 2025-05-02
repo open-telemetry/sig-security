@@ -67,12 +67,12 @@ the affected SIG and help coordinate resolution, which can include:
 
 ### Out of scope
 
-SIG Security’s scope does not include:
+SIG Security's scope does not include:
 
 * Developing any new telemetry signals, SDKs, APIs etc.
 * Defining security semantic conventions
 * Security audit for other CNCF projects (e.g., etcd, CoreDNS, CRI-O,
-  containerd). These belong to the [CNCF’s SIG
+  containerd). These belong to the [CNCF's SIG
   Security](https://github.com/cncf/tag-security).
 * Any projects outside of the OpenTelemetry project and community repos
 * Vendor or distribution specific guidelines and vulnerability coverage
