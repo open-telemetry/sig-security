@@ -2,9 +2,7 @@
 
 ## Status
 
-<!-- Update proposed to accepted if the pr is approved and remove this comment. -->
-
-Proposed
+Accepted
 
 ## Context
 
