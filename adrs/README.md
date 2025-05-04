@@ -4,9 +4,9 @@
 decisions made within the Security SIG. These decisions ARE NOT intended to be
 mandates across the OpenTelemetry project, nor are they hard requirements. The
 focus is mainly to provide context around various decisions made within the SIG
-so that others can easily access that context as a written record. 
+so that others can easily access that context as a written record.
 
-ADR's SHOULD:
+ADRs SHOULD:
 
 * Document something of importance and the surrounding context.
 * Be updated and reviewed at an interval.
