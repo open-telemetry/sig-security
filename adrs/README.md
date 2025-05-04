@@ -1,12 +1,16 @@
 # Architecture Decision Records (ADRs)
 
 [Architecture Decision Records][adrs] (ADRs) are a way to document the
-decisions made within the Security SIG.
+decisions made within the Security SIG. These decisions ARE NOT intended to be
+mandates across the OpenTelemetry project, nor are they hard requirements. The
+focus is mainly to provide context around various decisions made within the SIG
+so that others can easily access that context as a written record. 
 
-The purpose of documenting these decisions isn't to add complexity, or require
-some gate, or architecture review board. It's simply to provide a written
-record with context on the decisions made. As humans, we forget, so having a
-written record can simply help us to remember.
+ADR's SHOULD:
+
+* Document something of importance and the surrounding context.
+* Be updated and reviewed at an interval.
+* Be light-weight, easy to write, and clear.
 
 ## Getting Started
 
