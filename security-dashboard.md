@@ -2,7 +2,7 @@
 
 ## Repository Compliance Matrix
 
-[!NOTE]
+> [!NOTE]
 > If the repository has not onboarded to [OpenSSF
   Scorecard](https://openssf.org/projects/scorecard/), the OpenSSF Scorecard
   column will show as ![OpenSSF Scorecard for
