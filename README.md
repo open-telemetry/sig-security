@@ -14,10 +14,20 @@ PT](https://dateful.com/convert/pst-pdt-pacific-time?t=0900).
   * [Meeting notes, Agenda and Zoom
   link](https://docs.google.com/document/d/1P2xejC7lEkOV_Z-8E0oZPXLK5HOnUPNuRqKP0ZQ5fpg).
 
-## Project Leadership
+## Maintainers
+
+[@open-telemetry/sig-security-maintainers](
+  https://github.com/orgs/open-telemetry/teams/sig-security-maintainers)
 
 * [Jeremy Corley](https://github.com/ms-jcorley), Microsoft
 * [Reiley Yang](https://github.com/reyang), Microsoft
+
+## Approvers
+
+[@open-telemetry/sig-security-approvers](
+  https://github.com/orgs/open-telemetry/teams/sig-security-approvers)
+
+* None currently, Please come get involved if you are interested!
 
 ## Emeritus
 
