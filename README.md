@@ -27,7 +27,7 @@ PT](https://dateful.com/convert/pst-pdt-pacific-time?t=0900).
 [@open-telemetry/sig-security-approvers](
   https://github.com/orgs/open-telemetry/teams/sig-security-approvers)
 
-* None currently, Please come get involved if you are interested!
+* [Adriel Perkins](https://github.com/adrielp), Liatrio
 
 ## Emeritus
 
