@@ -79,3 +79,27 @@ SIG Security's scope does not include:
 * Recommendations or endorsements of specific commercial product vendors or
   cloud providers
 * Direct vulnerability response, this belongs to the relevant repo owners.
+
+## Membership, Roles, and Responsibilities
+
+SIG Security is open to all OpenTelemetry contributors and community members
+interested in security. We welcome all levels of experience, from those who are
+new to security to those who are seasoned experts. We encourage participation
+from a diverse range of backgrounds and perspectives, as security is a
+multifaceted field that benefits from a variety of viewpoints.
+
+Currently, we have the
+[sig-security-maintainers](https://github.com/orgs/open-telemetry/teams/sig-security-maintainers)
+and
+[sig-security-approvers](https://github.com/orgs/open-telemetry/teams/sig-security-approvers)
+groups following the [OpenTelemetry community
+guides](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md).
+
+Due to the nature of the work, we hold a higher bar for maintainers because they
+have access to very sensitive information. In addition to the requirements
+described in the [general
+guides](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#becoming-a-maintainer),
+we require explicit discussion and agreement from the [Governance
+Committee](https://github.com/open-telemetry/community/blob/main/community-members.md#governance-committee)
+and the [Technical
+Committee](https://github.com/open-telemetry/community/blob/main/community-members.md#technical-committee).
