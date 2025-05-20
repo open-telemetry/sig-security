@@ -47,8 +47,8 @@ contributed third party file with OpenTelemetry's copyright notice.
 If the contributed code is not third-party code and you are the author we
 strongly encourage to avoid including your name in the notice and use the
 generic "Copyright The OpenTelemetry Authors" notice. See rationale for this
-recommendation
-[here](https://github.com/cncf/foundation/blob/master/copyright-notices.md#why-not-list-every-copyright-holder).
+recommendation from [the CNCF official
+docs](https://github.com/cncf/foundation/blob/master/copyright-notices.md#why-not-list-every-copyright-holder).
 
 ## Community Expectations and Roles
 
