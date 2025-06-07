@@ -16,7 +16,8 @@ def get_org_repositories(org_name):
             if response.status != 200:
                 raise Exception(f"Failed to fetch repositories: {response.status}")
             data = json.loads(response.read().decode())
-            repositories.extend(repo["name"] for repo in data)
+            # Only include repos that are not archived
+            repositories.extend(repo["name"] for repo in data if not repo.get("archived", False))
             # Check for the 'next' link in the response headers for pagination
             links = response.headers.get("Link", "")
             next_url = None
@@ -54,4 +55,6 @@ if __name__ == "__main__":
             template.replace("sig-security", repo)
             for repo in get_org_repositories("open-telemetry")
         ] + lines[table_end_index + 1:]
-        print("".join(output))
+
+        with open("security-dashboard.md", "w") as f:
+            f.write("".join(output))
