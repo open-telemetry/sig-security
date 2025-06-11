@@ -2,12 +2,6 @@
 
 ## Repository Compliance Matrix
 
-> [!NOTE]
-> If the repository has not onboarded to [OpenSSF
-  Scorecard](https://openssf.org/projects/scorecard/), the OpenSSF Scorecard
-  column will show as ![OpenSSF Scorecard for
-  .allstar](https://api.scorecard.dev/projects/github.com/open-telemetry/invalid-repo-path/badge).
-
 | Repository Name | OpenSSF Scorecard |
 | --------------- | ----------------- |
 | [.github](https://github.com/open-telemetry/.github) | [![OpenSSF Scorecard for .github](https://api.scorecard.dev/projects/github.com/open-telemetry/.github/badge)](https://scorecard.dev/viewer/?uri=github.com/open-telemetry/.github) |
@@ -66,7 +60,6 @@
 | [opentelemetry-rust-contrib](https://github.com/open-telemetry/opentelemetry-rust-contrib) | [![OpenSSF Scorecard for opentelemetry-rust-contrib](https://api.scorecard.dev/projects/github.com/open-telemetry/opentelemetry-rust-contrib/badge)](https://scorecard.dev/viewer/?uri=github.com/open-telemetry/opentelemetry-rust-contrib) |
 | [opentelemetry-sandbox-web-js](https://github.com/open-telemetry/opentelemetry-sandbox-web-js) | [![OpenSSF Scorecard for opentelemetry-sandbox-web-js](https://api.scorecard.dev/projects/github.com/open-telemetry/opentelemetry-sandbox-web-js/badge)](https://scorecard.dev/viewer/?uri=github.com/open-telemetry/opentelemetry-sandbox-web-js) |
 | [opentelemetry-specification](https://github.com/open-telemetry/opentelemetry-specification) | [![OpenSSF Scorecard for opentelemetry-specification](https://api.scorecard.dev/projects/github.com/open-telemetry/opentelemetry-specification/badge)](https://scorecard.dev/viewer/?uri=github.com/open-telemetry/opentelemetry-specification) |
-| [opentelemetry-sqlcommenter](https://github.com/open-telemetry/opentelemetry-sqlcommenter) | [![OpenSSF Scorecard for opentelemetry-sqlcommenter](https://api.scorecard.dev/projects/github.com/open-telemetry/opentelemetry-sqlcommenter/badge)](https://scorecard.dev/viewer/?uri=github.com/open-telemetry/opentelemetry-sqlcommenter) |
 | [opentelemetry-swift](https://github.com/open-telemetry/opentelemetry-swift) | [![OpenSSF Scorecard for opentelemetry-swift](https://api.scorecard.dev/projects/github.com/open-telemetry/opentelemetry-swift/badge)](https://scorecard.dev/viewer/?uri=github.com/open-telemetry/opentelemetry-swift) |
 | [opentelemetry.io](https://github.com/open-telemetry/opentelemetry.io) | [![OpenSSF Scorecard for opentelemetry.io](https://api.scorecard.dev/projects/github.com/open-telemetry/opentelemetry.io/badge)](https://scorecard.dev/viewer/?uri=github.com/open-telemetry/opentelemetry.io) |
 | [otel-arrow](https://github.com/open-telemetry/otel-arrow) | [![OpenSSF Scorecard for otel-arrow](https://api.scorecard.dev/projects/github.com/open-telemetry/otel-arrow/badge)](https://scorecard.dev/viewer/?uri=github.com/open-telemetry/otel-arrow) |
@@ -77,5 +70,4 @@
 | [sig-end-user](https://github.com/open-telemetry/sig-end-user) | [![OpenSSF Scorecard for sig-end-user](https://api.scorecard.dev/projects/github.com/open-telemetry/sig-end-user/badge)](https://scorecard.dev/viewer/?uri=github.com/open-telemetry/sig-end-user) |
 | [sig-project-infra](https://github.com/open-telemetry/sig-project-infra) | [![OpenSSF Scorecard for sig-project-infra](https://api.scorecard.dev/projects/github.com/open-telemetry/sig-project-infra/badge)](https://scorecard.dev/viewer/?uri=github.com/open-telemetry/sig-project-infra) |
 | [sig-security](https://github.com/open-telemetry/sig-security) | [![OpenSSF Scorecard for sig-security](https://api.scorecard.dev/projects/github.com/open-telemetry/sig-security/badge)](https://scorecard.dev/viewer/?uri=github.com/open-telemetry/sig-security) |
-| [stackoverflow2slack](https://github.com/open-telemetry/stackoverflow2slack) | [![OpenSSF Scorecard for stackoverflow2slack](https://api.scorecard.dev/projects/github.com/open-telemetry/stackoverflow2slack/badge)](https://scorecard.dev/viewer/?uri=github.com/open-telemetry/stackoverflow2slack) |
 | [weaver](https://github.com/open-telemetry/weaver) | [![OpenSSF Scorecard for weaver](https://api.scorecard.dev/projects/github.com/open-telemetry/weaver/badge)](https://scorecard.dev/viewer/?uri=github.com/open-telemetry/weaver) |
