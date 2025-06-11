@@ -2,12 +2,6 @@
 
 ## Repository Compliance Matrix
 
-> [!NOTE]
-> If the repository has not onboarded to [OpenSSF
-  Scorecard](https://openssf.org/projects/scorecard/), the OpenSSF Scorecard
-  column will show as ![OpenSSF Scorecard for
-  .allstar](https://api.scorecard.dev/projects/github.com/open-telemetry/invalid-repo-path/badge).
-
 | Repository Name | OpenSSF Scorecard |
 | --------------- | ----------------- |
 | [.github](https://github.com/open-telemetry/.github) | [![OpenSSF Scorecard for .github](https://api.scorecard.dev/projects/github.com/open-telemetry/.github/badge)](https://scorecard.dev/viewer/?uri=github.com/open-telemetry/.github) |
