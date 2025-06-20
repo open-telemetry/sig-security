@@ -190,8 +190,8 @@ If Maintainers need assistance with how to handle a security vulnerability:
   Do not expose sensitive information in this channel as it isn't a secure
   communication mechanism.
 
-2. For sensitive guidance specific to an Advisory, reach out to Security SIG
-  Maintainers as they have access to all Advisories and can comment directly in
+2. For sensitive guidance specific to an Advisory, reach out to [Security SIG
+  Maintainers](https://github.com/open-telemetry/sig-security#maintainers) as they have access to all Advisories and can comment directly in
   them. For complex or high impact issues, the Security SIG may also involve
   the TC and/or GC.
 
