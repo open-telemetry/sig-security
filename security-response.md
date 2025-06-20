@@ -208,7 +208,7 @@ source of the vulnerability (direct vs. dependency):
 1. **Direct Vulnerabilities**: Always request a CVE when a vulnerability exists
    in OTel's own code that could expose users to security risks.
 
-2. **Dependency Vulnerabilities**: Request a CVE if:
+2. **Dependency Vulnerabilities**: Request a CVE if these are all true:
    - The executable uses the vulnerable part of the dependency
    - The vulnerability can be exploited through the executable's usage patterns
    - The vulnerability creates a security impact for users of the executable
