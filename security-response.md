@@ -124,9 +124,9 @@ When working on security advisories in GitHub:
    using the "Add users or teams" edit box in the Collaborators section in the
    GitHub Security Advisory interface.
 2. Try to keep the number of Collaborators small to limit the exposure of the
-    vulnerability details before a fix is available.
+   vulnerability details before a fix is available.
 3. Only add Collaborators who are necessary for investigating or fixing the
-    issue.
+   issue.
 4. Consider adding Collaborators who:
    - Understand the affected code
    - Can assist with implementing or reviewing fixes
