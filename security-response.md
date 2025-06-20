@@ -225,13 +225,20 @@ source of the vulnerability (direct vs. dependency):
 1. **Direct Vulnerabilities**: Request a CVE if the vulnerability exists in
    OTel's own library code.
 
-2. **Dependency References**: Generally, do not request a CVE when:
-   - The library only references a vulnerable dependency
-   - The dependency is not bundled with the OTel deliverable
-   - The vulnerability only affects consumers who explicitly import both the
-     OTel library and the vulnerable dependency
+2. **Dependency References**: Request a CVE if these are all true:
+   - The library does NOT merely reference the vulnerable dependency such that
+     it only affects consumers who explicitly import both the OTel library and
+     the vulnerable dependency (this is likely true in most cases for library
+     code, depending on the technology used)
+   - The library uses the vulnerable part of the dependency
+   - The vulnerability can be exploited through the library's usage patterns
+   - The vulnerability creates a security impact for users of the library
 
-General criteria for all CVE requests:
+   Note that the vulnerability impact for the OTel library may be different
+   than for the dependency that caused it, depending on how it is used.  Do not
+   assume that the OTel CVE must have the same score as the dependency's CVE.
+
+#### General criteria for all CVE requests
 
 1. The vulnerability must affect released versions of OTel
 2. The vulnerability must have security impact (confidentiality, integrity, or
