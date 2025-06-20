@@ -186,7 +186,7 @@ For more details, see the [GitHub documentation on private forks](https://docs.g
 If Maintainers need assistance with how to handle a security vulnerability:
 
 1. For general guidance of a non sensitive nature, Contact the Security SIG
-  through the #otel-sig-security channel in the Cloud Native Slack workspace.
+  through the [#otel-sig-security](https://cloud-native.slack.com/archives/C05A85QC281) channel in the CNCF Slack workspace.
   Do not expose sensitive information in this channel as it isn't a secure
   communication mechanism.
 
