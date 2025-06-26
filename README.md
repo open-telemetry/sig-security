@@ -21,13 +21,13 @@ PT](https://dateful.com/convert/pst-pdt-pacific-time?t=0900).
 - [Jeremy Corley](https://github.com/ms-jcorley), Microsoft
 - [Reiley Yang](https://github.com/reyang), Microsoft
 
-For more information about the maintainer role, see the [community repository](https://github.com/open-telemetry/community/blob/main/community-membership.md#maintainer).
+For more information about the maintainer role, see the [community repository](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#maintainer).
 
 ### Approvers
 
 - [Adriel Perkins](https://github.com/adrielp), Liatrio
 
-For more information about the approver role, see the [community repository](https://github.com/open-telemetry/community/blob/main/community-membership.md#approver).
+For more information about the approver role, see the [community repository](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#approver).
 
 ### Emeritus
 
