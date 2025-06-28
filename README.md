@@ -14,7 +14,14 @@ PT](https://dateful.com/convert/pst-pdt-pacific-time?t=0900).
   - [Meeting notes, Agenda and Zoom
   link](https://docs.google.com/document/d/1P2xejC7lEkOV_Z-8E0oZPXLK5HOnUPNuRqKP0ZQ5fpg).
 
-## Approvers and Maintainers
+## Contact
+
+- Slack:
+  [#otel-sig-security](https://cloud-native.slack.com/archives/C05A85QC281)
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ### Maintainers
 
@@ -36,8 +43,3 @@ For more information about the approver role, see the [community repository](htt
 - [Juraci Paix&#xE3;o Kr&#xF6;hling](https://github.com/jpkrohling)
 
 For more information about the emeritus role, see the [community repository](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#emeritus-maintainerapprovertriager).
-
-## Contact
-
-- Slack:
-  [#otel-sig-security](https://cloud-native.slack.com/archives/C05A85QC281)
