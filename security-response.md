@@ -226,10 +226,7 @@ source of the vulnerability (direct vs. dependency):
    OTel's own library code.
 
 2. **Dependency References**: Request a CVE if these are all true:
-   - The library does NOT merely reference the vulnerable dependency such that
-     it only affects consumers who explicitly import both the OTel library and
-     the vulnerable dependency (this is likely true in most cases for library
-     code, depending on the technology used)
+   - The vulnerable dependency is transitively included in the runtime environment, even when users of the OTel library do not explicitly include the vulnerable dependency themselves (this is likely true in most cases for library code).
    - The library uses the vulnerable part of the dependency
    - The vulnerability can be exploited through the library's usage patterns
    - The vulnerability creates a security impact for users of the library
