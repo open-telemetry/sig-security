@@ -191,7 +191,8 @@ If Maintainers need assistance with how to handle a security vulnerability:
   communication mechanism.
 
 2. For sensitive guidance specific to an Advisory, reach out to [Security SIG
-  Maintainers](https://github.com/open-telemetry/sig-security#maintainers) as they have access to all Advisories and can comment directly in
+  Maintainers](https://github.com/open-telemetry/sig-security#maintainers) as
+  they have access to all Advisories and can comment directly in
   them. For complex or high impact issues, the Security SIG may also involve
   the TC and/or GC.
 
@@ -226,7 +227,10 @@ source of the vulnerability (direct vs. dependency):
    OTel's own library code.
 
 2. **Dependency References**: Request a CVE if these are all true:
-   - The vulnerable dependency is transitively included in the runtime environment, even when users of the OTel library do not explicitly include the vulnerable dependency themselves (this is likely true in most cases for library code).
+   - The vulnerable dependency is transitively included in the runtime
+   environment, even when users of the OTel library do not explicitly include
+   the vulnerable dependency themselves (this is likely true in most cases
+   for library code)
    - The library uses the vulnerable part of the dependency
    - The vulnerability can be exploited through the library's usage patterns
    - The vulnerability creates a security impact for users of the library
