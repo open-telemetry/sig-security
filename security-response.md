@@ -31,12 +31,10 @@ the preferred way is to use the `Report a vulnerability` button on the
 `Security` tab in the respective GitHub repository. It creates a private
 communication channel between the reporter and the maintainers.
 
-If you are unable to or have strong reasons not to use the GitHub
-reporting workflow, please reach out to the Technical Committee using
-[cncf-opentelemetry-tc@lists.cncf.io](mailto:cncf-opentelemetry-tc@lists.cncf.io)
-and we will provide instruction on how to report the vulnerability using an
-encrypted message, if desired. The TC should receive the message and re-direct
-it to the relevant repository maintainers for ownership.
+If you are unable to or have strong reasons not to use the GitHub reporting
+workflow, please reach out to
+[security@opentelemetry.io](mailto:security@opentelemetry.io)
+and we will provide instruction on how to report the vulnerability.
 
 Reports should be acknowledged within 3 working days.
 
