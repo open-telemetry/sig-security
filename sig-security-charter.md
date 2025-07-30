@@ -51,7 +51,12 @@ Author and maintain cross-cutting security documentation. Seek out and
 coordinate with experts in other SIGs for input on the documentation (i.e. we go
 to them, they don't need to come to us). In-scope documentation includes:
 
-* TBD
+* Best practices for secure development lifecycle
+* Authentication and authorization
+* Secret management
+* Storage security
+* Supply chain security
+* Transport security
 
 #### Security Audit
 

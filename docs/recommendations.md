@@ -94,3 +94,69 @@ updates:
 And [here's
 one](https://github.com/open-telemetry/opentelemetry-operator/pull/2990) from
 Dependabot.
+
+## Vulnerability Management
+
+There are several aspects of vulnerability management that the Security SIG
+recommends to the OpenTelemetry project maintainers:
+
+- The maintainers of an OpenTelemetry project should establish a clear
+  accountability for security issues, including identifying the direct
+  responsible individual for security issues at a certain time. This should be
+  documented in the main README.md file of the project.
+- The direct responsible individual should monitor the [repository security
+  advisories](https://docs.github.com/code-security/security-advisories/working-with-repository-security-advisories/about-repository-security-advisories),
+  make sure security advisories are triaged in a timely manner, and there is
+  active engagement and communication on the issue. Refer to the [incident
+  response guideline](../security-response.md#incident-response) for more
+  details.
+- Regularly scan your code and dependencies for **deprecations** and
+  **vulnerabilities** using tools. This should include but not be limited to:
+  - CI/CD tooling - for example, some GitHub Actions might be deprecated or no
+    longer maintained, certain GitHub Actions might have known vulnerabilities,
+    a compiler might have a known vulnerability, etc.
+  - CI/CD environment - for example, the CI/CD job might be running on a
+    deprecated or vulnerable version of the operating system.
+  - container image dependencies - for example, the base image used in
+    Dockerfiles or image referenced by Helm charts might have known
+    vulnerabilities, or the image might be using a deprecated version of a
+    library.
+  - repository configurations - for example, a hotfix branch might not have the
+    proper branch protection rules, or the repository might not have the proper
+    security settings enabled.
+  - package dependencies - for example, a package might have a known
+    vulnerability, or a package might be using a deprecated version of a
+    library.
+- All security vulnerabilities that are found - whether from the user reported
+  repository security advisories or through automated scanning - should be
+  handled in a timely manner based on the severity level. In case of a real
+  vulnerability that doesn't have a fix available, the maintainers should
+  evaluate the impact and likelihood of exploitation and take appropriate
+  action, such as applying workarounds or communicating with affected users. In
+  the worst case, this can be a potential end-of-life announcement of the
+  affected component or project.
+
+Here is a check list for the maintainers:
+
+- [ ] Identify the direct responsible individual for security issues and
+  document it in the main README.md file of the project.
+- [ ] Monitor the GitHub repository security advisories and triage security
+  issues in a timely manner.
+- [ ] Daily scan CI/CD tooling for deprecations and vulnerabilities.
+- [ ] Daily scan CI/CD environment for deprecations and vulnerabilities.
+- [ ] Daily scan container image dependencies for deprecations and
+  vulnerabilities.
+- [ ] Daily scan repository configurations for deprecations and vulnerabilities.
+- [ ] Daily scan package dependencies for deprecations and vulnerabilities.
+- [ ] False positives are documented (e.g., by commenting on the security
+  advisory, by providing the dismissal reason to a code scanning alert) and
+  dismissed.
+- [ ] Critical and high severity vulnerabilities are patched within 2 weeks of
+  discovery.
+- [ ] Medium and low severity vulnerabilities are patched within 4 weeks of
+  discovery.
+- [ ] For vulnerabilities that cannot be patched in a timely manner (for
+  example, the component is depending on an outdated library, and there is no
+  replacement), the maintainers should evaluate the impact and likelihood of
+  exploitation and take appropriate action, such as applying workarounds or
+  communicating with affected users.
