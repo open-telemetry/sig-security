@@ -102,7 +102,8 @@ recommends to the OpenTelemetry project maintainers:
 
 - The maintainers of an OpenTelemetry project should establish a clear
   accountability for security issues, including identifying the direct
-  responsible individual for security issues at a certain time. This should be
+  responsible individual for security issues at a certain time, for
+  example, via a duty rotation. This should be
   documented in the main README.md file of the project.
 - The direct responsible individual should monitor the [repository security
   advisories](https://docs.github.com/code-security/security-advisories/working-with-repository-security-advisories/about-repository-security-advisories),
