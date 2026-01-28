@@ -26,9 +26,8 @@ a permanent, verifiable record.
 
 Best practices:
 
-- Create releases as **drafts first**, attach all intended assets, and only then
-  publish. Creating a draft release first allows you to attach all assets before
-  the release becomes immutable.
+- Consider creating releases as **drafts first**. This allows you to attach all
+  assets before the release becomes immutable.
 - Prefer a fully automated, reproducible release process (CI builds artifacts
   from a tagged commit, then publishes the release). Avoid building artifacts on
   developer workstations.
