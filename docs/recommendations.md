@@ -37,9 +37,8 @@ Best practices:
   what they downloaded matches what you produced.
 - Restrict who/what can publish releases:
   - Use the smallest possible GitHub Actions permissions for release workflows.
-  - Use protected tags/branches and required reviews where appropriate.
   - Prefer short-lived credentials (OIDC) over long-lived secrets.
-- If you need to fix a bad release, publish a new release (or clearly mark the
+- If you need to fix a bad release, publish a new release (and clearly mark the
   old one as deprecated) rather than replacing assets in-place.
 
 Resources:
