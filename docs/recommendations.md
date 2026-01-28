@@ -11,6 +11,42 @@ every pull request and on every commit to the main branch.
 
 Issue: ([#15](https://github.com/open-telemetry/sig-security/issues/15))
 
+## Integrity
+
+## GitHub immutable releases
+
+GitHub supports **immutable releases**, which prevent release assets from being
+modified after a release is published. This helps reduce supply-chain risk by
+making it harder for an attacker (or a compromised account/token) to silently
+swap binaries, SBOMs, or other artifacts after consumers have started
+downloading or verifying them.
+
+Recommendation: enable immutable releases and treat each published release as
+a permanent, verifiable record.
+
+Best practices:
+
+- Create releases as **drafts first**, attach all intended assets, and only then
+  publish. Creating a draft release first allows you to attach all assets before
+  the release becomes immutable.
+- Prefer a fully automated, reproducible release process (CI builds artifacts
+  from a tagged commit, then publishes the release). Avoid building artifacts on
+  developer workstations.
+- Publish integrity metadata alongside assets (for example: checksums, SBOMs,
+  provenance/attestations, and/or signatures) so downstream users can verify
+  what they downloaded matches what you produced.
+- Restrict who/what can publish releases:
+  - Use the smallest possible GitHub Actions permissions for release workflows.
+  - Use protected tags/branches and required reviews where appropriate.
+  - Prefer short-lived credentials (OIDC) over long-lived secrets.
+- If you need to fix a bad release, publish a new release (or clearly mark the
+  old one as deprecated) rather than replacing assets in-place.
+
+Resources:
+
+- [Immutable releases](https://docs.github.com/en/code-security/concepts/supply-chain-security/immutable-releases)
+- [Verifying the integrity of a release](https://docs.github.com/en/code-security/how-tos/secure-your-supply-chain/secure-your-dependencies/verifying-the-integrity-of-a-release)
+
 ## Binding to Network Interfaces
 
 Always bind to localhost rather than to 0.0.0.0 or any interface, unless there
