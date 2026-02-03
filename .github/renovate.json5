@@ -4,6 +4,12 @@
     "config:best-practices",
     "helpers:pinGitHubActionDigestsToSemver"
   ],
+  "pip-compile": {
+    "managerFilePatterns": ["/tools/.*requirements\\.txt$/"]
+  },
+  "pip_requirements": {
+    "enabled": false
+  },
   "packageRules": [
     {
       // reduces the number of Renovate PRs
