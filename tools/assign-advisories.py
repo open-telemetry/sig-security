@@ -4,8 +4,10 @@ assign-advisories.py — Assign security advisory collaborators from CODEOWNERS
 
 Finds all "triage" state security advisories in a repo, determines which
 component is affected from the advisory's vulnerability metadata, looks up
-the codeowners for that component, and adds them as collaborating users on
-the advisory so they can see and work on it.
+the codeowners for that component via the repo's CODEOWNERS file, and adds
+them as collaborating users on the advisory so they can see and work on it.
+
+No local checkout is required — CODEOWNERS is fetched from the GitHub API.
 
 Prerequisites:
   - gh CLI authenticated with a token that has repo + security_events scope
@@ -13,39 +15,13 @@ Prerequisites:
 """
 
 import argparse
+import base64
 import json
 import os
-import re
 import subprocess
 import sys
 
 DEFAULT_REPO = "open-telemetry/opentelemetry-collector-contrib"
-
-# Where to look for a local repo checkout, relative to this script or CWD.
-CHECKOUT_CANDIDATES = [
-    "../opentelemetry-collector-contrib",
-    "{script_dir}/../opentelemetry-collector-contrib",
-    os.path.expanduser("~/src/otel/opentelemetry-collector-contrib"),
-]
-
-
-def find_checkout(repo):
-    """Auto-detect a local checkout by looking for versions.yaml or go.mod."""
-    repo_name = repo.split("/")[-1]
-
-    candidates = [
-        f"../{repo_name}",
-        os.path.join(os.path.dirname(__file__), "..", repo_name),
-        os.path.expanduser(f"~/src/otel/{repo_name}"),
-    ]
-    for candidate in candidates:
-        candidate = os.path.realpath(candidate)
-        if os.path.isdir(candidate) and (
-            os.path.isfile(os.path.join(candidate, "versions.yaml"))
-            or os.path.isfile(os.path.join(candidate, "go.mod"))
-        ):
-            return candidate
-    return None
 
 
 def gh_api(endpoint, method="GET", input_data=None):
@@ -65,6 +41,35 @@ def gh_api(endpoint, method="GET", input_data=None):
     if result.returncode != 0:
         return None, result.stderr.strip()[:300]
     return json.loads(result.stdout), None
+
+
+def fetch_codeowners(repo):
+    """Fetch and parse the CODEOWNERS file from the repo.
+
+    Returns a dict mapping directory paths (without trailing slash) to
+    lists of individual GitHub usernames (teams are excluded since they
+    cannot be added as advisory collaborators).
+    """
+    data, err = gh_api(f"/repos/{repo}/contents/.github/CODEOWNERS")
+    if err:
+        print(f"ERROR: Failed to fetch CODEOWNERS: {err}", file=sys.stderr)
+        sys.exit(1)
+
+    content = base64.b64decode(data["content"]).decode()
+    owners_map = {}
+    for line in content.splitlines():
+        line = line.strip()
+        if not line or line.startswith("#"):
+            continue
+        parts = line.split()
+        if len(parts) < 2:
+            continue
+        path = parts[0].rstrip("/")
+        # Keep only individual users (skip teams like @org/team-name).
+        users = [p.lstrip("@") for p in parts[1:] if "/" not in p]
+        if users:
+            owners_map[path] = users
+    return owners_map
 
 
 def fetch_advisories(repo, ghsa_filter=None):
@@ -99,24 +104,26 @@ def get_component_dir(pkg_name, repo):
     return None
 
 
-def get_codeowners(checkout, component_dir):
-    """Read active codeowners from a component's metadata.yaml."""
-    metadata_path = os.path.join(checkout, component_dir, "metadata.yaml")
-    if not os.path.isfile(metadata_path):
-        return []
-    try:
-        with open(metadata_path) as f:
-            content = f.read()
-        # Match both inline list and multi-line list formats.
-        match = re.search(r"active:\s*\[([^\]]+)\]", content)
-        if match:
-            return [o.strip().strip("'\"") for o in match.group(1).split(",")]
-    except Exception:
-        pass
+def lookup_owners(owners_map, component_dir):
+    """Find codeowners for a component directory using the CODEOWNERS map.
+
+    Tries the exact path first, then walks up parent directories to find
+    the most specific matching rule (mirroring GitHub's CODEOWNERS logic
+    where the last matching pattern wins — but since we search most-specific
+    first, the first match is correct).
+    """
+    path = component_dir
+    while path:
+        if path in owners_map:
+            return owners_map[path]
+        parent = path.rsplit("/", 1)[0] if "/" in path else ""
+        if parent == path:
+            break
+        path = parent
     return []
 
 
-def process_advisories(advisories, *, repo, checkout, dry_run):
+def process_advisories(advisories, *, repo, owners_map, dry_run):
     """Process each advisory: resolve codeowners and optionally assign them."""
     added = 0
     skipped = 0
@@ -150,13 +157,13 @@ def process_advisories(advisories, *, repo, checkout, dry_run):
         all_owners = sorted({
             owner
             for comp_dir in component_dirs
-            for owner in get_codeowners(checkout, comp_dir)
+            for owner in lookup_owners(owners_map, comp_dir)
         })
 
         if not all_owners:
             print(f"\u26a0  {ghsa} [{severity}]")
             print(f"   {summary}")
-            print(f"   Component {component_dirs} has no codeowners in metadata.yaml")
+            print(f"   Component {component_dirs} has no codeowners")
             print()
             unmapped += 1
             continue
@@ -224,32 +231,20 @@ def main():
         help=f"Target repository (default: {DEFAULT_REPO})",
     )
     parser.add_argument(
-        "--checkout",
-        default=os.environ.get("CONTRIB_CHECKOUT", ""),
-        help="Path to local repo checkout (auto-detected if omitted)",
-    )
-    parser.add_argument(
         "--ghsa",
         default=os.environ.get("GHSA_FILTER", ""),
         help="Process a single advisory by GHSA ID",
     )
     args = parser.parse_args()
 
-    checkout = args.checkout or find_checkout(args.repo)
-    if not checkout or not os.path.isdir(checkout):
-        print(
-            "ERROR: Cannot find local repo checkout.\n"
-            "Use --checkout /path/to/repo or set CONTRIB_CHECKOUT env var.",
-            file=sys.stderr,
-        )
-        sys.exit(1)
-    checkout = os.path.realpath(checkout)
-
     mode = "DRY RUN (use --apply to execute)" if not args.apply else "APPLY"
     print(f"Repository:  {args.repo}")
-    print(f"Checkout:    {checkout}")
     print(f"Mode:        {mode}")
     print("---\n")
+
+    print("Fetching CODEOWNERS...", end=" ", flush=True)
+    owners_map = fetch_codeowners(args.repo)
+    print(f"{len(owners_map)} entries loaded.\n")
 
     advisories = fetch_advisories(args.repo, ghsa_filter=args.ghsa or None)
     print(f"Found {len(advisories)} advisories in triage state.\n")
@@ -257,7 +252,7 @@ def main():
     process_advisories(
         advisories,
         repo=args.repo,
-        checkout=checkout,
+        owners_map=owners_map,
         dry_run=not args.apply,
     )
 

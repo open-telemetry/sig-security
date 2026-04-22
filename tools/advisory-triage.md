@@ -15,10 +15,13 @@ right people quickly.
 
 ```bash
 # 1. Dry run — see what would happen
-python3 tools/assign-advisories.py --checkout /path/to/opentelemetry-collector-contrib
+python3 tools/assign-advisories.py
 
 # 2. Review the output, then apply
-python3 tools/assign-advisories.py --checkout /path/to/opentelemetry-collector-contrib --apply
+python3 tools/assign-advisories.py --apply
+
+# For a different repo:
+python3 tools/assign-advisories.py --repo open-telemetry/opentelemetry-collector
 ```
 
 ## What the script does
@@ -46,9 +49,9 @@ with the new ones before sending the PATCH request.
 - **`gh` CLI** authenticated with a token that has `repo` and
   `security_events` scopes.
 - **Repo admin** or **security manager** role on the target repository.
-- A local checkout of the target repository (for reading `metadata.yaml`
-  files). The script auto-detects common locations or you can pass
-  `--checkout /path/to/repo`.
+
+No local checkout is needed — the script fetches the repo's `CODEOWNERS`
+file from the GitHub API.
 
 ## Options
 
@@ -56,12 +59,10 @@ with the new ones before sending the PATCH request.
 |------|-------------|
 | `--apply` | Actually assign collaborators (default is dry-run) |
 | `--repo owner/repo` | Target a different repo (default: `open-telemetry/opentelemetry-collector-contrib`) |
-| `--checkout /path` | Path to the local repo checkout |
 | `--ghsa GHSA-xxx` | Process a single advisory by GHSA ID |
 | `-h`, `--help` | Show usage |
 
-You can also set `REPO`, `CONTRIB_CHECKOUT`, and `GHSA_FILTER` as environment
-variables.
+You can also set `REPO` and `GHSA_FILTER` as environment variables.
 
 ## Triage workflow
 
@@ -133,5 +134,5 @@ The script works with any repo that uses the collector-contrib `metadata.yaml`
 convention for codeowners. To use it with a different repo:
 
 ```bash
-python3 tools/assign-advisories.py --repo open-telemetry/opentelemetry-collector --checkout /path/to/collector
+python3 tools/assign-advisories.py --repo open-telemetry/opentelemetry-collector
 ```
