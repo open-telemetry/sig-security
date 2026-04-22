@@ -20,6 +20,7 @@ import json
 import os
 import subprocess
 import sys
+from datetime import datetime, timezone
 
 DEFAULT_REPO = "open-telemetry/opentelemetry-collector-contrib"
 
@@ -123,6 +124,63 @@ def lookup_owners(owners_map, component_dir):
     return []
 
 
+def summarize_engagement(adv):
+    """Summarize engagement on an advisory beyond the original reporter.
+
+    Returns a human-readable string describing who has interacted with
+    the advisory based on available API fields.
+    """
+    author = adv.get("author", {}).get("login", "unknown")
+    collabs = [u["login"] for u in adv.get("collaborating_users", [])]
+    collab_teams = [t["name"] for t in adv.get("collaborating_teams", [])]
+    credits = adv.get("credits", []) or []
+    credited_users = [c["user"]["login"] for c in credits if c.get("user")]
+    cve_id = adv.get("cve_id")
+
+    created = adv.get("created_at", "")
+    updated = adv.get("updated_at", "")
+
+    # Determine who has engaged besides the reporter.
+    others = [c for c in collabs if c != author]
+
+    signals = []
+    if others:
+        signals.append(f"collaborators: {', '.join(others)}")
+    if collab_teams:
+        signals.append(f"teams: {', '.join(collab_teams)}")
+    if credited_users:
+        credited_others = [u for u in credited_users if u != author]
+        if credited_others:
+            signals.append(f"credited: {', '.join(credited_others)}")
+    if cve_id:
+        signals.append(f"CVE: {cve_id}")
+
+    # Check if updated significantly after creation.
+    if created and updated and created != updated:
+        try:
+            ct = datetime.fromisoformat(created.replace("Z", "+00:00"))
+            ut = datetime.fromisoformat(updated.replace("Z", "+00:00"))
+            delta = ut - ct
+            if delta.total_seconds() > 300:  # more than 5 minutes
+                signals.append(f"updated {_human_delta(delta)} after creation")
+        except (ValueError, TypeError):
+            pass
+
+    if not signals:
+        return f"No engagement beyond reporter ({author})"
+    return f"Reporter: {author} | {'; '.join(signals)}"
+
+
+def _human_delta(delta):
+    """Format a timedelta as a human-readable string."""
+    seconds = int(delta.total_seconds())
+    if seconds < 3600:
+        return f"{seconds // 60}m"
+    if seconds < 86400:
+        return f"{seconds // 3600}h"
+    return f"{seconds // 86400}d"
+
+
 def process_advisories(advisories, *, repo, owners_map, dry_run):
     """Process each advisory: resolve codeowners and optionally assign them."""
     added = 0
@@ -150,6 +208,7 @@ def process_advisories(advisories, *, repo, owners_map, dry_run):
             print(f"\u26a0  {ghsa} [{severity}]")
             print(f"   {summary}")
             print(f"   No component mapping (packages: {pkg_names})")
+            print(f"   {summarize_engagement(adv)}")
             print()
             unmapped += 1
             continue
@@ -164,6 +223,7 @@ def process_advisories(advisories, *, repo, owners_map, dry_run):
             print(f"\u26a0  {ghsa} [{severity}]")
             print(f"   {summary}")
             print(f"   Component {component_dirs} has no codeowners")
+            print(f"   {summarize_engagement(adv)}")
             print()
             unmapped += 1
             continue
@@ -178,6 +238,7 @@ def process_advisories(advisories, *, repo, owners_map, dry_run):
         print(f"   Owners:     {', '.join(all_owners)}")
         if existing_collabs:
             print(f"   Existing:   {', '.join(existing_collabs)}")
+        print(f"   {summarize_engagement(adv)}")
 
         if not new_owners:
             print("   \u2192 All owners already assigned")
