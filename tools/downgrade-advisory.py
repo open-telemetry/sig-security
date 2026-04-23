@@ -214,7 +214,7 @@ def main():
     print(f"  Summary:  {summary[:80]}")
     print(f"  Severity: {severity}")
     print(f"  State:    {state}")
-    print(f"  Reporter: {reporter} (will be scrubbed)")
+    print(f"  Reporter: [REDACTED]")
     print()
 
     # Scrub and build the issue.
