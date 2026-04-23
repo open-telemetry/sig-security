@@ -129,6 +129,9 @@ def summarize_engagement(adv):
 
     Returns a human-readable string describing who has interacted with
     the advisory based on available API fields.
+
+    Note: The REST API does not expose advisory discussion comments,
+    so this cannot detect comment-based engagement.
     """
     author = adv.get("author", {}).get("login", "unknown")
     collabs = [u["login"] for u in adv.get("collaborating_users", [])]
@@ -136,6 +139,7 @@ def summarize_engagement(adv):
     credits = adv.get("credits", []) or []
     credited_users = [c["user"]["login"] for c in credits if c.get("user")]
     cve_id = adv.get("cve_id")
+    submission = adv.get("submission") or {}
 
     created = adv.get("created_at", "")
     updated = adv.get("updated_at", "")
@@ -154,6 +158,8 @@ def summarize_engagement(adv):
             signals.append(f"credited: {', '.join(credited_others)}")
     if cve_id:
         signals.append(f"CVE: {cve_id}")
+    if submission.get("accepted"):
+        signals.append("submission accepted")
 
     # Check if updated significantly after creation.
     if created and updated and created != updated:
@@ -167,7 +173,7 @@ def summarize_engagement(adv):
             pass
 
     if not signals:
-        return f"No engagement beyond reporter ({author})"
+        return f"⚡ No engagement beyond reporter ({author})"
     return f"Reporter: {author} | {'; '.join(signals)}"
 
 
@@ -190,9 +196,21 @@ def process_advisories(advisories, *, repo, owners_map, dry_run):
 
     for adv in advisories:
         ghsa = adv["ghsa_id"]
+        html_url = adv.get("html_url", "")
         summary = adv["summary"][:90]
         severity = adv.get("severity", "unset")
+        created = adv.get("created_at", "")
         existing_collabs = [u["login"] for u in adv.get("collaborating_users", [])]
+
+        # Show age of the advisory.
+        age_str = ""
+        if created:
+            try:
+                ct = datetime.fromisoformat(created.replace("Z", "+00:00"))
+                age = datetime.now(timezone.utc) - ct
+                age_str = f" ({_human_delta(age)} old)"
+            except (ValueError, TypeError):
+                pass
 
         pkg_names = [
             v["package"]["name"]
@@ -205,10 +223,11 @@ def process_advisories(advisories, *, repo, owners_map, dry_run):
         ]
 
         if not component_dirs:
-            print(f"\u26a0  {ghsa} [{severity}]")
+            print(f"\u26a0  {ghsa} [{severity}]{age_str}")
             print(f"   {summary}")
             print(f"   No component mapping (packages: {pkg_names})")
             print(f"   {summarize_engagement(adv)}")
+            print(f"   {html_url}")
             print()
             unmapped += 1
             continue
@@ -220,10 +239,11 @@ def process_advisories(advisories, *, repo, owners_map, dry_run):
         })
 
         if not all_owners:
-            print(f"\u26a0  {ghsa} [{severity}]")
+            print(f"\u26a0  {ghsa} [{severity}]{age_str}")
             print(f"   {summary}")
             print(f"   Component {component_dirs} has no codeowners")
             print(f"   {summarize_engagement(adv)}")
+            print(f"   {html_url}")
             print()
             unmapped += 1
             continue
@@ -232,13 +252,14 @@ def process_advisories(advisories, *, repo, owners_map, dry_run):
         merged = sorted(set(existing_collabs) | set(all_owners))
 
         icon = "\U0001f4cb" if new_owners else "\u2705"
-        print(f"{icon} {ghsa} [{severity}]")
+        print(f"{icon} {ghsa} [{severity}]{age_str}")
         print(f"   {summary}")
         print(f"   Component:  {', '.join(component_dirs)}")
         print(f"   Owners:     {', '.join(all_owners)}")
         if existing_collabs:
             print(f"   Existing:   {', '.join(existing_collabs)}")
         print(f"   {summarize_engagement(adv)}")
+        print(f"   {html_url}")
 
         if not new_owners:
             print("   \u2192 All owners already assigned")
