@@ -227,7 +227,7 @@ def main():
     issue_url = create_issue(target_repo, title, body, labels, dry_run=not args.apply)
 
     if issue_url:
-        print(f"\n✅ Issue created: {issue_url}")
+        print(f"\nIssue created: {issue_url}")
         print(
             f"\nRemember to close the advisory {args.ghsa_id} "
             f"and link to this issue."

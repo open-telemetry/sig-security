@@ -173,7 +173,7 @@ def summarize_engagement(adv):
             pass
 
     if not signals:
-        return f"⚡ No engagement beyond reporter ({author})"
+        return f"No engagement beyond reporter ({author})"
     return f"Reporter: {author} | {'; '.join(signals)}"
 
 
