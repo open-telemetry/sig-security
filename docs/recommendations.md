@@ -152,7 +152,7 @@ Here is a check list for the maintainers:
 - [ ] False positives are documented (e.g., by commenting on the security
   advisory, by providing the dismissal reason to a code scanning alert) and
   dismissed.
-- [ ] Critical and high severity vulnerabilities are patched within 2 weeks of
+- [ ] Critical and high severity vulnerabilities (after rescoring if needed?) are patched within 2 weeks of
   discovery.
 - [ ] Medium and low severity vulnerabilities are patched within 4 weeks of
   discovery.
