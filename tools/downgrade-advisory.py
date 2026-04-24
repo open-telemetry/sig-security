@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-downgrade-advisory.py — Convert a security advisory into a public bug report
+downgrade-advisory.py -- Convert a security advisory into a public bug report
 
 Fetches a repository security advisory by GHSA ID, scrubs reporter
 identity and sensitive metadata, and creates a public GitHub issue
@@ -110,7 +110,7 @@ def format_issue_body(adv, scrubbed_desc):
         meta.append(f"**CVSS:** {cvss['score']} ({cvss['vector_string']})")
     if cwes:
         meta.append(f"**CWEs:** {', '.join(cwes)}")
-    parts.append(" · ".join(meta))
+    parts.append(" | ".join(meta))
     parts.append("")
 
     # Affected packages.

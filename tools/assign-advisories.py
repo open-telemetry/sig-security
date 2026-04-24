@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """
-assign-advisories.py — Assign security advisory collaborators from CODEOWNERS
+assign-advisories.py -- Assign security advisory collaborators from CODEOWNERS
 
 Finds all "triage" state security advisories in a repo, determines which
 component is affected from the advisory's vulnerability metadata, looks up
 the codeowners for that component via the repo's CODEOWNERS file, and adds
 them as collaborating users on the advisory so they can see and work on it.
 
-No local checkout is required — CODEOWNERS is fetched from the GitHub API.
+No local checkout is required -- CODEOWNERS is fetched from the GitHub API.
 
 Prerequisites:
   - gh CLI authenticated with a token that has repo + security_events scope
@@ -110,7 +110,7 @@ def lookup_owners(owners_map, component_dir):
 
     Tries the exact path first, then walks up parent directories to find
     the most specific matching rule (mirroring GitHub's CODEOWNERS logic
-    where the last matching pattern wins — but since we search most-specific
+    where the last matching pattern wins -- but since we search most-specific
     first, the first match is correct).
     """
     path = component_dir

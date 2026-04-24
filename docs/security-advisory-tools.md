@@ -6,7 +6,7 @@ Both require the `gh` CLI with `repo` + `security_events` scopes, and repo admin
 ## assign-advisories.py
 
 Assigns component codeowners as collaborators on triage-state security advisories so they can view and respond to them.
-The script fetches CODEOWNERS from the GitHub API — no local checkout needed.
+The script fetches CODEOWNERS from the GitHub API -- no local checkout needed.
 
 ```bash
 python3 tools/assign-advisories.py            # dry run
