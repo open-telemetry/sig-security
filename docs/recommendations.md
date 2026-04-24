@@ -140,7 +140,7 @@ recommends to the OpenTelemetry project maintainers:
 Here is a check list for the maintainers:
 
 - [ ] Identify the direct responsible individual for security issues and
-  document it in the main README.md file of the project.
+  document them in the main README.md file of the project.
 - [ ] Monitor the GitHub repository security advisories and triage security
   issues in a timely manner.
 - [ ] Daily scan CI/CD tooling for deprecations and vulnerabilities.
