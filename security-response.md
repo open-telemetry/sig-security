@@ -22,6 +22,19 @@ be released. Each repository is entitled to establish their own complementary
 processes. SIG-Security in conjunction with the TC can advise in case
 clarifications are required.
 
+## Security model
+
+When assessing the urgency and importance of a security fix, confidentiality and integrity are our topmost concerns for all OpenTelemetry software artifacts.
+
+In contrast, we do not consider the default settings of OpenTelemetry software artifacts to be secure against availability attacks. To ensure availability, users must require authentication for their endpoint communication following the guidance on the [Security section of our website](https://opentelemetry.io/docs/security/).
+
+Additionally, the OpenTelemetry project does not consider the following to be security vulnerabilities:
+
+- a denial of service attack by properly authenticated clients  
+- availability-related attack to endpoints by properly authenticated clients
+
+These may still be considered bugs, and users can report them as such. When assessing availability-related impact, maintainers will also take into account whether the affected functionality comes from a dependency that is not protected against these attacks as well as the level of asymmetry in terms of resource usage leveraged by the attack.
+
 ## Reporting Process - For Vulnerability Reporters
 
 ### Reporting Methods
