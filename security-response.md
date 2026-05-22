@@ -101,6 +101,34 @@ and managers of vulnerabilities reported in their respective repos.
 Maintainers should familiarize themselves with the above guidance for Reporters
 and encourage any potential Reporters to follow that guidance.
 
+### Permissions Model
+
+By default, only GitHub Org Owners, org-wide Security Managers, and Repository
+Admins have access to a repository's Security Advisories. Repository
+Maintainers do not automatically have access. Security SIG Maintainers have
+been granted the org-wide Security Manager role, which gives them full access
+to Advisories across OTel repositories.
+
+Automation in the OpenTelemetry [Zapier
+account](https://github.com/open-telemetry/community/blob/main/assets.md#zapier-account)
+adds Repository Maintainers as Collaborators on each Security Advisory so
+they can view the advisory and participate in fixing it.
+
+Collaborator access is sufficient for most day-to-day work on an advisory,
+including viewing details, commenting, editing the advisory, and contributing
+fixes in the temporary private fork. However, some actions require Repository
+Admin permissions, including:
+
+- Publishing the advisory
+- Requesting a CVE (via the "Request CVE" button on the advisory form)
+- Creating the temporary private fork
+- Merging pull requests in the temporary private fork
+
+Maintainers can elevate their permissions to Repository Admin by submitting a
+pull request to the [open-telemetry/admin](https://github.com/open-telemetry/admin)
+repository. This only requires approval from one other repository maintainer;
+approval from a GitHub Org Admin is not required.
+
 ### GitHub Tooling
 
 Vulnerabilities reported via the `Report a vulnerability` button will appear
@@ -112,9 +140,9 @@ Maintainers can also create their own draft Security Advisory here using the
 need to report for someone who is unwilling or unable to use the
 `Report a vulnerability` button.
 
-Note that for a specific OTel repo, only that repo's Maintainers and Security
-SIG Maintainers (which have been granted the Security Manager role) will have
-access to the full Advisories data and functionality.
+Note that access to Security Advisories is limited; see the [Permissions
+Model](#permissions-model) section above for details on who has access by
+default and which actions require Repository Admin permissions.
 
 For more detailed GitHub documentation on this feature, see
 [this link](https://docs.github.com/en/code-security/security-advisories/working-with-repository-security-advisories/about-repository-security-advisories)
@@ -133,18 +161,24 @@ When processing a vulnerability report, Maintainers should:
 1. Assess the severity and impact of the vulnerability
 1. Determine if the vulnerability is already publicly known or disclosed
 1. Negotiate an embargo period, if needed
-1. Request a CVE, if needed
-1. Create a Temporary Private Fork, if needed
+1. Request a CVE, if needed _(Admin)_
+1. Create a Temporary Private Fork, if needed _(Admin)_
 1. Ensure work is progressing on a resolution in accordance with severity and
   embargo timeline
-1. When a fix is ready, Publish the Advisory
+1. After a release containing the fix is published, publish the Advisory
+  _(Admin)_
+
+Steps marked _(Admin)_ require Repository Admin permissions; see the
+[Permissions Model](#permissions-model) section.
 
 ### Managing Collaborators
 
 When working on security advisories in GitHub:
 
-1. Maintainers can add Collaborators to assist with investigation and fixing by
-   using the "Add users or teams" edit box in the Collaborators section in the
+1. Repository Maintainers are typically added as Collaborators automatically
+   (see the [Permissions Model](#permissions-model) section). To add
+   additional Collaborators beyond the default Maintainer set, use the
+   "Add users or teams" edit box in the Collaborators section of the
    GitHub Security Advisory interface.
 2. Try to keep the number of Collaborators small to limit the exposure of the
    vulnerability details before a fix is available.
@@ -171,6 +205,9 @@ public.
 5. Scroll to the bottom of the advisory form and click
   "Start a temporary private fork"
 
+Creating the temporary private fork requires Repository Admin permissions;
+see the [Permissions Model](#permissions-model) section above.
+
 The temporary private fork will be created with a name in the format:
 `repo-ghsa-xxxx-xxxx-xxxx`, where `repo` is your repository name (truncated to
 80 characters if needed) and `xxxx-xxxx-xxxx` is the unique identifier of the
@@ -195,12 +232,35 @@ You can make changes to the private fork either on GitHub or locally:
    page and click "Merge pull request(s)" to merge all open pull requests in the
    temporary private fork
 
+Merging from a temporary private fork requires extra care because the
+repository's standard branch protections and rulesets typically block the
+merge. The merge is performed by GitHub against the upstream repository (not
+the fork), so the upstream branch protections apply. However, no CLA check or
+CI runs are attached to the PR, since neither runs in a private fork. As a
+result, the person performing the merge usually needs to temporarily relax
+the upstream protections, perform the merge, and then restore them.
+
+Before relaxing protections, make sure the fix has already been reviewed in
+the temporary private fork, since the usual review, CI, and CLA gates will
+all be bypassed at merge time.
+
+The exact steps vary per repository, but the typical pattern is to
+temporarily:
+
+- Add yourself as a bypasser on the repository's main ruleset
+- Add yourself as a bypasser on the EasyCLA ruleset
+- Disable "Do not allow bypassing the above settings" on the main classic
+  branch protection rule (if the repository still uses one)
+
+After the merge completes, immediately revert each of these changes.
+
 Important notes about temporary private forks:
 
 - CI/CD integrations do not run in temporary private forks to maintain security
 - You cannot merge individual pull requests; all open PRs are merged together
 - Status checks will not run on PRs in temporary private forks
-- After merging changes, you can publish the advisory to alert the community
+- After merging changes and releasing a version that contains the fix, you can
+  publish the advisory to alert the community
 
 For more details, see the [GitHub documentation on private forks](https://docs.github.com/en/code-security/security-advisories/working-with-repository-security-advisories/collaborating-in-a-temporary-private-fork-to-resolve-a-repository-security-vulnerability).
 
