@@ -17,7 +17,6 @@ The script is triggered either daily or manually by a GitHub Action.
 The following people have access to this repository:
 
 * @jpkrohling
-* @ms-jcorley
 * @reyang
 
 SIG Security, OTel GC, and OTel TC members are welcome to request access. To do
