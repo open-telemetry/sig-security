@@ -124,10 +124,7 @@ Admin permissions, including:
 - Creating the temporary private fork
 - Merging pull requests in the temporary private fork
 
-Maintainers can elevate their permissions to Repository Admin by submitting a
-pull request to the [open-telemetry/admin](https://github.com/open-telemetry/admin)
-repository. This only requires approval from one other repository maintainer;
-approval from a GitHub Org Admin is not required.
+Please follow [Request Repository Admin Permissions](https://github.com/open-telemetry/community/blob/main/guides/maintainer/github-admin-processes.md#request-repository-admin-permissions) if you are a repository maintainer and need admin permissions.
 
 ### GitHub Tooling
 
