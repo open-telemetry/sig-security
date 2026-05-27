@@ -25,7 +25,6 @@ See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ### Maintainers
 
-- [Jeremy Corley](https://github.com/ms-jcorley), Microsoft
 - [Reiley Yang](https://github.com/reyang), Microsoft
 
 For more information about the maintainer role, see the [community repository](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#maintainer).
@@ -41,6 +40,7 @@ For more information about the approver role, see the [community repository](htt
 
 - [Alex Boten](https://github.com/codeboten)
 - [Carter Socha](https://github.com/cartersocha)
+- [Jeremy Corley](https://github.com/ms-jcorley)
 - [Juraci Paix&#xE3;o Kr&#xF6;hling](https://github.com/jpkrohling)
 
 For more information about the emeritus role, see the [community repository](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#emeritus-maintainerapprovertriager).
