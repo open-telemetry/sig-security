@@ -51,7 +51,7 @@ provide an additional layer of protection for sensitive secrets used in
 publishing, signing, and other privileged workflows.
 
 With **repository secrets**, any workflow running in the repository can access
-them — including workflows triggered on non-protected branches. This means
+them, including workflows triggered on non-protected branches. This means
 anyone with write access could push a non-protected branch containing secret
 exfiltration code and trigger a workflow without going through a PR review.
 
@@ -59,7 +59,7 @@ With **environment secrets**, access is restricted to workflows running in the
 context of a named environment, and that environment can be configured to only
 allow deployments from specific branches. This means even a contributor with
 write access cannot access the secrets without their code successfully passing
-all branch protection criteria — i.e., an approved and merged PR.
+all branch protection criteria (i.e. an approved and merged PR).
 
 Recommendation: migrate publishing, signing, and other privileged secrets from
 repository secrets to an environment with a deployment branch policy restricting
