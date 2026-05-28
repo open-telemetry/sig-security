@@ -124,8 +124,8 @@ Admin permissions, including:
 - Creating the temporary private fork
 - Merging pull requests in the temporary private fork
 
-Please follow
-[Request Repository Admin Permissions](https://github.com/open-telemetry/community/blob/main/guides/maintainer/github-admin-processes.md#request-repository-admin-permissions)
+Please follow [Request Repository Admin
+Permissions](https://github.com/open-telemetry/community/blob/main/guides/maintainer/github-admin-processes.md#request-repository-admin-permissions)
 if you are a repository maintainer and need admin permissions.
 
 ### GitHub Tooling
