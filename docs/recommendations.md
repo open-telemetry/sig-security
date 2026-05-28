@@ -44,6 +44,58 @@ Resources:
 - [Immutable releases](https://docs.github.com/en/code-security/concepts/supply-chain-security/immutable-releases)
 - [Verifying the integrity of a release](https://docs.github.com/en/code-security/how-tos/secure-your-supply-chain/secure-your-dependencies/verifying-the-integrity-of-a-release)
 
+## GitHub environment secrets
+
+GitHub [environment secrets](https://docs.github.com/en/actions/how-tos/write-workflows/choose-what-workflows-do/use-secrets#creating-secrets-for-an-environment)
+provide an additional layer of protection for sensitive secrets used in
+publishing, signing, and other privileged workflows.
+
+With **repository secrets**, any workflow running in the repository can access
+them — including workflows triggered on non-protected branches. This means
+anyone with write access could push a non-protected branch containing secret
+exfiltration code and trigger a workflow without going through a PR review.
+
+With **environment secrets**, access is restricted to workflows running in the
+context of a named environment, and that environment can be configured to only
+allow deployments from specific branches. This means even a contributor with
+write access cannot access the secrets without their code successfully passing
+all branch protection criteria — i.e., an approved and merged PR.
+
+Recommendation: migrate publishing, signing, and other privileged secrets from
+repository secrets to an environment with a deployment branch policy restricting
+access to `main` and `release/**` branches.
+
+Steps:
+
+1. Create an environment (e.g., `protected`) in the repository settings.
+2. Configure a deployment branch policy on the environment, allowing only
+   `main` and `release/**` (adjust to match your branching strategy).
+3. Add your publishing and signing secrets to the environment.
+4. Remove the corresponding repository-level secrets. If both exist, the
+   repository-level secret remains accessible from any branch, defeating the
+   purpose.
+5. Update release workflows to run in the context of the environment:
+
+   ```yaml
+   jobs:
+     release:
+       environment: protected
+       steps:
+         ...
+   ```
+
+Caveats:
+
+- Repository admin permission is required to create environments and manage
+  environment secrets. See [Request Repository Admin Permissions](https://github.com/open-telemetry/community/blob/main/guides/maintainer/github-admin-processes.md#request-repository-admin-permissions)
+  if you need to request access.
+
+Resources:
+
+- [Using environments for deployment](https://docs.github.com/en/actions/deployment/targeting-different-environments/using-environments-for-deployment)
+- [Creating secrets for an environment](https://docs.github.com/en/actions/how-tos/write-workflows/choose-what-workflows-do/use-secrets#creating-secrets-for-an-environment)
+- [Example migration in opentelemetry-java](https://github.com/open-telemetry/opentelemetry-java/pull/8432/changes#diff-bae0feaab53d9bdd636360014c03f3456cd796c65e3984b5373443e92fdb5efeR17)
+
 ## Binding to Network Interfaces
 
 Always bind to localhost rather than to 0.0.0.0 or any interface, unless there
