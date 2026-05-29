@@ -3,13 +3,40 @@
 This document lists recommendations from the Security SIG for the consideration
 of OpenTelemetry SIGs.
 
-## CodeQL Scanning
+## Scanning
+
+### CodeQL scanning
 
 The organization uses [CodeQL](https://codeql.github.com/) for semantic analysis
 of the code in various repositories. The recommendation is to run CodeQL on
 every pull request and on every commit to the main branch.
 
 Issue: ([#15](https://github.com/open-telemetry/sig-security/issues/15))
+
+### zizmor scanning
+
+[zizmor](https://github.com/zizmorcore/zizmor) is a static analysis tool for
+GitHub Actions workflows. The recommendation is to run zizmor on every pull
+request and on every commit to the main branch for repositories using GitHub
+Actions.
+
+GitHub Actions workflows are part of the project supply chain. zizmor can help
+identify CI/CD security issues such as template injection, unsafe credential
+handling, overly broad token permissions, risky workflow triggers, and ambiguous
+or mutable action references.
+
+Where possible, repositories should make zizmor a required code scanning check
+by default, with documented opt-out handling for repositories where it is not
+yet applicable.
+
+Resources:
+
+- [zizmor documentation](https://docs.zizmor.sh/)
+- [zizmor audit rules](https://docs.zizmor.sh/audits/)
+- [zizmor GitHub Actions integration](https://docs.zizmor.sh/integrations/)
+- [zizmor-action](https://github.com/zizmorcore/zizmor-action)
+
+Issue: ([#268](https://github.com/open-telemetry/sig-security/issues/268))
 
 ## Integrity
 
