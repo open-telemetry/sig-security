@@ -52,13 +52,13 @@ publishing, signing, and other privileged workflows.
 
 With **repository secrets**, any workflow running in the repository can access
 them, including workflows triggered on non-protected branches. This means
-anyone with write access could push a non-protected branch containing secret
+anyone with Write access could push a non-protected branch containing secret
 exfiltration code and trigger a workflow without going through a PR review.
 
 With **environment secrets**, access is restricted to workflows running in the
 context of a named environment, and that environment can be configured to only
 allow deployments from specific branches. This means even a contributor with
-write access cannot access the secrets without their code successfully passing
+Write access cannot access the secrets without their code successfully passing
 all branch protection criteria (i.e. an approved and merged PR).
 
 Recommendation: migrate publishing, signing, and other privileged secrets from
@@ -67,14 +67,14 @@ access to `main` and `release/**` branches.
 
 Steps:
 
-1. Create an environment (e.g., `protected`) in the repository settings.
-2. Configure a deployment branch policy on the environment, allowing only
-   `main` and `release/**` (adjust to match your branching strategy).
+1. Create and configure an environment (e.g., `protected`) with a deployment
+   branch policy via Terraform in [open-telemetry/admin](https://github.com/open-telemetry/admin),
+   allowing only `main` and `release/**` (adjust to match your branching
+   strategy).
+2. Request admin permission to manage secrets for the environment. See
+   [Request Repository Admin Permissions](https://github.com/open-telemetry/community/blob/main/guides/maintainer/github-admin-processes.md#request-repository-admin-permissions).
 3. Add your publishing and signing secrets to the environment.
-4. Remove the corresponding repository-level secrets. If both exist, the
-   repository-level secret remains accessible from any branch, defeating the
-   purpose.
-5. Update release workflows to run in the context of the environment:
+4. Update release workflows to run in the context of the environment:
 
    ```yaml
    jobs:
@@ -84,11 +84,11 @@ Steps:
          ...
    ```
 
-Caveats:
-
-- Repository admin permission is required to create environments and manage
-  environment secrets. See [Request Repository Admin Permissions](https://github.com/open-telemetry/community/blob/main/guides/maintainer/github-admin-processes.md#request-repository-admin-permissions)
-  if you need to request access.
+   Note: if you ever need to make an older patch release from a release branch,
+   backport this workflow change to that branch first.
+5. Remove the corresponding repository-level secrets. If both exist, the
+   repository-level secret remains accessible from any branch, defeating the
+   purpose.
 
 Resources:
 
