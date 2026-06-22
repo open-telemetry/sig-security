@@ -265,10 +265,10 @@ For more details, see the [GitHub documentation on private forks](https://docs.g
 
 ### TC Point of Contact
 
-The TC maintains a weekly on-call rotation. When a new security advisory is opened, the on-call TC member for that week
-serves as the primary TC point of contact (POC) for the advisory. They are
-responsible for self-assigning to the advisory and helping to progress it to
-conclusion, even after their rotation ends.
+The TC maintains a weekly on-call rotation. When a new security advisory is
+opened, the on-call TC member for that week serves as the primary TC point of
+contact (POC) for the advisory. They are responsible for self-assigning to the
+advisory and helping to progress it to conclusion, even after their rotation ends.
 
 If the assigned TC POC is unavailable and TC assistance is needed, maintainers
 should reach out to the current on-call TC member instead. The on-call schedule
