@@ -263,6 +263,17 @@ Important notes about temporary private forks:
 
 For more details, see the [GitHub documentation on private forks](https://docs.github.com/en/code-security/security-advisories/working-with-repository-security-advisories/collaborating-in-a-temporary-private-fork-to-resolve-a-repository-security-vulnerability).
 
+### TC Point of Contact
+
+The TC maintains a weekly on-call rotation. When a new security advisory is opened, the on-call TC member for that week
+serves as the primary TC point of contact (POC) for the advisory. They are
+responsible for self-assigning to the advisory and helping to progress it to
+conclusion, even after their rotation ends.
+
+If the assigned TC POC is unavailable and TC assistance is needed, maintainers
+should reach out to the current on-call TC member instead. The on-call schedule
+can be found in the [TC on-call schedule](https://docs.google.com/spreadsheets/d/1GuhkiK4MjzcFij_KQojiE_2yGsFvPV6wC7fqHULGm98/edit?gid=0#gid=0).
+
 ### Getting Assistance
 
 If Maintainers need assistance with how to handle a security vulnerability:
@@ -278,6 +289,11 @@ If Maintainers need assistance with how to handle a security vulnerability:
   they have access to all Advisories and can comment directly in
   them. For complex or high impact issues, the Security SIG may also involve
   the TC and/or GC.
+
+3. For TC assistance specific to an Advisory, contact the assigned TC POC
+  directly via the advisory. If the assigned TC POC is unavailable, reach out
+  to the current on-call TC member instead; see the
+  [TC Point of Contact](#tc-point-of-contact) section for the schedule.
 
 ### CVE Management
 
@@ -363,11 +379,12 @@ entire point of embargo periods before disclosure.
 
 #### Q: When should I involve the Security SIG or Technical Committee?
 
-**A:** Consider involving them for critical or high-severity issues that can't
-be fixed promptly, vulnerabilities affecting multiple repositories, or if you
-need guidance on handling a security related issue.  If in doubt, feel free
-to reach out.  Just be careful to avoid disclosing non-public vulnerability
-information in non-secure communication channels.
+**A:** Consider involving the Security SIG for critical or high-severity issues
+that can't be fixed promptly, vulnerabilities affecting multiple repositories,
+or if you need guidance on handling a security related issue. For TC
+involvement, contact the assigned [TC Point of Contact](#tc-point-of-contact).
+If in doubt, feel free to reach out.  Just be careful to avoid disclosing
+non-public vulnerability information in non-secure communication channels.
 
 #### Q: How do I handle embargo periods?
 
@@ -403,6 +420,6 @@ users need to be informed of a work-around or mitigation steps.
 #### Q: What if we can't fix the vulnerability quickly?
 
 **A:** If a fix will take a long time, particularly if the vulnerability is high
-or critical severity, you should bring this up with the Security SIG and/or TC
-to determine if there is any public messaging or other actions that need to be
-taken.
+or critical severity, you should bring this up with the Security SIG and/or the
+assigned TC POC (see [TC Point of Contact](#tc-point-of-contact)) to determine
+if there is any public messaging or other actions that need to be taken.
