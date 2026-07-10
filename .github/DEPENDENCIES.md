@@ -11,6 +11,7 @@ owns.
 | Routine Python dependency updates | Renovate |
 | `pip-compile` output refreshes | Renovate |
 | GitHub Actions updates | Renovate |
+| Alert-driven GitHub Actions security updates | Dependabot |
 | Alert-driven direct dependency security updates | Dependabot |
 | Alert-driven transitive dependency security updates | Dependabot |
 
