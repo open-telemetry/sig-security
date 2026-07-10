@@ -1,0 +1,33 @@
+# See DEPENDENCIES.md for how Renovate and Dependabot responsibilities are separated.
+version: 2
+
+updates:
+  - package-ecosystem: pip
+    directory: /tools
+    schedule:
+      interval: weekly
+    # Cooldown does not apply to security updates; this value satisfies zizmor.
+    cooldown:
+      default-days: 7
+    # Disable routine update PRs; security update PRs use a separate limit.
+    open-pull-requests-limit: 0
+    groups:
+      python-security:
+        applies-to: security-updates
+        patterns:
+          - "*"
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    # Cooldown does not apply to security updates; this value satisfies zizmor.
+    cooldown:
+      default-days: 7
+    # Disable routine update PRs; security update PRs use a separate limit.
+    open-pull-requests-limit: 0
+    groups:
+      actions-security:
+        applies-to: security-updates
+        patterns:
+          - "*"
