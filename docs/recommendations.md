@@ -40,6 +40,114 @@ Issue: ([#268](https://github.com/open-telemetry/sig-security/issues/268))
 
 ## Integrity
 
+### Sign release artifacts with Sigstore Cosign
+
+Checksums help detect corruption, but they do not authenticate who produced an
+artifact when the artifact and checksum are downloaded from the same location.
+If both files are replaced, checksum verification can still succeed for
+malicious content.
+
+Use [Sigstore Cosign](https://docs.sigstore.dev/cosign/) to sign release
+container images and other consumer-facing artifacts, such as binaries,
+archives, SBOMs, and checksum manifests. Publish instructions that let
+consumers verify both the artifact and the expected signer identity.
+
+Use Cosign's keyless signing in automated release workflows. With keyless
+signing, the workflow uses an OpenID Connect (OIDC) identity and a short-lived
+certificate instead of a long-lived signing key. The signing event is recorded
+in Sigstore's transparency infrastructure and can be audited.
+
+#### Sign in GitHub Actions
+
+Use a dedicated signing job that runs only for trusted release events, such as
+version tags. Grant `id-token: write` only to the job that needs the GitHub OIDC
+token, and grant no other permissions beyond those needed to read or publish
+the artifacts.
+
+The following excerpt installs Cosign and signs a container image after it has
+been pushed. Sign the immutable image digest, not only a mutable tag.
+
+```yaml
+jobs:
+  sign:
+    if: startsWith(github.ref, 'refs/tags/')
+    permissions:
+      contents: read
+      id-token: write
+      packages: write # Include only when required by the target registry.
+    steps:
+      - name: Install Cosign
+        uses: sigstore/cosign-installer@6f9f17788090df1f26f669e9d70d6ae9567deba6 # v4.1.2
+
+      # Run after the image push step, whose output is the manifest digest.
+      - name: Sign container image
+        env:
+          IMAGE: ghcr.io/open-telemetry/example@${{ steps.build.outputs.digest }}
+        run: cosign sign --yes "${IMAGE}"
+```
+
+For downloadable files, finalize the files before signing them and use a
+Sigstore bundle rather than separate signature and certificate files. Generate
+checksum manifests before signing, and do not add generated bundles to the
+checksum manifest or sign the bundles themselves.
+
+```bash
+artifact=dist/example-v1.2.3-linux-amd64.tar.gz
+
+cosign sign-blob --yes \
+  --bundle "${artifact}.sigstore.json" \
+  "${artifact}"
+```
+
+Publish each bundle next to its artifact. Do not modify an artifact after it is
+signed. Before publishing a release, verify the image signatures and bundles
+in CI using the same certificate identity and OIDC issuer that users will rely
+on.
+
+#### Document verification
+
+Document copy-pasteable verification commands for every class of signed
+artifact. Bind verification to the exact release workflow and tag using
+`--certificate-identity`; a repository-wide identity regular expression could
+accept a signature from an unrelated workflow in the same repository.
+
+For example:
+
+```bash
+repository=open-telemetry/example
+release_tag=v1.2.3
+certificate_identity="https://github.com/${repository}/.github/workflows/release.yml@refs/tags/${release_tag}"
+certificate_oidc_issuer=https://token.actions.githubusercontent.com
+image="ghcr.io/open-telemetry/example@sha256:IMAGE_DIGEST"
+
+cosign verify \
+  --certificate-identity "${certificate_identity}" \
+  --certificate-oidc-issuer "${certificate_oidc_issuer}" \
+  "${image}"
+
+artifact=example-v1.2.3-linux-amd64.tar.gz
+cosign verify-blob "${artifact}" \
+  --bundle "${artifact}.sigstore.json" \
+  --certificate-identity "${certificate_identity}" \
+  --certificate-oidc-issuer "${certificate_oidc_issuer}"
+```
+
+If verification fails, consumers should stop and must not run, deploy, or
+compile the artifact.
+
+Signatures authenticate the final bytes and signer identity, but do not by
+themselves describe how the artifact was built. Checksums, SBOMs, and build
+provenance attestations provide complementary information.
+
+Resources:
+
+- [Sigstore security model](https://docs.sigstore.dev/about/security/)
+- [Sigstore CI quickstart](https://docs.sigstore.dev/quickstart/quickstart-ci/)
+- [Signing containers](https://docs.sigstore.dev/cosign/signing/signing_with_containers/)
+- [Signing blobs](https://docs.sigstore.dev/cosign/signing/signing_with_blobs/)
+- [Verifying signatures](https://docs.sigstore.dev/cosign/verifying/verify/)
+- [GitHub OIDC reference](https://docs.github.com/en/actions/reference/security/oidc)
+
 ## GitHub immutable releases
 
 GitHub supports **immutable releases**, which prevent release assets from being
