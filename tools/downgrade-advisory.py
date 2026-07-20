@@ -1,18 +1,16 @@
 #!/usr/bin/env python3
-"""
-downgrade-advisory.py -- Convert a security advisory into a public bug report
+"""downgrade-advisory.py -- Convert a security advisory into a public bug report
 
 Fetches a repository security advisory by GHSA ID, scrubs reporter
 identity and sensitive metadata, and creates a public GitHub issue
 with the technical description preserved.
 
 This is a "downgrade" operation: the maintainer decides the report
-does not warrant a CVE and instead publishes it as a regular bug.
+does not warrant a CVE and instead publishes it as a regular issue.
 
-Prerequisites:
-  - gh CLI authenticated with a token that has the repo scope
-  - Security manager or admin of the source repo, or a collaborator on the
-    advisory; advisory collaborators can both read and close it
+Prerequisites: (1) gh CLI authenticated with a token that has the repo
+scope; (2) Security manager or admin of the source repo, or a
+collaborator on the advisory.
 """
 
 import argparse
@@ -71,7 +69,7 @@ def fetch_advisory(repo, ghsa_id):
         if "Not Found" in err or "404" in err:
             print(
                 "HINT: The advisory may live in a different repository. Pass "
-                "--repo <owner>/<repo> (or the full advisory URL) to point at "
+                "--repo <owner>/<repo> or the full advisory URL to point at "
                 "the repo that owns it.",
                 file=sys.stderr,
             )
@@ -82,10 +80,8 @@ def fetch_advisory(repo, ghsa_id):
 def scrub_description(description, reporter_login):
     """Remove reporter identity and sensitive metadata from description.
 
-    Strips:
-      - @mentions of the reporter
-      - "Reported by", "Discovered by", "Submitted by", "Assisted-by" lines
-      - GitHub username references to the reporter
+    Strips: @mentions of the reporter, "Reported by", "Discovered by",
+    "Submitted by", "Assisted-by" lines, GitHub username references.
     """
     lines = description.splitlines()
     scrubbed = []
