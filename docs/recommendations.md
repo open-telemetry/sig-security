@@ -146,7 +146,7 @@ Resources:
 - [Signing containers](https://docs.sigstore.dev/cosign/signing/signing_with_containers/)
 - [Signing blobs](https://docs.sigstore.dev/cosign/signing/signing_with_blobs/)
 - [Verifying signatures](https://docs.sigstore.dev/cosign/verifying/verify/)
-- [GitHub OIDC reference](https://docs.github.com/en/actions/reference/security/oidc)
+- [GitHub OIDC reference](https://docs.github.com/actions/reference/security/oidc)
 
 ### Attest release artifacts with GitHub Artifact Attestations
 
@@ -279,12 +279,12 @@ Best practices:
 
 Resources:
 
-- [Immutable releases](https://docs.github.com/en/code-security/concepts/supply-chain-security/immutable-releases)
-- [Verifying the integrity of a release](https://docs.github.com/en/code-security/how-tos/secure-your-supply-chain/secure-your-dependencies/verifying-the-integrity-of-a-release)
+- [Immutable releases](https://docs.github.com/code-security/concepts/supply-chain-security/immutable-releases)
+- [Verifying the integrity of a release](https://docs.github.com/code-security/how-tos/secure-your-supply-chain/secure-your-dependencies/verifying-the-integrity-of-a-release)
 
 ## GitHub environment secrets
 
-GitHub [environment secrets](https://docs.github.com/en/actions/how-tos/write-workflows/choose-what-workflows-do/use-secrets#creating-secrets-for-an-environment)
+GitHub [environment secrets](https://docs.github.com/actions/how-tos/write-workflows/choose-what-workflows-do/use-secrets#creating-secrets-for-an-environment)
 provide an additional layer of protection for sensitive secrets used in
 publishing, signing, and other privileged workflows.
 
@@ -330,8 +330,8 @@ Steps:
 
 Resources:
 
-- [Using environments for deployment](https://docs.github.com/en/actions/deployment/targeting-different-environments/using-environments-for-deployment)
-- [Creating secrets for an environment](https://docs.github.com/en/actions/how-tos/write-workflows/choose-what-workflows-do/use-secrets#creating-secrets-for-an-environment)
+- [Using environments for deployment](https://docs.github.com/actions/deployment/targeting-different-environments/using-environments-for-deployment)
+- [Creating secrets for an environment](https://docs.github.com/actions/how-tos/write-workflows/choose-what-workflows-do/use-secrets#creating-secrets-for-an-environment)
 - [Example migration in opentelemetry-java](https://github.com/open-telemetry/opentelemetry-java/pull/8432/changes#diff-bae0feaab53d9bdd636360014c03f3456cd796c65e3984b5373443e92fdb5efeR17)
 
 ## Binding to Network Interfaces
