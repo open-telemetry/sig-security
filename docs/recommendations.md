@@ -156,9 +156,9 @@ auditors and automated policy checks evidence about where and how an artifact
 was built, while binding that evidence to the artifact's digest.
 
 Use GitHub Artifact Attestations for consumer-facing artifacts built in GitHub
-Actions, such as binaries, archives, packages, checksum manifests, and
-container images. The `actions/attest` action generates a signed
-[in-toto](https://in-toto.io/) statement with
+Actions, such as binaries, archives, packages, software bills of materials
+(SBOMs), checksum manifests, and container images. The `actions/attest` action
+generates a signed [in-toto](https://in-toto.io/) statement with
 [SLSA build provenance](https://slsa.dev/provenance/v1), using the workflow's
 GitHub OIDC identity and a short-lived Sigstore certificate.
 
@@ -245,8 +245,8 @@ stronger isolation is required.
 
 Resources:
 
-- [About artifact attestations](https://docs.github.com/en/actions/concepts/security/artifact-attestations)
-- [Using artifact attestations](https://docs.github.com/en/actions/how-tos/secure-your-work/use-artifact-attestations/use-artifact-attestations)
+- [About artifact attestations](https://docs.github.com/actions/concepts/security/artifact-attestations)
+- [Using artifact attestations](https://docs.github.com/actions/how-tos/secure-your-work/use-artifact-attestations/use-artifact-attestations)
 - [`actions/attest`](https://github.com/actions/attest)
 - [`gh attestation verify`](https://cli.github.com/manual/gh_attestation_verify)
 - [Signing artifacts, attesting builds, and why you should do both](https://some-natalie.dev/blog/signing-attesting-builds/)
