@@ -249,7 +249,6 @@ Resources:
 - [Using artifact attestations](https://docs.github.com/en/actions/how-tos/secure-your-work/use-artifact-attestations/use-artifact-attestations)
 - [`actions/attest`](https://github.com/actions/attest)
 - [`gh attestation verify`](https://cli.github.com/manual/gh_attestation_verify)
-- [OpenTelemetry .NET implementation](https://github.com/open-telemetry/opentelemetry-dotnet/pull/6646)
 - [Signing artifacts, attesting builds, and why you should do both](https://some-natalie.dev/blog/signing-attesting-builds/)
 
 ## GitHub immutable releases
