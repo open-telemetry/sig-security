@@ -146,7 +146,110 @@ Resources:
 - [Signing containers](https://docs.sigstore.dev/cosign/signing/signing_with_containers/)
 - [Signing blobs](https://docs.sigstore.dev/cosign/signing/signing_with_blobs/)
 - [Verifying signatures](https://docs.sigstore.dev/cosign/verifying/verify/)
-- [GitHub OIDC reference](https://docs.github.com/en/actions/reference/security/oidc)
+- [GitHub OIDC reference](https://docs.github.com/actions/reference/security/oidc)
+
+### Attest release artifacts with GitHub Artifact Attestations
+
+Build provenance attestations help consumers trace a release artifact to the
+repository, commit, workflow, and CI environment that produced it. This gives
+auditors and automated policy checks evidence about where and how an artifact
+was built, while binding that evidence to the artifact's digest.
+
+Use GitHub Artifact Attestations for consumer-facing artifacts built in GitHub
+Actions, such as binaries, archives, packages, software bills of materials
+(SBOMs), checksum manifests, and container images. The `actions/attest` action
+generates a signed [in-toto](https://in-toto.io/) statement with
+[SLSA build provenance](https://slsa.dev/provenance/v1), using the workflow's
+GitHub OIDC identity and a short-lived Sigstore certificate.
+
+Attestations complement artifact signatures. A signature authenticates the
+finished bytes and signer identity; a provenance attestation adds signed claims
+about the build. Neither proves that the source or artifact is secure, so
+consumers must verify the attestation against an expected identity and policy.
+
+#### Generate build provenance in GitHub Actions
+
+Generate attestations only for trusted release events, such as version tags.
+Finalize each artifact before attesting it, because the attestation records the
+digest of the exact bytes present at that point. Do not modify the artifact
+afterward.
+
+Grant `id-token: write` and `attestations: write` only to the job that
+creates the attestation. Grant no other permissions beyond those the build and
+publication steps require. Pin the action to a full commit SHA.
+
+The following excerpt attests a downloadable release archive after it has been
+built and packaged:
+
+```yaml
+jobs:
+  release:
+    if: startsWith(github.ref, 'refs/tags/')
+    permissions:
+      attestations: write
+      contents: read
+      id-token: write
+    steps:
+      # Build and finalize the release archive before this step.
+      - name: Attest release artifact
+        uses: actions/attest@f7c74d28b9d84cb8768d0b8ca14a4bac6ef463e6 # v4.2.0
+        with:
+          subject-path: dist/example-v1.2.3-linux-amd64.tar.gz
+```
+
+Use a multiline path or glob to attest multiple finalized files. For a
+container image, push the image first, pass its fully qualified name without a
+tag as `subject-name`, pass the immutable digest from the build step as
+`subject-digest`, and set `push-to-registry: true`. Add
+`packages: write` only when required to publish to the target registry and
+`artifact-metadata: write` when creating a linked artifact storage record.
+
+#### Verify and enforce provenance
+
+Generating attestations alone provides no security benefit. Publish
+copy-pasteable verification commands and enforce them in artifact promotion,
+deployment, or admission workflows.
+
+Verify the repository, the exact signer workflow, and the expected release ref.
+Using only `--owner` trusts attestations from every repository owned by that
+organization and is usually too broad.
+
+For example:
+
+```bash
+repository=open-telemetry/example
+release_tag=v1.2.3
+signer_workflow="${repository}/.github/workflows/release.yml"
+artifact=example-v1.2.3-linux-amd64.tar.gz
+
+gh attestation verify "${artifact}" \
+  --repo "${repository}" \
+  --signer-workflow "${signer_workflow}" \
+  --source-ref "refs/tags/${release_tag}"
+
+image=oci://ghcr.io/open-telemetry/example@sha256:IMAGE_DIGEST
+gh attestation verify "${image}" \
+  --repo "${repository}" \
+  --signer-workflow "${signer_workflow}" \
+  --source-ref "refs/tags/${release_tag}"
+```
+
+If the build uses a reusable workflow, verify the reusable workflow's identity
+as the signer. If verification fails, consumers should stop and must not run,
+deploy, or compile the artifact.
+
+A compromised build workflow or runner can still produce malicious artifacts
+and attest them. Protect release workflows, use isolated runners, minimize job
+permissions, and consider a vetted reusable workflow as a trusted builder when
+stronger isolation is required.
+
+Resources:
+
+- [About artifact attestations](https://docs.github.com/actions/concepts/security/artifact-attestations)
+- [Using artifact attestations](https://docs.github.com/actions/how-tos/secure-your-work/use-artifact-attestations/use-artifact-attestations)
+- [`actions/attest`](https://github.com/actions/attest)
+- [`gh attestation verify`](https://cli.github.com/manual/gh_attestation_verify)
+- [Signing artifacts, attesting builds, and why you should do both](https://some-natalie.dev/blog/signing-attesting-builds/)
 
 ## GitHub immutable releases
 
@@ -176,12 +279,12 @@ Best practices:
 
 Resources:
 
-- [Immutable releases](https://docs.github.com/en/code-security/concepts/supply-chain-security/immutable-releases)
-- [Verifying the integrity of a release](https://docs.github.com/en/code-security/how-tos/secure-your-supply-chain/secure-your-dependencies/verifying-the-integrity-of-a-release)
+- [Immutable releases](https://docs.github.com/code-security/concepts/supply-chain-security/immutable-releases)
+- [Verifying the integrity of a release](https://docs.github.com/code-security/how-tos/secure-your-supply-chain/secure-your-dependencies/verifying-the-integrity-of-a-release)
 
 ## GitHub environment secrets
 
-GitHub [environment secrets](https://docs.github.com/en/actions/how-tos/write-workflows/choose-what-workflows-do/use-secrets#creating-secrets-for-an-environment)
+GitHub [environment secrets](https://docs.github.com/actions/how-tos/write-workflows/choose-what-workflows-do/use-secrets#creating-secrets-for-an-environment)
 provide an additional layer of protection for sensitive secrets used in
 publishing, signing, and other privileged workflows.
 
@@ -227,8 +330,8 @@ Steps:
 
 Resources:
 
-- [Using environments for deployment](https://docs.github.com/en/actions/deployment/targeting-different-environments/using-environments-for-deployment)
-- [Creating secrets for an environment](https://docs.github.com/en/actions/how-tos/write-workflows/choose-what-workflows-do/use-secrets#creating-secrets-for-an-environment)
+- [Using environments for deployment](https://docs.github.com/actions/deployment/targeting-different-environments/using-environments-for-deployment)
+- [Creating secrets for an environment](https://docs.github.com/actions/how-tos/write-workflows/choose-what-workflows-do/use-secrets#creating-secrets-for-an-environment)
 - [Example migration in opentelemetry-java](https://github.com/open-telemetry/opentelemetry-java/pull/8432/changes#diff-bae0feaab53d9bdd636360014c03f3456cd796c65e3984b5373443e92fdb5efeR17)
 
 ## Binding to Network Interfaces

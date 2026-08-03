@@ -144,7 +144,7 @@ Model](#permissions-model) section above for details on who has access by
 default and which actions require Repository Admin permissions.
 
 For more detailed GitHub documentation on this feature, see
-[this link](https://docs.github.com/en/code-security/security-advisories/working-with-repository-security-advisories/about-repository-security-advisories)
+[this link](https://docs.github.com/code-security/security-advisories/working-with-repository-security-advisories/about-repository-security-advisories)
 
 ### Incident Response
 
@@ -261,7 +261,7 @@ Important notes about temporary private forks:
 - After merging changes and releasing a version that contains the fix, you can
   publish the advisory to alert the community
 
-For more details, see the [GitHub documentation on private forks](https://docs.github.com/en/code-security/security-advisories/working-with-repository-security-advisories/collaborating-in-a-temporary-private-fork-to-resolve-a-repository-security-vulnerability).
+For more details, see the [GitHub documentation on private forks](https://docs.github.com/code-security/security-advisories/working-with-repository-security-advisories/collaborating-in-a-temporary-private-fork-to-resolve-a-repository-security-vulnerability).
 
 ### TC Point of Contact
 
@@ -360,7 +360,7 @@ add this to the Security Advisory form instead of requesting a new one through
 GitHub.
 
 For more information on requesting CVEs through GitHub, see the
-[GitHub documentation on requesting CVE identification numbers](https://docs.github.com/en/code-security/security-advisories/working-with-repository-security-advisories/publishing-a-repository-security-advisory#requesting-a-cve-identification-number-optional).
+[GitHub documentation on requesting CVE identification numbers](https://docs.github.com/code-security/security-advisories/working-with-repository-security-advisories/publishing-a-repository-security-advisory#requesting-a-cve-identification-number-optional).
 
 ### FAQ for Maintainers
 
