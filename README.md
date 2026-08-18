@@ -34,6 +34,10 @@ PT](https://dateful.com/convert/pst-pdt-pacific-time?t=0900). Agenda and meeting
 notes are maintained in the [Google
 doc](https://docs.google.com/document/d/1P2xejC7lEkOV_Z-8E0oZPXLK5HOnUPNuRqKP0ZQ5fpg).
 
+Refer to the [OpenTelemetry Communty
+document](https://github.com/open-telemetry/community#communication) on how to
+use Slack and the shared community calendar.
+
 ### Maintainers
 
 - [Reiley Yang](https://github.com/reyang), Microsoft
