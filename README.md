@@ -1,27 +1,38 @@
 # Security Special Interest Group
 
-Covers horizontal security initiatives for the OpenTelemetry project, including
-regular security audits, the vulnerability management process, cross-cutting
-security documentation, and security community management.
+[![Slack](https://img.shields.io/badge/slack-@cncf/otel--sig--security-brightgreen)](https://cloud-native.slack.com/archives/C05A85QC281)
 
-The [charter](./sig-security-charter.md) draft defines the scope and governance
-of the Security Special Interest Group.
+OpenTelemetry provides vendor-agnostic telemetry instrumentations and collection
+components which can be used by a wide variety of libraries, services and apps.
+Being one of the most popular CNCF projects, many
+[vendors](https://opentelemetry.io/ecosystem/vendors/) and customers use
+OpenTelemetry to observe their software systems, and that brings a serious
+question - _**what if OpenTelemetry becomes a can of security worms for its users?**_
 
-## Meetings
+We do not want this to happen, and that's why we created this SIG (Special
+Interest Group) - to focus on the process and procedure for security across the
+OpenTelemetry project, and work with the community to hold people accountable.
+The [charter](./sig-security-charter.md) defines the scope and governance of the
+Security Special Interest Group.
 
-- Regular SIG Meeting: Weekly on Mondays at [09:00
-PT](https://dateful.com/convert/pst-pdt-pacific-time?t=0900).
-  - [Meeting notes, Agenda and Zoom
-  link](https://docs.google.com/document/d/1P2xejC7lEkOV_Z-8E0oZPXLK5HOnUPNuRqKP0ZQ5fpg).
-
-## Contact
-
-- Slack:
-  [#otel-sig-security](https://cloud-native.slack.com/archives/C05A85QC281)
+We need your help! As OpenTelemetry is becoming more successful with broad
+adoptions, the number of supply chain security issues has increased
+significantly. The AI-based security findings and attacks have increased by at
+least a magnitude in the past few months. If you have experience in supply chain
+security and would like to offer help, please reach out via [CNCF
+Slack](https://cloud-native.slack.com/archives/C05A85QC281) and say hi.
 
 ## Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md).
+For details, see [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## Questions
+
+Questions that need additional attention can be brought to the regular SIG
+meeting. The meeting is held every other Monday at [09:00
+PT](https://dateful.com/convert/pst-pdt-pacific-time?t=0900). Agenda and meeting
+notes are maintained in the [Google
+doc](https://docs.google.com/document/d/1P2xejC7lEkOV_Z-8E0oZPXLK5HOnUPNuRqKP0ZQ5fpg).
 
 ### Maintainers
 
