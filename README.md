@@ -2,6 +2,11 @@
 
 [![Slack](https://img.shields.io/badge/slack-@cncf/otel--sig--security-brightgreen)](https://cloud-native.slack.com/archives/C05A85QC281)
 
+> **Reporting a vulnerability?** Please do not open an issue in this repository.
+> Report it privately to the affected OpenTelemetry repository, following that
+> repo's security policy. See the [security response
+> guidelines](security-response.md) for how reports are handled.
+
 OpenTelemetry provides vendor-agnostic telemetry instrumentations and collection
 components which can be used by a wide variety of libraries, services and apps.
 Being one of the most popular CNCF projects, many
