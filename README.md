@@ -25,7 +25,12 @@ adoptions, the number of supply chain security issues has increased
 significantly. The AI-based security findings and attacks have increased by at
 least a magnitude in the past few months. If you have experience in supply chain
 security and would like to offer help, please reach out via [CNCF
-Slack](https://cloud-native.slack.com/archives/C05A85QC281) and say hi.
+We would love your help! As OpenTelemetry adoption grows, so does the volume of
+security work, and automated and AI-assisted scanning has added both more
+findings and more complexity to triaging them. We do this work in the open -
+our process, our findings, and how we respond in public. If you have
+experience in supply chain security, or would simply like to learn, please say
+hi in [CNCF Slack](https://cloud-native.slack.com/archives/C05A85QC281).
 
 ## Contributing
 
