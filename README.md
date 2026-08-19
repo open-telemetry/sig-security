@@ -29,7 +29,15 @@ Slack](https://cloud-native.slack.com/archives/C05A85QC281) and say hi.
 
 ## Contributing
 
-For details, see [CONTRIBUTING.md](CONTRIBUTING.md).
+For details, see [CONTRIBUTING.md](CONTRIBUTING.md). Some of what the SIG
+maintains, and good places to start reading:
+
+- [Security response guidelines](security-response.md) - how vulnerabilities are
+  handled and disclosed across the project
+- [Security dashboard](security-dashboard.md) - OpenSSF Scorecard status for
+  every OpenTelemetry repository
+- [Recommendations](docs/recommendations.md) and [architecture decision
+  records](adrs/) - the guidance and decisions the SIG has published
 
 ## Questions
 
