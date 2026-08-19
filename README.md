@@ -45,7 +45,14 @@ Questions that need additional attention can be brought to the regular SIG
 meeting. The meeting is held every other Monday at [09:00
 PT](https://dateful.com/convert/pst-pdt-pacific-time?t=0900). Agenda and meeting
 notes are maintained in the [Google
+## Meetings
+
+The SIG meets every other Monday at [09:00
+PT](https://dateful.com/convert/pst-pdt-pacific-time?t=0900). Agenda and meeting
+notes are in the [Google
 doc](https://docs.google.com/document/d/1P2xejC7lEkOV_Z-8E0oZPXLK5HOnUPNuRqKP0ZQ5fpg).
+Anyone is welcome to join, and questions that need more discussion than Slack
+can carry are a good fit for the agenda.
 
 Refer to the [OpenTelemetry Communty
 document](https://github.com/open-telemetry/community#communication) on how to
