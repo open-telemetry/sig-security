@@ -197,12 +197,60 @@ jobs:
           subject-path: dist/example-v1.2.3-linux-amd64.tar.gz
 ```
 
-Use a multiline path or glob to attest multiple finalized files. For a
-container image, push the image first, pass its fully qualified name without a
-tag as `subject-name`, pass the immutable digest from the build step as
-`subject-digest`, and set `push-to-registry: true`. Add
-`packages: write` only when required to publish to the target registry and
-`artifact-metadata: write` when creating a linked artifact storage record.
+Use a multiline path or glob to attest multiple finalized files.
+
+##### Container image attestations
+
+Push a container image before attesting it. Pass its fully qualified name
+without a tag as `subject-name`, pass the immutable digest from the build step
+as `subject-digest`, and set `push-to-registry: true` so the signed bundle is
+stored with the image in the OCI registry.
+
+The following excerpt assumes that the source has been checked out and the
+workflow has authenticated to GitHub Container Registry (GHCR):
+
+```yaml
+jobs:
+  release-container:
+    if: startsWith(github.ref, 'refs/tags/')
+    permissions:
+      artifact-metadata: write # Create a linked artifact storage record.
+      attestations: write
+      contents: read
+      id-token: write
+      packages: write # Publish the image and attestation to GHCR.
+    env:
+      IMAGE: ghcr.io/open-telemetry/example
+    steps:
+      - name: Build and push container image
+        id: build-image
+        uses: docker/build-push-action@53b7df96c91f9c12dcc8a07bcb9ccacbed38856a # v7.3.0
+        with:
+          context: .
+          push: true
+          tags: ${{ env.IMAGE }}:${{ github.ref_name }}
+          provenance: true
+          sbom: true
+
+      - name: Attest container image
+        uses: actions/attest@f7c74d28b9d84cb8768d0b8ca14a4bac6ef463e6 # v4.2.0
+        with:
+          subject-name: ${{ env.IMAGE }}
+          subject-digest: ${{ steps.build-image.outputs.digest }}
+          push-to-registry: true
+```
+
+The `provenance` and `sbom` inputs attach Docker BuildKit provenance and SBOM
+metadata to the image. The `actions/attest` step separately creates a
+Sigstore-signed GitHub build provenance attestation for the pushed image digest.
+These attestations are complementary.
+
+Use `packages: write` only when required to publish to the target registry. The
+`actions/attest` action creates a linked artifact storage record by default; set
+`create-storage-record: false` and omit `artifact-metadata: write` when that
+record is not needed. Use the same fully qualified registry hostname throughout
+the workflow and verification instructions. For Docker Hub, use `docker.io` as
+the registry portion of `subject-name`.
 
 #### Verify and enforce provenance
 
@@ -229,10 +277,17 @@ gh attestation verify "${artifact}" \
 
 image=oci://ghcr.io/open-telemetry/example@sha256:IMAGE_DIGEST
 gh attestation verify "${image}" \
+  --bundle-from-oci \
   --repo "${repository}" \
   --signer-workflow "${signer_workflow}" \
   --source-ref "refs/tags/${release_tag}"
 ```
+
+The `--bundle-from-oci` flag reads the signed bundle stored alongside the image
+instead of querying the GitHub API. Authenticate to a private registry before
+verification. Append `--format json` to inspect the verified GitHub/Sigstore
+bundle, including its certificate and signed SLSA provenance statement. This
+command does not inspect the Docker BuildKit provenance or SBOM attestations.
 
 If the build uses a reusable workflow, verify the reusable workflow's identity
 as the signer. If verification fails, consumers should stop and must not run,
@@ -249,6 +304,8 @@ Resources:
 - [Using artifact attestations](https://docs.github.com/actions/how-tos/secure-your-work/use-artifact-attestations/use-artifact-attestations)
 - [`actions/attest`](https://github.com/actions/attest)
 - [`gh attestation verify`](https://cli.github.com/manual/gh_attestation_verify)
+- [Docker build attestations](https://docs.docker.com/build/metadata/attestations/)
+- [OpenTelemetry build-tools container attestation example](https://github.com/open-telemetry/build-tools/blob/main/protobuf/README.md#verifying-build-attestations)
 - [Signing artifacts, attesting builds, and why you should do both](https://some-natalie.dev/blog/signing-attesting-builds/)
 
 ## GitHub immutable releases
