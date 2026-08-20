@@ -276,6 +276,14 @@ gh attestation verify "${artifact}" \
   --source-ref "refs/tags/${release_tag}"
 
 image=oci://ghcr.io/open-telemetry/example@sha256:IMAGE_DIGEST
+
+# Fetch the attestation from the GitHub API.
+gh attestation verify "${image}" \
+  --repo "${repository}" \
+  --signer-workflow "${signer_workflow}" \
+  --source-ref "refs/tags/${release_tag}"
+
+# Fetch the attestation from the OCI registry.
 gh attestation verify "${image}" \
   --bundle-from-oci \
   --repo "${repository}" \
@@ -283,11 +291,19 @@ gh attestation verify "${image}" \
   --source-ref "refs/tags/${release_tag}"
 ```
 
-The `--bundle-from-oci` flag reads the signed bundle stored alongside the image
-instead of querying the GitHub API. Authenticate to a private registry before
-verification. Append `--format json` to inspect the verified GitHub/Sigstore
-bundle, including its certificate and signed SLSA provenance statement. This
-command does not inspect the Docker BuildKit provenance or SBOM attestations.
+Each container image command independently verifies the signature, image
+digest, repository, signer workflow, and source ref. Run both during release
+validation to confirm that the attestation is available through both GitHub and
+the OCI registry. Consumers need only one successful verification unless their
+policy requires both sources; running both confirms publication, but does not
+add cryptographic assurance.
+
+Without `--bundle-from-oci`, `gh` reads the signed bundle from the GitHub API.
+The flag instead reads the bundle stored alongside the image in the OCI
+registry. Authenticate to a private registry before either verification.
+Append `--format json` to inspect the verified GitHub/Sigstore bundle, including
+its certificate and signed SLSA provenance statement. Neither command inspects
+the Docker BuildKit provenance or SBOM attestations.
 
 If the build uses a reusable workflow, verify the reusable workflow's identity
 as the signer. If verification fails, consumers should stop and must not run,
