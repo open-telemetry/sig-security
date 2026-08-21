@@ -48,7 +48,7 @@ doc](https://docs.google.com/document/d/1P2xejC7lEkOV_Z-8E0oZPXLK5HOnUPNuRqKP0ZQ
 Anyone is welcome to join, and questions that need more discussion than Slack
 can carry are a good fit for the agenda.
 
-Refer to the [OpenTelemetry Communty
+Refer to the [OpenTelemetry Community
 document](https://github.com/open-telemetry/community#communication) on how to
 use Slack and the shared community calendar.
 
