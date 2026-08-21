@@ -11,26 +11,20 @@ OpenTelemetry provides vendor-agnostic telemetry instrumentations and collection
 components which can be used by a wide variety of libraries, services and apps.
 Being one of the most popular CNCF projects, many
 [vendors](https://opentelemetry.io/ecosystem/vendors/) and customers use
-OpenTelemetry to observe their software systems, and that brings a serious
-question - _**what if OpenTelemetry becomes a can of security worms for its users?**_
+OpenTelemetry to observe their software systems. That reach means the security
+of OpenTelemetry matters to a lot of people.
 
-We do not want this to happen, and that's why we created this SIG (Special
-Interest Group) - to focus on the process and procedure for security across the
-OpenTelemetry project, and work with the community to hold people accountable.
-The [charter](./sig-security-charter.md) defines the scope and governance of the
-Security Special Interest Group.
+That's why we created this SIG (Special Interest Group) - to focus on the
+process and procedures for security across the OpenTelemetry project, and to
+work with the community so security work is transparent, shared, and well
+supported.
 
-We need your help! As OpenTelemetry is becoming more successful with broad
-adoptions, the number of supply chain security issues has increased
-significantly. The AI-based security findings and attacks have increased by at
-least a magnitude in the past few months. If you have experience in supply chain
-security and would like to offer help, please reach out via [CNCF
 We would love your help! As OpenTelemetry adoption grows, so does the volume of
 security work, and automated and AI-assisted scanning has added both more
-findings and more complexity to triaging them. We do this work in the open -
-our process, our findings, and how we respond in public. If you have
-experience in supply chain security, or would simply like to learn, please say
-hi in [CNCF Slack](https://cloud-native.slack.com/archives/C05A85QC281).
+findings and more complexity to triaging them. We do this work in the open - our
+process, our findings, and how we respond in public. If you have experience in
+supply chain security, or would simply like to learn, please say hi in [CNCF
+Slack](https://cloud-native.slack.com/archives/C05A85QC281).
 
 ## Contributing
 
@@ -46,10 +40,8 @@ maintains, and good places to start reading:
 
 ## Questions
 
-Questions that need additional attention can be brought to the regular SIG
-meeting. The meeting is held every other Monday at [09:00
-PT](https://dateful.com/convert/pst-pdt-pacific-time?t=0900). Agenda and meeting
-notes are maintained in the [Google
+Questions that need additional attention can be brought to the regular SIG meeting.
+
 ## Meetings
 
 The SIG meets every other Monday at [09:00
