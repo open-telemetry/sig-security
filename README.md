@@ -39,16 +39,6 @@ maintains, and good places to start reading:
 - [Recommendations](docs/recommendations.md) and [architecture decision
   records](adrs/) - the guidance and decisions the SIG has published
 
-## Questions
-
-Use [CNCF Slack](https://cloud-native.slack.com/archives/C05A85QC281) for
-questions and discussions. Questions that need additional attention can be
-brought to the regular [SIG meeting](#meetings).
-
-Refer to the [OpenTelemetry Communty
-document](https://github.com/open-telemetry/community#communication) on how to
-use Slack.
-
 ## Meetings
 
 The SIG meets every other Monday at [09:00
@@ -60,7 +50,7 @@ can carry are a good fit for the agenda.
 
 Refer to the [OpenTelemetry Communty
 document](https://github.com/open-telemetry/community#communication) on how to
-use the shared community calendar.
+use Slack and the shared community calendar.
 
 ### Maintainers
 
