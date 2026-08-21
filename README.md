@@ -41,7 +41,13 @@ maintains, and good places to start reading:
 
 ## Questions
 
-Questions that need additional attention can be brought to the regular SIG meeting.
+Use [CNCF Slack](https://cloud-native.slack.com/archives/C05A85QC281) for
+questions and discussions. Questions that need additional attention can be
+brought to the regular [SIG meeting](#meetings).
+
+Refer to the [OpenTelemetry Communty
+document](https://github.com/open-telemetry/community#communication) on how to
+use Slack.
 
 ## Meetings
 
@@ -54,7 +60,7 @@ can carry are a good fit for the agenda.
 
 Refer to the [OpenTelemetry Communty
 document](https://github.com/open-telemetry/community#communication) on how to
-use Slack and the shared community calendar.
+use the shared community calendar.
 
 ### Maintainers
 
