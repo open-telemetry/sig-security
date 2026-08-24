@@ -1,27 +1,56 @@
 # Security Special Interest Group
 
-Covers horizontal security initiatives for the OpenTelemetry project, including
-regular security audits, the vulnerability management process, cross-cutting
-security documentation, and security community management.
+[![Slack](https://img.shields.io/badge/slack-@cncf/otel--sig--security-brightgreen)](https://cloud-native.slack.com/archives/C05A85QC281)
 
-The [charter](./sig-security-charter.md) draft defines the scope and governance
-of the Security Special Interest Group.
+> [!TIP]
+> **Reporting a vulnerability?** Please do not open an issue in this repository.
+  Report it privately to the affected OpenTelemetry repository, following that
+  repo's security policy. See the [security response
+  guidelines](security-response.md) for how reports are handled.
 
-## Meetings
+OpenTelemetry provides vendor-agnostic telemetry instrumentations and collection
+components which can be used by a wide variety of libraries, services and apps.
+Being one of the most popular CNCF projects, many
+[vendors](https://opentelemetry.io/ecosystem/vendors/) and customers use
+OpenTelemetry to observe their software systems. That reach means the security
+of OpenTelemetry matters to a lot of people.
 
-- Regular SIG Meeting: Weekly on Mondays at [09:00
-PT](https://dateful.com/convert/pst-pdt-pacific-time?t=0900).
-  - [Meeting notes, Agenda and Zoom
-  link](https://docs.google.com/document/d/1P2xejC7lEkOV_Z-8E0oZPXLK5HOnUPNuRqKP0ZQ5fpg).
+That's why we created this SIG (Special Interest Group) - to focus on the
+process and procedures for security across the OpenTelemetry project, and to
+work with the community so security work is transparent, shared, and well
+supported.
 
-## Contact
-
-- Slack:
-  [#otel-sig-security](https://cloud-native.slack.com/archives/C05A85QC281)
+We would love your help! As OpenTelemetry adoption grows, so does the volume of
+security work, and automated and AI-assisted scanning has added both more
+findings and more complexity to triaging them. We do this work in the open - our
+process, our findings, and how we respond in public. If you have experience in
+supply chain security, or would simply like to learn, please say hi in [CNCF
+Slack](https://cloud-native.slack.com/archives/C05A85QC281).
 
 ## Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md).
+For details, see [CONTRIBUTING.md](CONTRIBUTING.md). Some of what the SIG
+maintains, and good places to start reading:
+
+- [Security response guidelines](security-response.md) - how vulnerabilities are
+  handled and disclosed across the project
+- [Security dashboard](security-dashboard.md) - OpenSSF Scorecard status for
+  every OpenTelemetry repository
+- [Recommendations](docs/recommendations.md) and [architecture decision
+  records](adrs/) - the guidance and decisions the SIG has published
+
+## Meetings
+
+The SIG meets every other Monday at [09:00
+PT](https://dateful.com/convert/pst-pdt-pacific-time?t=0900). Agenda and meeting
+notes are in the [Google
+doc](https://docs.google.com/document/d/1P2xejC7lEkOV_Z-8E0oZPXLK5HOnUPNuRqKP0ZQ5fpg).
+Anyone is welcome to join, and questions that need more discussion than Slack
+can carry are a good fit for the agenda.
+
+Refer to the [OpenTelemetry Community
+document](https://github.com/open-telemetry/community#communication) on how to
+use Slack and the shared community calendar.
 
 ### Maintainers
 
