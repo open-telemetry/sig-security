@@ -67,7 +67,6 @@ For more information about the approver role, see the [community repository](htt
 ### Emeritus
 
 - [Adriel Perkins](https://github.com/adrielp), Approver
-- [Adriel Perkins](https://github.com/adrielp), Approver
 - [Alex Boten](https://github.com/codeboten), Maintainer
 - [Carter Socha](https://github.com/cartersocha), Maintainer
 - [Jeremy Corley](https://github.com/ms-jcorley), Maintainer
