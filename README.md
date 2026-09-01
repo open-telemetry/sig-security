@@ -70,6 +70,10 @@ For more information about the approver role, see the [community repository](htt
 - [Alex Boten](https://github.com/codeboten)
 - [Carter Socha](https://github.com/cartersocha)
 - [Jeremy Corley](https://github.com/ms-jcorley)
-- [Juraci Paix&#xE3;o Kr&#xF6;hling](https://github.com/jpkrohling)
+- [Adriel Perkins](https://github.com/adrielp), Approver
+- [Alex Boten](https://github.com/codeboten), Maintainer
+- [Carter Socha](https://github.com/cartersocha), Maintainer
+- [Jeremy Corley](https://github.com/ms-jcorley), Maintainer
+- [Juraci Paix&#xE3;o Kr&#xF6;hling](https://github.com/jpkrohling), Maintainer
 
 For more information about the emeritus role, see the [community repository](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#emeritus-maintainerapprovertriager).
