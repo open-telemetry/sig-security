@@ -48,14 +48,13 @@ met:
 A repository is considered to meet the Medium Expectation if all the conditions
 are met:
 
-- The repository meets or exceeds the [Low Expectation](#low-expectation).
+- The repository meets the [Low Expectation](#low-expectation) requirements.
 - All GitHub Actions are using pinned version, an insecure version would be
   updated in less than 7 days since the patched version became available.
 - The repository has onboarded to the [OpenSSF
   Scorecard](../security-dashboard.md), and the score it greater than or equal
   to `8.0`.
-- Any individual maintainer cannot release a new version of the artifact without
-  the approval of at least one other maintainer or approver.
+- The repository uses a reproducible and auditable release process.
 - Security advisories and issues will be acknowledged and updated with at
   maximium 3 days delay.
 - All vulnerabilities are evaluated within 7 days of detection/report.
@@ -71,7 +70,9 @@ are met:
 A repository is considered to meet the High Expectation if all the conditions
 are met:
 
-- The repository meets or exceeds the [Medium Expectation](#medium-expectation).
+- The repository meets the [Medium Expectation](#medium-expectation) requirements.
+- Any individual maintainer cannot release a new version of the artifact without
+  the approval of at least one other maintainer or approver.
 - Security advisories and issues will be acknowledged and updated with at
   maximium 2 days delay.
 - `High` level vulnerabilities are mitigated/resolved within 15 days.
