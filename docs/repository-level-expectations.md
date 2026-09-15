@@ -55,6 +55,8 @@ are met:
   Scorecard](../security-dashboard.md), and the score it greater than or equal
   to `8.0`.
 - The repository uses a reproducible and auditable release process.
+- OIDC (OpenID Connect) is used for authentication in the publishing process,
+  where available.
 - Security advisories and issues will be acknowledged and updated with at
   maximum 5 days delay.
 - All vulnerabilities are evaluated within 7 days of detection/report.
