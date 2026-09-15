@@ -56,7 +56,7 @@ are met:
   to `8.0`.
 - The repository uses a reproducible and auditable release process.
 - Security advisories and issues will be acknowledged and updated with at
-  maximium 3 days delay.
+  maximum 5 days delay.
 - All vulnerabilities are evaluated within 7 days of detection/report.
 - `Critical` level vulnerabilities are mitigated/resolved within 15 days.
 - `High` level vulnerabilities are mitigated/resolved within 30 days.
@@ -74,7 +74,7 @@ are met:
 - Any individual maintainer cannot release a new version of the artifact without
   the approval of at least one other maintainer or approver.
 - Security advisories and issues will be acknowledged and updated with at
-  maximium 2 days delay.
+  maximum 2 days delay.
 - `High` level vulnerabilities are mitigated/resolved within 15 days.
 - Vulnerabilities with severity level lower than `High` are mitigated/resolved
   within 30 days.
