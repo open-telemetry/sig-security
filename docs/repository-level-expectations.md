@@ -52,7 +52,7 @@ are met:
 - All GitHub Actions are using pinned version, an insecure version would be
   updated in less than 7 days since the patched version became available.
 - The repository has onboarded to the [OpenSSF
-  Scorecard](../security-dashboard.md), and the score it greater than or equal
+  Scorecard](../security-dashboard.md), and the score is greater than or equal
   to `8.0`.
 - The repository uses a reproducible and auditable release process.
 - OIDC (OpenID Connect) is used for authentication in the publishing process,
