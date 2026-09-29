@@ -1,4 +1,4 @@
-# Security Commitments
+# Security Commitments Level
 
 OpenTelemetry is a large project which contains multiple repositories. Each
 repository has a list of
