@@ -1,30 +1,27 @@
-# Repository Level Expectations
+# Security Commitments
 
 OpenTelemetry is a large project which contains multiple repositories. Each
 repository has a list of
 [maintainers](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#maintainer).
-This document defines the security expectations for all the OpenTelemetry public
+This document defines the security commitments for all the OpenTelemetry public
 repositories. The target audiences are the OpenTelemetry project maintainers.
 
-Here are the levels of expectations:
+Here are the levels of security commitments:
 
-- [No Clear Expectation](#no-clear-expectation)
-- [Low Expectation](#low-expectation)
-- [Medium Expectation](#medium-expectation)
-- [High Expectation](#high-expectation)
+- [Undeclared](#undeclared)
+- [Low](#low)
+- [Medium](#medium)
+- [High](#high)
 
-## No Clear Expectation
+## Undeclared
 
-If a repository doesn't declare its security expectations, it is treated as No
-Clear Expectation.
+If a repository doesn't declare its level of security commitments, it is treated
+as `Undeclared`.
 
-The repository owners can also explicitly declare the repository as No Clear
-Expectation.
+## Low
 
-## Low Expectation
-
-A repository is considered to meet the Low Expectation if all the conditions are
-met:
+A repository can declare its level of security commitments as `Low` if all the
+conditions are met:
 
 - The repository maintainers (all of them) have provided their `slackMemberId`
   in the
@@ -40,15 +37,16 @@ met:
   websites are covered by the repository.
 - The `SECURITY.md` file has explained how to raise security advisories and
   issues.
-- The `SECURITY.md` file has explicited called out that the repository meets the
-  `Low Expectation` level as defined here, with a link to this section.
+- The `SECURITY.md` file has explicited called out that the repository provides
+  the `Low` security commitments level as defined here, with a link to this
+  section.
 
-## Medium Expectation
+## Medium
 
-A repository is considered to meet the Medium Expectation if all the conditions
-are met:
+A repository can declare its level of security commitments as `Medium` if all the
+conditions are met:
 
-- The repository meets the [Low Expectation](#low-expectation) requirements.
+- The repository meets the [Low](#low) security commitments.
 - All GitHub Actions are using pinned version, an insecure version would be
   updated in less than 7 days since the patched version became available.
 - The repository has onboarded to the [OpenSSF
@@ -64,15 +62,16 @@ are met:
 - `High` level vulnerabilities are mitigated/resolved within 30 days.
 - Vulnerabilities with severity level lower than `High` are mitigated/resolved
   within 60 days.
-- The `SECURITY.md` file has explicited called out that the repository meets the
-  `Medium Expectation` level as defined here, with a link to this section.
+- The `SECURITY.md` file has explicited called out that the repository provides
+  the `Medium` security commitments level as defined here, with a link to this
+  section.
 
-## High Expectation
+## High
 
-A repository is considered to meet the High Expectation if all the conditions
-are met:
+A repository can declare its level of security commitments as `High` if all the
+conditions are met:
 
-- The repository meets the [Medium Expectation](#medium-expectation) requirements.
+- The repository meets the [Medium](#medium) security commitments.
 - Any individual maintainer cannot release a new version of the artifact without
   the approval of at least one other maintainer or approver.
 - Security advisories and issues will be acknowledged and updated with at
@@ -80,5 +79,6 @@ are met:
 - `High` level vulnerabilities are mitigated/resolved within 15 days.
 - Vulnerabilities with severity level lower than `High` are mitigated/resolved
   within 30 days.
-- The `SECURITY.md` file has explicited called out that the repository meets the
-  `High Expectation` level as defined here, with a link to this section.
+- The `SECURITY.md` file has explicited called out that the repository provides
+  the `High` security commitments level as defined here, with a link to this
+  section.
