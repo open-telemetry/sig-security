@@ -56,10 +56,10 @@ conditions are met:
 - OIDC (OpenID Connect) is used for authentication in the publishing process,
   where available.
 - Security advisories and issues will be acknowledged and updated with at
-  maximum 5 days delay.
+  maximum 7 days delay.
 - All vulnerabilities are evaluated within 7 days of detection/report.
-- `Critical` level vulnerabilities are mitigated/resolved within 15 days.
-- `High` level vulnerabilities are mitigated/resolved within 30 days.
+- `Critical` level vulnerabilities are mitigated/resolved within 30 days.
+- `High` level vulnerabilities are mitigated/resolved within 45 days.
 - Vulnerabilities with severity level lower than `High` are mitigated/resolved
   within 60 days.
 - The `SECURITY.md` file has explicited called out that the repository provides
@@ -75,7 +75,8 @@ conditions are met:
 - Any individual maintainer cannot release a new version of the artifact without
   the approval of at least one other maintainer or approver.
 - Security advisories and issues will be acknowledged and updated with at
-  maximum 2 days delay.
+  maximum 5 days delay.
+- `Critical` level vulnerabilities are mitigated/resolved within 7 days.
 - `High` level vulnerabilities are mitigated/resolved within 15 days.
 - Vulnerabilities with severity level lower than `High` are mitigated/resolved
   within 30 days.
