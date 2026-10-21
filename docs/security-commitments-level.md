@@ -37,7 +37,7 @@ conditions are met:
   websites are covered by the repository.
 - The `SECURITY.md` file has explained how to raise security advisories and
   issues.
-- The `SECURITY.md` file has explicited called out that the repository provides
+- The `SECURITY.md` file has explicitly called out that the repository provides
   the `Low` security commitments level as defined here, with a link to this
   section.
 
@@ -62,7 +62,7 @@ conditions are met:
 - `High` level vulnerabilities are mitigated/resolved within 45 days.
 - Vulnerabilities with severity level lower than `High` are mitigated/resolved
   within 60 days.
-- The `SECURITY.md` file has explicited called out that the repository provides
+- The `SECURITY.md` file has explicitly called out that the repository provides
   the `Medium` security commitments level as defined here, with a link to this
   section.
 
@@ -80,6 +80,6 @@ conditions are met:
 - `High` level vulnerabilities are mitigated/resolved within 15 days.
 - Vulnerabilities with severity level lower than `High` are mitigated/resolved
   within 30 days.
-- The `SECURITY.md` file has explicited called out that the repository provides
+- The `SECURITY.md` file has explicitly called out that the repository provides
   the `High` security commitments level as defined here, with a link to this
   section.
