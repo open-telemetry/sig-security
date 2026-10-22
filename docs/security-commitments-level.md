@@ -52,7 +52,10 @@ the conditions are met:
 - The repository has onboarded to the [OpenSSF
   Scorecard](../security-dashboard.md), and the score is greater than or equal
   to `8.0`.
-- The repository uses a reproducible and auditable release process.
+- The repository uses a reproducible (if the user wants to build from the source
+  and compare it with the official artifact, there should be clear instructions
+  on how they can do it, and it shouldn't be too hard for them to follow) and
+  auditable release process.
 - OIDC (OpenID Connect) is used for authentication in the publishing process,
   where available.
 - Security advisories and issues will be acknowledged and updated with at
