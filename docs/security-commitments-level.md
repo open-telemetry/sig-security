@@ -9,19 +9,19 @@ repositories. The target audiences are the OpenTelemetry project maintainers.
 Here are the levels of security commitments:
 
 - [Undeclared](#undeclared)
-- [Low](#low)
-- [Medium](#medium)
-- [High](#high)
+- [Baseline](#baseline)
+- [Standard](#standard)
+- [Elevated](#elevated)
 
 ## Undeclared
 
 If a repository doesn't declare its level of security commitments, it is treated
 as `Undeclared`.
 
-## Low
+## Baseline
 
-A repository can declare its level of security commitments as `Low` if all the
-conditions are met:
+A repository can declare its level of security commitments as `Baseline` if all
+the conditions are met:
 
 - The repository maintainers (all of them) have provided their `slackMemberId`
   in the
@@ -38,15 +38,15 @@ conditions are met:
 - The `SECURITY.md` file has explained how to raise security advisories and
   issues.
 - The `SECURITY.md` file has explicitly called out that the repository provides
-  the `Low` security commitments level as defined here, with a link to this
+  the `Baseline` security commitments level as defined here, with a link to this
   section.
 
-## Medium
+## Standard
 
-A repository can declare its level of security commitments as `Medium` if all the
-conditions are met:
+A repository can declare its level of security commitments as `Standard` if all
+the conditions are met:
 
-- The repository meets the [Low](#low) security commitments.
+- The repository meets the [Baseline](#baseline) security commitments.
 - All GitHub Actions are using pinned version, an insecure version would be
   updated in less than 7 days since the patched version became available.
 - The repository has onboarded to the [OpenSSF
@@ -63,15 +63,15 @@ conditions are met:
 - Vulnerabilities with severity level lower than `High` are mitigated/resolved
   within 60 days.
 - The `SECURITY.md` file has explicitly called out that the repository provides
-  the `Medium` security commitments level as defined here, with a link to this
+  the `Standard` security commitments level as defined here, with a link to this
   section.
 
-## High
+## Elevated
 
-A repository can declare its level of security commitments as `High` if all the
-conditions are met:
+A repository can declare its level of security commitments as `Elevated` if all
+the conditions are met:
 
-- The repository meets the [Medium](#medium) security commitments.
+- The repository meets the [Standard](#standard) security commitments.
 - Any individual maintainer cannot release a new version of the artifact without
   the approval of at least one other maintainer or approver.
 - Security advisories and issues will be acknowledged and updated with at
@@ -81,5 +81,5 @@ conditions are met:
 - Vulnerabilities with severity level lower than `High` are mitigated/resolved
   within 30 days.
 - The `SECURITY.md` file has explicitly called out that the repository provides
-  the `High` security commitments level as defined here, with a link to this
+  the `Elevated` security commitments level as defined here, with a link to this
   section.
