@@ -24,28 +24,207 @@ clarifications are required.
 
 ## Security model
 
-When assessing the urgency and importance of a security fix, confidentiality and
-integrity are our topmost concerns for all OpenTelemetry software artifacts.
+This model guides vulnerability acceptance, severity assessment, and automated
+security analysis across OpenTelemetry. Assess confidentiality, integrity, and
+availability using the criteria below.
 
-In contrast, we do not consider the default settings of OpenTelemetry software
-artifacts to be secure against availability attacks. We highly recommend not
-using insecure defaults where feasible. To ensure availability, users must
-require authentication for their endpoint communication following the guidance
-on the [Security section of our
-website](https://opentelemetry.io/docs/security/).
+Repositories may provide a `THREAT_MODEL.md` with component-specific context.
 
-Additionally, the OpenTelemetry project does not consider the following to be
-security vulnerabilities:
+### Assets and deployment context
 
-- a denial of service attack by properly authenticated clients
-- availability-related attack to endpoints by properly authenticated clients
+This model covers risks to telemetry, credentials, and the applications, hosts,
+and infrastructure running OpenTelemetry. It also covers build and release
+workflows and the artifacts they produce.
 
-These may still be considered bugs, and users can report them as such. When
-assessing availability-related impact, maintainers will also take into account
-the security policies of other projects (e.g. Prometheus) when assessing
-vulnerabilities against components that provide compatibility with those
-projects, as well as the level of asymmetry in terms of resource usage leveraged
-by the attack.
+Identify the affected type of component before assessing a report:
+
+- **APIs, SDKs, and instrumentation** often execute within an application's
+  process. A weakness can affect the host application's data and availability,
+  even when the library does not open a listening port itself. Identify the
+  actual execution context, including instrumentation running outside the
+  application process.
+- **Collectors, receivers, exporters, and extensions** process telemetry and
+  communicate with peers. Their exposed endpoints, local access, and privileges
+  depend on the enabled components and configuration.
+- **Operators, agents, and deployment tooling** may have access to workloads,
+  host resources, or orchestration APIs. Assess their actual permissions and
+  authorization boundaries.
+- **Build, test, and release tooling** can affect credentials and distributed
+  artifacts. Code that is absent from production can still be security relevant
+  when it processes untrusted contributions in a privileged workflow.
+
+### Inputs and trust boundaries
+
+For each entry point, identify who controls the input and what authority that
+actor has. Follow the input through intermediaries to the operation that could
+cause harm.
+
+| Input or surface | Expected control and boundary to assess |
+| --- | --- |
+| Incoming propagation headers, telemetry attributes, log bodies, and resource data | External callers or telemetry producers may influence these values. Parsing, processing, and forwarding them must be assessed as handling potentially untrusted data. |
+| Receiver and extension endpoints, including metrics and diagnostic endpoints | Identify who can connect, what authentication and authorization apply, and which data or operations are exposed. |
+| Exporter responses, scrape targets, redirects, and other network peers | A configured destination or authenticated peer can return malicious data. Identify which responses and destinations the attacker can influence. |
+| Configuration files, environment variables, endpoint URLs, certificates, and local files | Normally controlled by the operator. Identify the authority intentionally granted and whether a less trusted actor can modify or bypass it. |
+| Instrumentation code, callbacks, plugins, and custom components | Normally controlled by the developer or operator and executed with the host's privileges. Identify any isolation or restrictions the component promises. |
+| Contributions, dependencies, build inputs, and release workflows | Identify where untrusted content can reach execution, secrets, signing, or publication privileges. |
+
+Authentication of a transport peer does not establish the provenance of every
+field it forwards. For example, an authenticated exporter can forward baggage
+originally supplied by an unauthenticated application client. Identify the
+attacker and authentication boundary relevant to the reported behavior.
+
+### Assumptions and responsibilities
+
+- Trace IDs, span IDs, baggage, and other caller-supplied telemetry are not
+  authentication or authorization credentials. Accepting remote context or
+  caller-selected attributes is expected behavior; a report must identify an
+  additional security consequence, such as bypassing enforced tenant isolation.
+  See [Baggage security
+  considerations](https://opentelemetry.io/docs/concepts/signals/baggage/#baggage-security-considerations).
+- Telemetry can contain sensitive information. Users are responsible for
+  selecting data to collect and applying appropriate protection, as described in
+  [Handling sensitive
+  data](https://opentelemetry.io/docs/security/handling-sensitive-data/).
+  Unexpected collection of credentials or failure of a configured redaction
+  control still requires security assessment.
+- Operators are responsible for protecting configuration, credentials, and
+  telemetry endpoints, using encryption, authentication, network restrictions,
+  and appropriate permissions. See [Collector configuration best
+  practices](https://opentelemetry.io/docs/security/config-best-practices/).
+  A defect that bypasses these configured protections is a potential
+  vulnerability.
+- A capability intentionally granted to a configuration author or custom
+  component is not, by itself, a vulnerability. For example, selecting an
+  exporter destination is expected operator authority. Untrusted telemetry
+  overriding that destination, leaking credentials on a redirect, or bypassing
+  a destination restriction requires a separate assessment.
+- Supported nondefault configurations can be affected by vulnerabilities.
+  Record the required settings and whether they are defaults; configuration
+  requirements alone do not establish or exclude a vulnerability.
+
+### Availability policy
+
+Denial of service and resource exhaustion, including through unbounded
+telemetry, can be security vulnerabilities. Assess reports involving default
+settings, documented behavior, and authenticated clients. Authentication and
+required configuration must be recorded; neither proves processing is safe.
+Untrusted application input can reach an SDK without passing through a
+telemetry endpoint's authentication.
+
+For each availability report, establish the concrete security risk:
+
+- Identify the attacker-controlled input and reachable processing or retention
+  path, including any missing or ineffective resource bounds.
+- Record input size, volume, rate, and concurrency, resulting CPU, memory, disk,
+  or network cost, and how long resources remain occupied. Identify amplification
+  or unbounded accumulation where present.
+- Describe the consequence and recovery: bounded telemetry drops, a stalled
+  pipeline, or failure of the Collector, host application, or another service;
+  affected tenants; and whether recovery requires a restart or operator action.
+- Assess available protections in the affected version and configuration,
+  including whether limits apply before expensive work and whether an attacker
+  can bypass them. Consider the security policies of compatible projects
+  (e.g. Prometheus), documenting how they apply to the affected component.
+
+Expected drops during ordinary overload, a missing limit, or a performance
+improvement alone does not establish a vulnerability. Establish attacker
+influence and a credible denial-of-service consequence. This can include
+starving legitimate users of shared resources while limits hold, unbounded
+accumulation of valid telemetry, or host process failure; malformed input and
+superlinear cost are not required. Assess any confidentiality and integrity
+impact separately.
+
+Operators must protect endpoint access and limit exposure and resource
+consumption, following the [security
+guidance](https://opentelemetry.io/docs/security/). These responsibilities do not
+exempt implementation defects or unsafe defaults from assessment.
+
+### Vulnerability assessment
+
+Reports are typically acknowledged within 3 working days. Acknowledgment
+confirms receipt, not acceptance or severity. It may be needed to request
+missing information while evaluating the report.
+
+For each report, establish:
+
+1. **Affected component and configuration:** repository, package or artifact,
+   released versions, relevant features, deployment, and required settings.
+1. **Attacker capability:** the exact input under attacker control, access and
+   privileges required, and any cooperation needed from another party.
+1. **Reachable behavior:** the entry point and code path from that input to the
+   affected operation, including dependency calls and applicable checks.
+1. **Security consequence:** the missing or ineffective protection and concrete
+   confidentiality, integrity, or availability impact. Identify whose data or
+   resources are affected and any tenant or privilege boundary crossed.
+1. **Evidence and mitigations:** a reproducer or code-based explanation,
+   supporting source locations, relevant limits and protections, and why they
+   do not prevent the impact. State assumptions and unresolved questions.
+
+Automated findings should provide this information, cite code at the scanned
+revision, and distinguish verified facts from assumptions.
+
+Record whether the report is a confirmed vulnerability, needs more evidence,
+is a duplicate, or is a bug, hardening opportunity, or out-of-scope issue, with
+the reason. Missing evidence is uncertainty, not a low severity rating. A
+dependency advisory alone does not establish exploitability through an OTel
+component; apply the reachability and impact criteria in [CVE
+Management](#cve-management).
+
+Examples of distinctions that matter during triage:
+
+| Scenario | Assessment |
+| --- | --- |
+| A caller supplies a trace ID or baggage value | Expected propagation alone is insufficient. Identify unauthorized access, disclosure, or a violation of enforced isolation. |
+| An operator chooses an exporter destination | Expected operator authority. Investigate untrusted input overriding it or credentials leaking to another peer. |
+| Telemetry contains markup or query syntax | Identify a reachable unsafe interpreter; the syntax alone does not establish injection. |
+
+### Severity and prioritization
+
+Use the [CVSS v4.0
+specification](https://www.first.org/cvss/v4.0/specification-document) and
+[calculator](https://www.first.org/cvss/calculator/4.0). For accepted
+vulnerabilities, record the Base score (`CVSS-B`), full `CVSS:4.0` vector, and
+metric rationale. Label additional scores that include Threat or Environmental
+metrics as `CVSS-BT`, `CVSS-BE`, or `CVSS-BTE`, as applicable.
+
+The CVSS v4.0 qualitative bands are:
+
+| Rating | Score |
+| --- | --- |
+| Critical | 9.0 - 10.0 |
+| High | 7.0 - 8.9 |
+| Medium | 4.0 - 6.9 |
+| Low | 0.1 - 3.9 |
+| None | 0.0 |
+
+Select metrics from the attack path and impact, documenting reasonable
+worst-case usage assumptions for general-purpose libraries. A library flaw
+reachable through network input is not necessarily a local attack. Account for
+required privileges (`PR`) and user interaction (`UI`). Assess Attack
+Requirements (`AT`) separately from Attack Complexity (`AC`); a required
+nondefault configuration alone does not justify `AT:P`. Assess dependencies
+through their use in OTel rather than copying their scores.
+
+Define the vulnerable system being scored. Assess confidentiality, integrity,
+and availability within it (`VC`, `VI`, `VA`) and in any subsequent systems
+(`SC`, `SI`, `SA`). An SDK and its host application can form one vulnerable
+system; host application impact is not automatically subsequent-system impact.
+Use subsequent-system metrics for consequences outside the defined vulnerable
+system. Distinguish exposure of telemetry from exposure of credentials or
+unrelated application data.
+
+For availability findings, distinguish expected bounded telemetry loss from
+loss of a telemetry service or failure of the instrumented application. Record
+duration, recoverability, and affected users; authentication affects the attack
+prerequisites and does not alone justify an availability impact of None
+(`VA:N` or `SA:N`).
+
+Keep confidence in the evidence and response priority separate from severity.
+Record active exploitation, public disclosure, affected deployments, and
+available mitigations when prioritizing the response. Use Exploit Maturity
+(`E`) for Threat assessments and Environmental metrics for deployment-specific
+requirements and controls. Supplemental metrics such as Recovery (`R`) and
+Provider Urgency (`U`) add context without changing the numeric score.
 
 ## Reporting Process - For Vulnerability Reporters
 
@@ -151,6 +330,8 @@ For more detailed GitHub documentation on this feature, see
 Vulnerability reports should be acknowledged by Maintainers within 3 working
 days. This acknowledgment should include a brief confirmation that the report
 has been received and that Maintainers are evaluating the issue.
+
+Use the [Security model](#security-model) to evaluate acceptance and severity.
 
 When processing a vulnerability report, Maintainers should:
 
@@ -313,8 +494,9 @@ source of the vulnerability (direct vs. dependency):
    - The vulnerability can be exploited through the executable's usage patterns
    - The vulnerability creates a security impact for users of the executable
 
-   Do not request a CVE if the vulnerability in the dependency cannot be
-   triggered through normal usage of the executable.
+   Do not request a CVE if the dependency vulnerability cannot be triggered
+   through the executable's supported entry points, even with
+   attacker-controlled input.
 
    Note that the vulnerability impact for the OTel executable may be different
    than for the dependency that caused it, depending on how it is used.  Do not
@@ -366,9 +548,8 @@ For more information on requesting CVEs through GitHub, see the
 
 #### Q: How do I determine the severity of a vulnerability?
 
-**A:** Use the Common Vulnerability Scoring System (CVSS) to assess
-severity. GitHub provides a CVSS calculator in the Security Advisory interface,
-or you can use the [CVSS Calculator](https://www.first.org/cvss/calculator/3.1).
+**A:** Follow [Severity and prioritization](#severity-and-prioritization) for
+CVSS v4.0 scoring and the required score, vector, and metric rationale.
 
 #### Q: Should I fix the vulnerability before publishing the advisory?
 
