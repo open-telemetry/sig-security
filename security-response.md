@@ -28,7 +28,9 @@ This model guides vulnerability acceptance, severity assessment, and automated
 security analysis across OpenTelemetry. Assess confidentiality, integrity, and
 availability using the criteria below.
 
-Repositories may provide a `THREAT_MODEL.md` with component-specific context.
+Repositories may document component-specific trust assumptions and scoped
+exclusions in `THREAT_MODEL.md`. Exclusions should explain their rationale and
+remain consistent with this policy.
 
 ### Assets and deployment context
 
@@ -126,13 +128,12 @@ For each availability report, establish the concrete security risk:
   can bypass them. Consider the security policies of compatible projects
   (e.g. Prometheus), documenting how they apply to the affected component.
 
-Expected drops during ordinary overload, a missing limit, or a performance
-improvement alone does not establish a vulnerability. Establish attacker
-influence and a credible denial-of-service consequence. This can include
-starving legitimate users of shared resources while limits hold, unbounded
-accumulation of valid telemetry, or host process failure; malformed input and
-superlinear cost are not required. Assess any confidentiality and integrity
-impact separately.
+High-volume valid telemetry exceeding deployment capacity does not, by itself,
+establish a vulnerability. A report must identify a reachable processing,
+retention, or resource-isolation weakness and demonstrate how attacker-controlled
+input exploits it to deny service. Examples include retaining records beyond
+their intended lifetime or bypassing a configured resource budget. Valid input
+and linear resource growth do not, by themselves, exclude such weaknesses.
 
 Operators must protect endpoint access and limit exposure and resource
 consumption, following the [security
