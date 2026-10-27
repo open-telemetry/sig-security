@@ -25,12 +25,10 @@ clarifications are required.
 ## Security model
 
 This model guides vulnerability acceptance, severity assessment, and automated
-security analysis across OpenTelemetry. Assess confidentiality, integrity, and
-availability using the criteria below.
+security analysis across OpenTelemetry.
 
 Repositories may document component-specific trust assumptions and scoped
-exclusions in `THREAT_MODEL.md`. Exclusions should explain their rationale and
-remain consistent with this policy.
+exclusions in `THREAT_MODEL.md`. Exclusions should explain their rationale.
 
 ### Assets and deployment context
 
@@ -38,13 +36,11 @@ This model covers risks to telemetry, credentials, and the applications, hosts,
 and infrastructure running OpenTelemetry. It also covers build and release
 workflows and the artifacts they produce.
 
-Identify the affected type of component before assessing a report:
+Identify the affected component:
 
-- **APIs, SDKs, and instrumentation** often execute within an application's
-  process. A weakness can affect the host application's data and availability,
-  even when the library does not open a listening port itself. Identify the
-  actual execution context, including instrumentation running outside the
-  application process.
+- **APIs, SDKs, and instrumentation** often run within an application's process
+  and can affect its data and availability, even without a listening port.
+  Identify any instrumentation running outside that process.
 - **Collectors, receivers, exporters, and extensions** process telemetry and
   communicate with peers. Their exposed endpoints, local access, and privileges
   depend on the enabled components and configuration.
@@ -63,7 +59,7 @@ cause harm.
 
 | Input or surface | Expected control and boundary to assess |
 | --- | --- |
-| Incoming propagation headers, telemetry attributes, log bodies, and resource data | External callers or telemetry producers may influence these values. Parsing, processing, and forwarding them must be assessed as handling potentially untrusted data. |
+| Incoming propagation headers, telemetry attributes, log bodies, and resource data | External callers or telemetry producers may control these values. Treat them as potentially untrusted when parsing, processing, or forwarding. |
 | Receiver and extension endpoints, including metrics and diagnostic endpoints | Identify who can connect, what authentication and authorization apply, and which data or operations are exposed. |
 | Exporter responses, scrape targets, redirects, and other network peers | A configured destination or authenticated peer can return malicious data. Identify which responses and destinations the attacker can influence. |
 | Configuration files, environment variables, endpoint URLs, certificates, and local files | Normally controlled by the operator. Identify the authority intentionally granted and whether a less trusted actor can modify or bypass it. |
@@ -72,8 +68,7 @@ cause harm.
 
 Authentication of a transport peer does not establish the provenance of every
 field it forwards. For example, an authenticated exporter can forward baggage
-originally supplied by an unauthenticated application client. Identify the
-attacker and authentication boundary relevant to the reported behavior.
+originally supplied by an unauthenticated application client.
 
 ### Assumptions and responsibilities
 
@@ -90,8 +85,9 @@ attacker and authentication boundary relevant to the reported behavior.
   Unexpected collection of credentials or failure of a configured redaction
   control still requires security assessment.
 - Operators are responsible for protecting configuration, credentials, and
-  telemetry endpoints, using encryption, authentication, network restrictions,
-  and appropriate permissions. See [Collector configuration best
+  telemetry endpoints and limiting exposure and resource consumption. Use
+  encryption, authentication, network restrictions, and appropriate permissions.
+  See [Collector configuration best
   practices](https://opentelemetry.io/docs/security/config-best-practices/).
   A defect that bypasses these configured protections is a potential
   vulnerability.
@@ -99,7 +95,9 @@ attacker and authentication boundary relevant to the reported behavior.
   component is not, by itself, a vulnerability. For example, selecting an
   exporter destination is expected operator authority. Untrusted telemetry
   overriding that destination, leaking credentials on a redirect, or bypassing
-  a destination restriction requires a separate assessment.
+  a destination restriction requires assessment.
+- Markup or query syntax in telemetry alone does not establish injection;
+  identify a reachable unsafe interpreter.
 - Supported nondefault configurations can be affected by vulnerabilities.
   Record the required settings and whether they are defaults; configuration
   requirements alone do not establish or exclude a vulnerability.
@@ -108,10 +106,17 @@ attacker and authentication boundary relevant to the reported behavior.
 
 Denial of service and resource exhaustion, including through unbounded
 telemetry, can be security vulnerabilities. Assess reports involving default
-settings, documented behavior, and authenticated clients. Authentication and
-required configuration must be recorded; neither proves processing is safe.
-Untrusted application input can reach an SDK without passing through a
-telemetry endpoint's authentication.
+settings, documented behavior, and authenticated clients. Record required
+authentication and configuration. Untrusted application input can reach an SDK
+without passing through a telemetry endpoint's authentication.
+
+A missing resource limit or high-volume valid telemetry exceeding deployment
+capacity does not, by itself, establish a vulnerability. A report must identify
+a reachable processing, retention, or resource-isolation weakness and demonstrate
+how attacker-controlled input exploits it to deny service. Examples include
+retaining records beyond their intended lifetime or bypassing a configured
+resource budget. Valid input and linear resource growth do not, by themselves,
+exclude such weaknesses.
 
 For each availability report, establish the concrete security risk:
 
@@ -128,23 +133,13 @@ For each availability report, establish the concrete security risk:
   can bypass them. Consider the security policies of compatible projects
   (e.g. Prometheus), documenting how they apply to the affected component.
 
-High-volume valid telemetry exceeding deployment capacity does not, by itself,
-establish a vulnerability. A report must identify a reachable processing,
-retention, or resource-isolation weakness and demonstrate how attacker-controlled
-input exploits it to deny service. Examples include retaining records beyond
-their intended lifetime or bypassing a configured resource budget. Valid input
-and linear resource growth do not, by themselves, exclude such weaknesses.
-
-Operators must protect endpoint access and limit exposure and resource
-consumption, following the [security
-guidance](https://opentelemetry.io/docs/security/). These responsibilities do not
-exempt implementation defects or unsafe defaults from assessment.
+Operator responsibilities do not exempt implementation defects or unsafe
+defaults from assessment.
 
 ### Vulnerability assessment
 
-Reports are typically acknowledged within 3 working days. Acknowledgment
-confirms receipt, not acceptance or severity. It may be needed to request
-missing information while evaluating the report.
+Acknowledgment confirms receipt, not acceptance or severity. Request missing
+information as needed.
 
 For each report, establish:
 
@@ -170,14 +165,6 @@ the reason. Missing evidence is uncertainty, not a low severity rating. A
 dependency advisory alone does not establish exploitability through an OTel
 component; apply the reachability and impact criteria in [CVE
 Management](#cve-management).
-
-Examples of distinctions that matter during triage:
-
-| Scenario | Assessment |
-| --- | --- |
-| A caller supplies a trace ID or baggage value | Expected propagation alone is insufficient. Identify unauthorized access, disclosure, or a violation of enforced isolation. |
-| An operator chooses an exporter destination | Expected operator authority. Investigate untrusted input overriding it or credentials leaking to another peer. |
-| Telemetry contains markup or query syntax | Identify a reachable unsafe interpreter; the syntax alone does not establish injection. |
 
 ### Severity and prioritization
 
@@ -210,9 +197,8 @@ Define the vulnerable system being scored. Assess confidentiality, integrity,
 and availability within it (`VC`, `VI`, `VA`) and in any subsequent systems
 (`SC`, `SI`, `SA`). An SDK and its host application can form one vulnerable
 system; host application impact is not automatically subsequent-system impact.
-Use subsequent-system metrics for consequences outside the defined vulnerable
-system. Distinguish exposure of telemetry from exposure of credentials or
-unrelated application data.
+Distinguish exposure of telemetry from exposure of credentials or unrelated
+application data.
 
 For availability findings, distinguish expected bounded telemetry loss from
 loss of a telemetry service or failure of the instrumented application. Record
