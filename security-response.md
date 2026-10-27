@@ -139,27 +139,8 @@ defaults from assessment.
 
 ### Vulnerability assessment
 
-Acknowledgment confirms receipt, not acceptance or severity. Request missing
-information as needed.
-
-For each report, establish:
-
-1. **Affected component and configuration:** repository, package or artifact,
-   released versions, relevant features, deployment, and required settings.
-1. **Attacker capability:** the exact input under attacker control, access and
-   privileges required, and any cooperation needed from another party.
-1. **Reachable behavior:** the entry point and code path from that input to the
-   affected operation, including dependency calls and applicable checks.
-1. **Security consequence:** the missing or ineffective protection and concrete
-   confidentiality, integrity, or availability impact. Identify whose data or
-   resources are affected and any tenant or privilege boundary crossed.
-1. **Evidence and mitigations:** a reproducer or code-based explanation,
-   supporting source locations, relevant limits and protections, and why they
-   do not prevent the impact. State assumptions and unresolved questions.
-
-Validate findings against this model before submitting them. Provide the
-evidence above, cite code at the reviewed revision, and distinguish verified
-facts from assumptions.
+Acknowledgment confirms receipt, not acceptance or severity. Request any missing
+[report details](#report-requirements) needed for assessment.
 
 Record whether the report is a confirmed vulnerability, needs more evidence,
 is a duplicate, or is a bug, hardening opportunity, or out-of-scope issue, with
@@ -216,6 +197,29 @@ requirements and controls. Supplemental metrics such as Recovery (`R`) and
 Provider Urgency (`U`) add context without changing the numeric score.
 
 ## Reporting Process - For Vulnerability Reporters
+
+### Report requirements
+
+Validate findings against the [Security model](#security-model) before submitting
+them. Reports must provide:
+
+1. **Affected component and configuration:** repository, package or artifact,
+   released versions, relevant features, deployment, and required settings.
+1. **Attacker capability:** the exact input under attacker control, access and
+   privileges required, and any cooperation needed from another party.
+1. **Reachable behavior:** the entry point and how that input reaches the
+   affected operation. Include relevant code paths, dependency calls, and checks
+   where known.
+1. **Security consequence:** the missing or ineffective protection and concrete
+   confidentiality, integrity, or availability impact. Identify whose data or
+   resources are affected and any tenant or privilege boundary crossed.
+1. **Evidence and mitigations:** a reproducer or code-based explanation,
+   relevant limits and protections, and why they do not prevent the impact.
+   Include supporting source locations where known. State assumptions and
+   unresolved questions.
+
+Code references must identify the reviewed revision. Distinguish verified facts
+from assumptions.
 
 ### Reporting Methods
 
