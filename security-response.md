@@ -144,36 +144,21 @@ specification](https://www.first.org/cvss/v4.0/specification-document) and
 [calculator](https://www.first.org/cvss/calculator/4.0). For accepted
 vulnerabilities, record the Base score, `CVSS:4.0` vector, and metric rationale.
 
-The CVSS v4.0 qualitative bands are:
+For general-purpose libraries, document reasonable worst-case usage
+assumptions. A library flaw reachable through network input is not necessarily
+a local attack. A required nondefault configuration alone does not justify
+`AT:P`. Assess dependencies through their use in OTel rather than copying their
+scores.
 
-| Rating | Score |
-| --- | --- |
-| Critical | 9.0 - 10.0 |
-| High | 7.0 - 8.9 |
-| Medium | 4.0 - 6.9 |
-| Low | 0.1 - 3.9 |
-| None | 0.0 |
-
-Select metrics from the attack path and impact, documenting reasonable
-worst-case usage assumptions for general-purpose libraries. A library flaw
-reachable through network input is not necessarily a local attack. Account for
-required privileges (`PR`) and user interaction (`UI`). Assess Attack
-Requirements (`AT`) separately from Attack Complexity (`AC`); a required
-nondefault configuration alone does not justify `AT:P`. Assess dependencies
-through their use in OTel rather than copying their scores.
-
-Define the vulnerable system being scored. Assess confidentiality, integrity,
-and availability within it (`VC`, `VI`, `VA`) and in any subsequent systems
-(`SC`, `SI`, `SA`). An SDK and its host application can form one vulnerable
-system; host application impact is not automatically subsequent-system impact.
-Distinguish exposure of telemetry from exposure of credentials or unrelated
-application data.
+Define the vulnerable system being scored. An SDK and its host application can
+form one vulnerable system; host application impact is not automatically
+subsequent-system impact. Distinguish exposure of telemetry from exposure of
+credentials or unrelated application data.
 
 For availability findings, distinguish expected bounded telemetry loss from
-loss of a telemetry service or failure of the instrumented application. Record
-duration, recoverability, and affected users; authentication affects the attack
-prerequisites and does not alone justify an availability impact of None
-(`VA:N` or `SA:N`).
+loss of a telemetry service or failure of the instrumented application.
+Authentication alone does not justify an availability impact of None (`VA:N` or
+`SA:N`).
 
 Keep confidence in the evidence and response priority separate from severity.
 Record active exploitation, public disclosure, affected deployments, and
