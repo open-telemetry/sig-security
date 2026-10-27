@@ -157,8 +157,9 @@ For each report, establish:
    supporting source locations, relevant limits and protections, and why they
    do not prevent the impact. State assumptions and unresolved questions.
 
-Automated findings should provide this information, cite code at the scanned
-revision, and distinguish verified facts from assumptions.
+Validate automated findings against this model before submitting them. Provide
+the evidence above, cite code at the scanned revision, and distinguish verified
+facts from assumptions.
 
 Record whether the report is a confirmed vulnerability, needs more evidence,
 is a duplicate, or is a bug, hardening opportunity, or out-of-scope issue, with
