@@ -137,18 +137,6 @@ For each availability report:
 Operator responsibilities do not exempt implementation defects or unsafe
 defaults from assessment.
 
-### Vulnerability assessment
-
-Acknowledgment confirms receipt, not acceptance or severity. Request any missing
-[report details](#report-requirements) needed for assessment.
-
-Record whether the report is a confirmed vulnerability, needs more evidence,
-is a duplicate, or is a bug, hardening opportunity, or out-of-scope issue, with
-the reason. Missing evidence is uncertainty, not a low severity rating. A
-dependency advisory alone does not establish exploitability through an OTel
-component; apply the reachability and impact criteria in [CVE
-Management](#cve-management).
-
 ### Severity and prioritization
 
 Use the [CVSS v4.0
@@ -321,10 +309,18 @@ For more detailed GitHub documentation on this feature, see
 ### Incident Response
 
 Vulnerability reports should be acknowledged by Maintainers within 3 working
-days. This acknowledgment should include a brief confirmation that the report
-has been received and that Maintainers are evaluating the issue.
+days. Confirm receipt and that the issue is being evaluated. Acknowledgment
+does not establish acceptance or severity.
 
 Use the [Security model](#security-model) to evaluate acceptance and severity.
+Request any missing [report details](#report-requirements) needed for assessment.
+
+Record whether the report is a confirmed vulnerability, needs more evidence,
+is a duplicate, or is a bug, hardening opportunity, or out-of-scope issue, with
+the reason. Missing evidence is uncertainty, not a low severity rating. A
+dependency advisory alone does not establish exploitability through an OTel
+component; apply the reachability and impact criteria in [CVE
+Management](#cve-management).
 
 When processing a vulnerability report, Maintainers should:
 
