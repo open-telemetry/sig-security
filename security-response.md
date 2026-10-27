@@ -535,11 +535,6 @@ For more information on requesting CVEs through GitHub, see the
 
 ### FAQ for Maintainers
 
-#### Q: How do I determine the severity of a vulnerability?
-
-**A:** Follow [Severity and prioritization](#severity-and-prioritization) for
-CVSS v4.0 scoring and the required score, vector, and metric rationale.
-
 #### Q: Should I fix the vulnerability before publishing the advisory?
 
 **A:** Whenever possible, include a fix version in the advisory before
