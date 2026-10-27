@@ -157,8 +157,8 @@ For each report, establish:
    supporting source locations, relevant limits and protections, and why they
    do not prevent the impact. State assumptions and unresolved questions.
 
-Validate automated findings against this model before submitting them. Provide
-the evidence above, cite code at the scanned revision, and distinguish verified
+Validate findings against this model before submitting them. Provide the
+evidence above, cite code at the reviewed revision, and distinguish verified
 facts from assumptions.
 
 Record whether the report is a confirmed vulnerability, needs more evidence,
