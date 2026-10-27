@@ -110,15 +110,16 @@ settings, documented behavior, and authenticated clients. Record required
 authentication and configuration. Untrusted application input can reach an SDK
 without passing through a telemetry endpoint's authentication.
 
-A missing resource limit or high-volume valid telemetry exceeding deployment
-capacity does not, by itself, establish a vulnerability. A report must identify
-a reachable processing, retention, or resource-isolation weakness and demonstrate
-how attacker-controlled input exploits it to deny service. Examples include
-retaining records beyond their intended lifetime or bypassing a configured
-resource budget. Valid input and linear resource growth do not, by themselves,
-exclude such weaknesses.
+A missing resource limit, high-volume valid telemetry exceeding deployment
+capacity, or an opportunity to reduce resource use or improve performance does
+not, by itself, establish a vulnerability. A report must identify a reachable
+processing, retention, or resource-isolation weakness and demonstrate how
+attacker-controlled input exploits it to deny service. Examples include retaining
+records beyond their intended lifetime or bypassing a configured resource
+budget. Valid input and linear resource growth do not, by themselves, exclude
+such weaknesses.
 
-For each availability report, establish the concrete security risk:
+For each availability report:
 
 - Identify the attacker-controlled input and reachable processing or retention
   path, including any missing or ineffective resource bounds.
