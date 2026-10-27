@@ -139,12 +139,10 @@ defaults from assessment.
 
 ### Severity and prioritization
 
-Use the [CVSS v4.0
+Use only the Base metrics from the [CVSS v4.0
 specification](https://www.first.org/cvss/v4.0/specification-document) and
 [calculator](https://www.first.org/cvss/calculator/4.0). For accepted
-vulnerabilities, record the Base score (`CVSS-B`), full `CVSS:4.0` vector, and
-metric rationale. Label additional scores that include Threat or Environmental
-metrics as `CVSS-BT`, `CVSS-BE`, or `CVSS-BTE`, as applicable.
+vulnerabilities, record the Base score, `CVSS:4.0` vector, and metric rationale.
 
 The CVSS v4.0 qualitative bands are:
 
@@ -179,10 +177,7 @@ prerequisites and does not alone justify an availability impact of None
 
 Keep confidence in the evidence and response priority separate from severity.
 Record active exploitation, public disclosure, affected deployments, and
-available mitigations when prioritizing the response. Use Exploit Maturity
-(`E`) for Threat assessments and Environmental metrics for deployment-specific
-requirements and controls. Supplemental metrics such as Recovery (`R`) and
-Provider Urgency (`U`) add context without changing the numeric score.
+available mitigations when prioritizing the response.
 
 ## Reporting Process - For Vulnerability Reporters
 
