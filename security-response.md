@@ -29,6 +29,8 @@ security analysis across OpenTelemetry.
 
 Repositories may document component-specific trust assumptions and scoped
 exclusions in `THREAT_MODEL.md`. Exclusions should explain their rationale.
+Component-specific exclusions take precedence for the components they cover;
+the remaining assessment and reporting guidance still applies.
 
 ### Assets and deployment context
 
@@ -172,7 +174,8 @@ Validate findings against the [Security model](#security-model) before submittin
 them. Reports must provide:
 
 1. **Affected component and configuration:** repository, package or artifact,
-   released versions, relevant features, deployment, and required settings.
+   affected versions or revisions (including released versions where applicable),
+   relevant features, deployment, and required settings.
 1. **Attacker capability:** the exact input under attacker control, access and
    privileges required, and any cooperation needed from another party.
 1. **Reachable behavior:** the entry point and how that input reaches the
