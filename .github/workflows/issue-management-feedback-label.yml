@@ -1,31 +1,28 @@
 name: Issue management - remove labels as needed
 
 on:
-  issue_comment:
+  # Author replies require this trigger. The job only changes labels using
+  # repository/issue metadata, without checking out code or using comment content.
+  issue_comment: # zizmor: ignore[dangerous-triggers]
     types: [created]
 
-permissions:
-  contents: read
+permissions: {}
 
 jobs:
   issue_comment:
     permissions:
-      contents: read
-      issues: write
-      pull-requests: write
+      issues: write # to remove labels from issues
+      pull-requests: write # to remove labels from pull requests
     if: >
       contains(github.event.issue.labels.*.name, 'needs author feedback') &&
       github.event.comment.user.login == github.event.issue.user.login
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        with:
-          persist-credentials: false
-
       - name: Remove labels
         env:
           ISSUE_NUMBER: ${{ github.event.issue.number }}
+          GH_REPO: ${{ github.repository }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh issue edit --remove-label "needs author feedback" $ISSUE_NUMBER
-          gh issue edit --remove-label "stale" $ISSUE_NUMBER
+          gh issue edit --remove-label "needs author feedback" "$ISSUE_NUMBER"
+          gh issue edit --remove-label "stale" "$ISSUE_NUMBER"
