@@ -35,10 +35,11 @@ the remaining assessment and reporting guidance still applies.
 ### Assets and deployment context
 
 This model covers risks to telemetry, credentials, and the applications, hosts,
-and infrastructure running OpenTelemetry. It also covers build and release
-workflows and the artifacts they produce.
+and infrastructure running OpenTelemetry. It also covers development tools,
+declarative definitions, build and release workflows, and their artifacts.
 
-Identify the affected component:
+Identify the actual execution or consumption context. A component can fit more
+than one category:
 
 - **APIs, SDKs, and instrumentation** often run within an application's process
   and can affect its data and availability, even without a listening port.
@@ -46,9 +47,21 @@ Identify the affected component:
 - **Collectors, receivers, exporters, and extensions** process telemetry and
   communicate with peers. Their exposed endpoints, local access, and privileges
   depend on the enabled components and configuration.
-- **Operators, agents, and deployment tooling** may have access to workloads,
+- **Host agents, profilers, and external instrumentation**, including the eBPF
+  Profiler and OpenTelemetry eBPF Instrumentation (OBI), can run outside
+  application processes with elevated host permissions. Depending on deployment
+  and enabled features, they may read process memory and executable files or
+  inspect and modify application traffic. Identify their actual privileges,
+  capabilities, host mounts, and process or network namespace access, including
+  `hostPID` or `hostNetwork` where used.
+- **Operators and deployment tooling** may have access to workloads,
   host resources, or orchestration APIs. Assess their actual permissions and
   authorization boundaries.
+- **Development tools and declarative definitions** include tools such as
+  Weaver and definitions such as Semantic Conventions. Identify the tools and
+  implementations that consume registries, schemas, templates, or generated
+  artifacts, and their permissions. Trace the security effects of definitions
+  through their validation, generation, and runtime uses.
 - **Build, test, and release tooling** can affect credentials and distributed
   artifacts. Code that is absent from production can still be security relevant
   when it processes untrusted contributions in a privileged workflow.
@@ -64,8 +77,10 @@ cause harm.
 | Incoming propagation headers, telemetry attributes, log bodies, and resource data | External callers or telemetry producers may control these values. Treat them as potentially untrusted when parsing, processing, or forwarding. |
 | Receiver and extension endpoints, including metrics and diagnostic endpoints | Identify who can connect, what authentication and authorization apply, and which data or operations are exposed. |
 | Exporter responses, scrape targets, redirects, and other network peers | A configured destination or authenticated peer can return malicious data. Identify which responses and destinations the attacker can influence. |
-| Configuration files, environment variables, endpoint URLs, certificates, and local files | Normally controlled by the operator. Identify the authority intentionally granted and whether a less trusted actor can modify or bypass it. |
+| Observed process memory, executable files, workload metadata, and application traffic | Local workloads or remote clients of observed applications may control these inputs without accessing a telemetry endpoint. Identify how an agent reads, parses, or modifies them and the process, container, or host privilege boundaries involved. |
+| Operator-managed configuration, environment variables, endpoint URLs, certificates, and local files | Normally controlled by the operator. Identify the authority intentionally granted and whether a less trusted actor can modify or bypass it. |
 | Instrumentation code, callbacks, plugins, and custom components | Normally controlled by the developer or operator and executed with the host's privileges. Identify any isolation or restrictions the component promises. |
+| Semantic convention definitions, schemas, registry dependencies, templates, and generated artifacts | Identify their authors and consumers, including how untrusted inputs affect validation, file access, generated output, or downstream execution. Distinguish intended authoring authority from unintended effects. |
 | Contributions, dependencies, build inputs, and release workflows | Identify where untrusted content can reach execution, secrets, signing, or publication privileges. |
 
 Authentication of a transport peer does not establish the provenance of every
@@ -98,6 +113,10 @@ originally supplied by an unauthenticated application client.
   exporter destination is expected operator authority. Untrusted telemetry
   overriding that destination, leaking credentials on a redirect, or bypassing
   a destination restriction requires assessment.
+- An agent's intended observation or instrumentation permissions do not grant
+  those permissions to observed workloads or their remote clients. Assess
+  unintended data access or modification, privilege escalation, and container
+  escape through the agent.
 - Markup or query syntax in telemetry alone does not establish injection;
   identify a reachable unsafe interpreter.
 - Supported nondefault configurations can be affected by vulnerabilities.
