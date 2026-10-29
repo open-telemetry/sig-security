@@ -49,38 +49,19 @@ by the attack.
 
 ### Availability assessment
 
-Within the availability scope defined above, assess whether a report
-demonstrates an exploitable processing, retention, or resource-isolation
-weakness that degrades or denies service. A missing resource limit, high-volume
-valid telemetry exceeding deployment capacity, or an opportunity to reduce
-resource use or improve performance does not, by itself, establish a
-vulnerability.
-Ordinary overload without such a weakness is a capacity or hardening issue.
+Within the availability scope defined above, distinguish between:
 
-Asymmetric resource exhaustion, where attacker effort causes disproportionate
-resource consumption in the affected system, can indicate such a weakness.
-Assess resource cost, retention time, and existing protections rather than
-relying on asymmetry alone. Valid input and linear resource growth do not, by
-themselves, exclude a weakness, such as retaining records beyond their intended
-lifetime or bypassing a configured resource budget.
+- **Software Vulnerabilities:** exploitable weaknesses in the software that let
+  an attacker degrade or deny service, such as resource leaks or bypasses of
+  configured resource limits.
+- **Infrastructure Capacity Issues:** workloads exceeding the deployment's
+  available CPU, memory, disk, or network capacity without exploiting a software
+  weakness. Address these through capacity planning, configuration, or scaling.
 
-For availability findings, distinguish expected bounded telemetry loss from
-loss of a telemetry service or failure of the instrumented application.
-
-When assessing an availability report:
-
-- Identify the attacker-controlled input and reachable processing or retention
-  path, including any missing or ineffective resource bounds.
-- Record input size, volume, rate, and concurrency, resulting CPU, memory, disk,
-  or network cost, and how long resources remain occupied. Identify amplification
-  or unbounded accumulation where present.
-- Describe the consequence and recovery: bounded telemetry drops, a stalled
-  pipeline, or failure of the Collector, host application, or another service;
-  affected tenants; and whether recovery requires a restart or operator action.
-- Assess available protections in the affected version and configuration,
-  including whether limits apply before expensive work and whether an attacker
-  can bypass them. Consider the security policies of compatible projects
-  (e.g. Prometheus), documenting how they apply to the affected component.
+[MITRE CWE-400](https://cwe.mitre.org/data/definitions/400.html) cautions against
+confusing resource consumption as an impact with the weakness that causes it.
+High resource use or denial of service alone does not establish a software
+vulnerability; identify the exploitable weakness.
 
 ## Reporting Process - For Vulnerability Reporters
 
