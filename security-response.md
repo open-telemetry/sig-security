@@ -63,6 +63,9 @@ confusing resource consumption as an impact with the weakness that causes it.
 High resource use or denial of service alone does not establish a software
 vulnerability; identify the exploitable weakness.
 
+When assessing availability impact, distinguish expected bounded telemetry loss
+from loss of a telemetry service or failure of the instrumented application.
+
 ## Reporting Process - For Vulnerability Reporters
 
 ### Report requirements
