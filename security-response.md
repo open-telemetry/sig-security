@@ -71,6 +71,9 @@ details to the extent known, and identify any gaps:
    observed behavior. Describe relevant limits and protections and why they
    do not prevent the impact. Include supporting source locations where
    known. State assumptions and unresolved questions.
+1. **Severity assessment:** a CVSS v4.0 Base score, `CVSS:4.0` vector, and
+   rationale for each Base metric. Follow the [severity and prioritization
+   guidance](#severity-and-prioritization) below.
 
 Code references must identify the reviewed revision. Distinguish verified facts
 from assumptions.
@@ -83,6 +86,32 @@ available evidence, and supplement it during assessment.
 Reports without supporting evidence may be closed if the reporter does not
 provide it after a request from Maintainers. A closed report may be reopened
 if supporting evidence is provided later.
+
+#### Severity and prioritization
+
+Assess vulnerabilities using only the Base metrics from the [CVSS v4.0
+specification](https://www.first.org/cvss/v4.0/specification-document) and
+[calculator](https://www.first.org/cvss/calculator/4.0).
+
+For general-purpose libraries, document reasonable worst-case usage
+assumptions. A library flaw reachable through network input is not necessarily
+a local attack. A required nondefault configuration alone does not justify
+`AT:P`. Assess dependencies through their use in OTel rather than copying their
+scores.
+
+Define the vulnerable system being scored. An SDK and its host application can
+form one vulnerable system; host application impact is not automatically
+subsequent-system impact. Distinguish exposure of telemetry from exposure of
+credentials or unrelated application data.
+
+For availability findings, distinguish expected bounded telemetry loss from
+loss of a telemetry service or failure of the instrumented application.
+Authentication alone does not justify an availability impact of None (`VA:N` or
+`SA:N`).
+
+Keep confidence in the evidence and response priority separate from severity.
+Record active exploitation, public disclosure, affected deployments, and
+available mitigations when prioritizing the response.
 
 ### Reporting Methods
 
@@ -135,33 +164,6 @@ and managers of vulnerabilities reported in their respective repos.
 
 Maintainers should familiarize themselves with the above guidance for Reporters
 and encourage any potential Reporters to follow that guidance.
-
-### Severity and prioritization
-
-Assess accepted vulnerabilities using only the Base metrics from the [CVSS v4.0
-specification](https://www.first.org/cvss/v4.0/specification-document) and
-[calculator](https://www.first.org/cvss/calculator/4.0). For accepted
-vulnerabilities, record the Base score, `CVSS:4.0` vector, and metric rationale.
-
-For general-purpose libraries, document reasonable worst-case usage
-assumptions. A library flaw reachable through network input is not necessarily
-a local attack. A required nondefault configuration alone does not justify
-`AT:P`. Assess dependencies through their use in OTel rather than copying their
-scores.
-
-Define the vulnerable system being scored. An SDK and its host application can
-form one vulnerable system; host application impact is not automatically
-subsequent-system impact. Distinguish exposure of telemetry from exposure of
-credentials or unrelated application data.
-
-For availability findings, distinguish expected bounded telemetry loss from
-loss of a telemetry service or failure of the instrumented application.
-Authentication alone does not justify an availability impact of None (`VA:N` or
-`SA:N`).
-
-Keep confidence in the evidence and response priority separate from severity.
-Record active exploitation, public disclosure, affected deployments, and
-available mitigations when prioritizing the response.
 
 ### Permissions Model
 
@@ -233,7 +235,8 @@ When processing a vulnerability report, Maintainers should:
 1. Acknowledge receipt of the report within 3 working days
 1. Invite Collaborators as needed
 1. Verify if the reported issue is actually a vulnerability
-1. Assess the severity and impact of the vulnerability
+1. Assess the severity and impact of the vulnerability using the
+   [severity and prioritization guidance](#severity-and-prioritization)
 1. Determine if the vulnerability is already publicly known or disclosed
 1. Negotiate an embargo period, if needed
 1. Request a CVE, if needed _(Admin)_
