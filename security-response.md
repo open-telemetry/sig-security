@@ -27,8 +27,8 @@ clarifications are required.
 Repositories may document component-specific security requirements, trust
 assumptions, security boundaries, and exclusions in `THREAT_MODEL.md`.
 
-If a component's `THREAT_MODEL.md` conflicts with these guidelines, the threat
-model takes precedence for that component. These guidelines apply wherever the
+If a component's `THREAT_MODEL.md` conflicts with this document, the threat
+model takes precedence for that component. This document applies wherever the
 threat model does not specify otherwise.
 
 When assessing the urgency and importance of a security fix, confidentiality and
