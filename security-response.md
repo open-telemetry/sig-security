@@ -222,11 +222,9 @@ is a duplicate, or is a bug, hardening opportunity, or out-of-scope issue, with
 the reason. Missing evidence is uncertainty, not a low severity rating. A
 dependency advisory alone does not establish exploitability through an OTel
 component; apply the reachability and impact criteria in [CVE
-Management](#cve-management).
-
-Keep confidence in the evidence and response priority separate from severity.
-Record active exploitation, public disclosure, affected deployments, and
-available mitigations when prioritizing the response.
+Management](#cve-management). When prioritizing the response, record active
+exploitation, public disclosure, affected deployments, and available mitigations
+separately from severity.
 
 When processing a vulnerability report, Maintainers should:
 
