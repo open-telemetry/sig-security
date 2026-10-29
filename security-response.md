@@ -72,8 +72,8 @@ details to the extent known, and identify any gaps:
    do not prevent the impact. Include supporting source locations where
    known. State assumptions and unresolved questions.
 1. **Severity assessment:** a CVSS v4.0 Base score, `CVSS:4.0` vector, and
-   rationale for each Base metric. Follow the [severity and prioritization
-   guidance](#severity-and-prioritization) below.
+   rationale for each Base metric. Follow the [severity guidance](#severity)
+   below.
 
 Code references must identify the reviewed revision. Distinguish verified facts
 from assumptions.
@@ -87,7 +87,7 @@ Reports without supporting evidence may be closed if the reporter does not
 provide it after a request from Maintainers. A closed report may be reopened
 if supporting evidence is provided later.
 
-#### Severity and prioritization
+#### Severity
 
 Assess vulnerabilities using only the Base metrics from the [CVSS v4.0
 specification](https://www.first.org/cvss/v4.0/specification-document) and
@@ -108,10 +108,6 @@ For availability findings, distinguish expected bounded telemetry loss from
 loss of a telemetry service or failure of the instrumented application.
 Authentication alone does not justify an availability impact of None (`VA:N` or
 `SA:N`).
-
-Keep confidence in the evidence and response priority separate from severity.
-Record active exploitation, public disclosure, affected deployments, and
-available mitigations when prioritizing the response.
 
 ### Reporting Methods
 
@@ -230,13 +226,17 @@ dependency advisory alone does not establish exploitability through an OTel
 component; apply the reachability and impact criteria in [CVE
 Management](#cve-management).
 
+Keep confidence in the evidence and response priority separate from severity.
+Record active exploitation, public disclosure, affected deployments, and
+available mitigations when prioritizing the response.
+
 When processing a vulnerability report, Maintainers should:
 
 1. Acknowledge receipt of the report within 3 working days
 1. Invite Collaborators as needed
 1. Verify if the reported issue is actually a vulnerability
 1. Assess the severity and impact of the vulnerability using the
-   [severity and prioritization guidance](#severity-and-prioritization)
+   [severity guidance](#severity)
 1. Determine if the vulnerability is already publicly known or disclosed
 1. Negotiate an embargo period, if needed
 1. Request a CVE, if needed _(Admin)_
