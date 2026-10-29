@@ -47,6 +47,9 @@ vulnerabilities against components that provide compatibility with those
 projects, as well as the level of asymmetry in terms of resource usage leveraged
 by the attack.
 
+For availability findings, distinguish expected bounded telemetry loss from
+loss of a telemetry service or failure of the instrumented application.
+
 ## Reporting Process - For Vulnerability Reporters
 
 ### Report requirements
@@ -103,9 +106,6 @@ Define the vulnerable system being scored. An SDK and its host application can
 form one vulnerable system; host application impact is not automatically
 subsequent-system impact. Distinguish exposure of telemetry from exposure of
 credentials or unrelated application data.
-
-For availability findings, distinguish expected bounded telemetry loss from
-loss of a telemetry service or failure of the instrumented application.
 
 ### Reporting Methods
 
