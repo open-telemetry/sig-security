@@ -106,8 +106,6 @@ credentials or unrelated application data.
 
 For availability findings, distinguish expected bounded telemetry loss from
 loss of a telemetry service or failure of the instrumented application.
-Authentication alone does not justify an availability impact of None (`VA:N` or
-`SA:N`).
 
 ### Reporting Methods
 
