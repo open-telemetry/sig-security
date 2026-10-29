@@ -49,6 +49,37 @@ by the attack.
 
 ## Reporting Process - For Vulnerability Reporters
 
+### Report requirements
+
+Assess findings against the [Security model](#security-model). Reports must
+include evidence supporting the suspected vulnerability. Provide the following
+details to the extent known, and identify any gaps:
+
+1. **Affected component and configuration:** repository, package or artifact,
+   affected versions or revisions (including released versions where applicable),
+   relevant features, deployment, and required settings.
+1. **Attacker capability:** the exact input under attacker control, access and
+   privileges required, and any cooperation needed from another party.
+1. **Reachable behavior:** the entry point and how that input reaches the
+   affected operation. Include relevant code paths, dependency calls, and checks
+   where known.
+1. **Security consequence:** the missing or ineffective protection and concrete
+   confidentiality, integrity, or availability impact. Identify whose data or
+   resources are affected and any tenant or privilege boundary crossed.
+1. **Evidence and existing protections:** a reproducer or substantiated
+   explanation of reachability and impact, supported by code analysis or
+   observed behavior. Describe relevant limits and protections and why they
+   do not prevent the impact. Include supporting source locations where
+   known. State assumptions and unresolved questions.
+
+Code references must identify the reviewed revision. Distinguish verified facts
+from assumptions.
+
+Do not delay an initial report of a suspected vulnerability while gathering
+missing details, especially if it is already public or being actively
+exploited. Use the [private reporting methods](#reporting-methods), include the
+available evidence, and supplement it during assessment.
+
 ### Reporting Methods
 
 In order for the vulnerability reports to reach maintainers as soon as possible,
@@ -151,6 +182,16 @@ For more detailed GitHub documentation on this feature, see
 Vulnerability reports should be acknowledged by Maintainers within 3 working
 days. This acknowledgment should include a brief confirmation that the report
 has been received and that Maintainers are evaluating the issue.
+
+Acknowledgment confirms receipt; it does not establish acceptance or severity.
+Request any missing [report details](#report-requirements) needed for assessment.
+
+Record whether the report is a confirmed vulnerability, needs more evidence,
+is a duplicate, or is a bug, hardening opportunity, or out-of-scope issue, with
+the reason. Missing evidence is uncertainty, not a low severity rating. A
+dependency advisory alone does not establish exploitability through an OTel
+component; apply the reachability and impact criteria in [CVE
+Management](#cve-management).
 
 When processing a vulnerability report, Maintainers should:
 
