@@ -101,6 +101,33 @@ and managers of vulnerabilities reported in their respective repos.
 Maintainers should familiarize themselves with the above guidance for Reporters
 and encourage any potential Reporters to follow that guidance.
 
+### Severity and prioritization
+
+Assess accepted vulnerabilities using only the Base metrics from the [CVSS v4.0
+specification](https://www.first.org/cvss/v4.0/specification-document) and
+[calculator](https://www.first.org/cvss/calculator/4.0). For accepted
+vulnerabilities, record the Base score, `CVSS:4.0` vector, and metric rationale.
+
+For general-purpose libraries, document reasonable worst-case usage
+assumptions. A library flaw reachable through network input is not necessarily
+a local attack. A required nondefault configuration alone does not justify
+`AT:P`. Assess dependencies through their use in OTel rather than copying their
+scores.
+
+Define the vulnerable system being scored. An SDK and its host application can
+form one vulnerable system; host application impact is not automatically
+subsequent-system impact. Distinguish exposure of telemetry from exposure of
+credentials or unrelated application data.
+
+For availability findings, distinguish expected bounded telemetry loss from
+loss of a telemetry service or failure of the instrumented application.
+Authentication alone does not justify an availability impact of None (`VA:N` or
+`SA:N`).
+
+Keep confidence in the evidence and response priority separate from severity.
+Record active exploitation, public disclosure, affected deployments, and
+available mitigations when prioritizing the response.
+
 ### Permissions Model
 
 By default, only GitHub Org Owners, org-wide Security Managers, and Repository
@@ -366,9 +393,8 @@ For more information on requesting CVEs through GitHub, see the
 
 #### Q: How do I determine the severity of a vulnerability?
 
-**A:** Use the Common Vulnerability Scoring System (CVSS) to assess
-severity. GitHub provides a CVSS calculator in the Security Advisory interface,
-or you can use the [CVSS Calculator](https://www.first.org/cvss/calculator/3.1).
+**A:** Follow [Severity and prioritization](#severity-and-prioritization) to
+record the CVSS v4.0 Base score, vector, and rationale.
 
 #### Q: Should I fix the vulnerability before publishing the advisory?
 
