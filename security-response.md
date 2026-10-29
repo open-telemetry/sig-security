@@ -47,9 +47,6 @@ vulnerabilities against components that provide compatibility with those
 projects, as well as the level of asymmetry in terms of resource usage leveraged
 by the attack.
 
-For availability findings, distinguish expected bounded telemetry loss from
-loss of a telemetry service or failure of the instrumented application.
-
 ## Reporting Process - For Vulnerability Reporters
 
 ### Report requirements
