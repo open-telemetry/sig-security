@@ -80,6 +80,10 @@ missing details, especially if it is already public or being actively
 exploited. Use the [private reporting methods](#reporting-methods), include the
 available evidence, and supplement it during assessment.
 
+Reports without supporting evidence may be closed if the reporter does not
+provide it after a request from Maintainers. A closed report may be reopened
+if supporting evidence is provided later.
+
 ### Reporting Methods
 
 In order for the vulnerability reports to reach maintainers as soon as possible,
@@ -185,6 +189,10 @@ has been received and that Maintainers are evaluating the issue.
 
 Acknowledgment confirms receipt; it does not establish acceptance or severity.
 Request any missing [report details](#report-requirements) needed for assessment.
+
+If a report contains no supporting evidence and the reporter does not
+provide it after a request, Maintainers may close the report. Record the
+reason for closure.
 
 Record whether the report is a confirmed vulnerability, needs more evidence,
 is a duplicate, or is a bug, hardening opportunity, or out-of-scope issue, with
