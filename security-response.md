@@ -24,12 +24,11 @@ clarifications are required.
 
 ## Security model
 
-Repositories may document component-specific security requirements, trust
-assumptions, security boundaries, and exclusions in `THREAT_MODEL.md`.
+Repositories may document component-specific threat models in `THREAT_MODEL.md`.
 
-If a component's `THREAT_MODEL.md` conflicts with this section, the threat
-model takes precedence for that component. This section applies wherever the
-threat model does not specify otherwise.
+If a component's `THREAT_MODEL.md` explicitly specifies otherwise, it takes
+precedence over this section for that component. This section applies wherever
+the threat model does not specify otherwise.
 
 When assessing the urgency and importance of a security fix, confidentiality and
 integrity are our topmost concerns for all OpenTelemetry software artifacts.
