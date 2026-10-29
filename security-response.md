@@ -64,6 +64,9 @@ relying on asymmetry alone. Valid input and linear resource growth do not, by
 themselves, exclude a weakness, such as retaining records beyond their intended
 lifetime or bypassing a configured resource budget.
 
+For availability findings, distinguish expected bounded telemetry loss from
+loss of a telemetry service or failure of the instrumented application.
+
 When assessing an availability report:
 
 - Identify the attacker-controlled input and reachable processing or retention
