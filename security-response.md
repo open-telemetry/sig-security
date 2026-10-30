@@ -51,17 +51,30 @@ by the attack.
 
 Within the availability scope defined above, distinguish between:
 
-- **Software Vulnerabilities:** exploitable weaknesses in the software that let
-  an attacker degrade or deny service, such as resource leaks or bypasses of
-  configured resource limits.
+- **Software Vulnerabilities:** exploitable weaknesses in software design or
+  implementation that let an attacker degrade or deny service, such as resource
+  leaks, missing or ineffective resource controls needed to enforce security
+  requirements, or bypasses of configured resource limits.
 - **Infrastructure Capacity Issues:** workloads exceeding the deployment's
   available CPU, memory, disk, or network capacity without exploiting a software
   weakness. Address these through capacity planning, configuration, or scaling.
 
-[MITRE CWE-400](https://cwe.mitre.org/data/definitions/400.html) cautions against
-confusing resource consumption as an impact with the weakness that causes it.
+Missing tenant isolation can itself be an exploitable weakness when it allows
+an attacker to violate a required tenant or resource boundary. Assessment should
+consider the component's supported use, trust assumptions, security
+requirements, attacker capabilities, and concrete impact. Shared infrastructure,
+finite capacity, or the absence of per-tenant quotas alone does not establish a
+software vulnerability.
+
+[MITRE CWE-400](https://cwe.mitre.org/data/definitions/400.html)
+cautions against confusing resource consumption as an impact with the weakness
+that causes it.
 High resource use or denial of service alone does not establish a software
-vulnerability; identify the exploitable weakness.
+vulnerability; identify the exploitable weakness. Relevant root causes may
+include allocation without intended limits or throttling
+([CWE-770](https://cwe.mitre.org/data/definitions/770.html)) or improper
+isolation ([CWE-653](https://cwe.mitre.org/data/definitions/653.html)), where
+applicable.
 
 ## Reporting Process - For Vulnerability Reporters
 
