@@ -49,32 +49,28 @@ by the attack.
 
 ### Availability assessment
 
-Within the availability scope defined above, distinguish between:
+Within the availability scope above, assess impact on the affected OTel
+artifact and, for SDKs and instrumentation, the application using it.
 
-- **Software Vulnerabilities:** exploitable weaknesses in software design or
-  implementation that let an attacker degrade or deny service, such as resource
-  leaks, missing or ineffective resource controls needed to enforce security
-  requirements, or bypasses of configured resource limits.
-- **Infrastructure Capacity Issues:** workloads exceeding the deployment's
-  available CPU, memory, disk, or network capacity without exploiting a software
-  weakness. Address these through capacity planning, configuration, or scaling.
+- **Software vulnerabilities** let attacker-controlled input degrade or deny
+  availability through a design or implementation weakness. Examples include
+  resource leaks, unsafe decompression, and missing or ineffective controls
+  needed to limit resource consumption.
+- **Capacity and deployment issues** occur when telemetry volume or downstream
+  failures exceed processing capacity, buffering, or retry budgets without
+  exploiting a software weakness. Expected backpressure or telemetry drops
+  under these conditions do not, by themselves, establish a vulnerability.
 
-Missing tenant isolation can itself be an exploitable weakness when it allows
-an attacker to violate a required tenant or resource boundary. Assessment should
-consider the component's supported use, trust assumptions, security
-requirements, attacker capabilities, and concrete impact. Shared infrastructure,
-finite capacity, or the absence of per-tenant quotas alone does not establish a
-software vulnerability.
+Assess claimed failures of resource limits or tenant isolation against the
+artifact's supported use, configuration, and intended protections. Shared
+resources or missing per-tenant quotas alone do not establish a vulnerability.
 
-[MITRE CWE-400](https://cwe.mitre.org/data/definitions/400.html)
-cautions against confusing resource consumption as an impact with the weakness
-that causes it.
-High resource use or denial of service alone does not establish a software
-vulnerability; identify the exploitable weakness. Relevant root causes may
-include allocation without intended limits or throttling
-([CWE-770](https://cwe.mitre.org/data/definitions/770.html)) or improper
-isolation ([CWE-653](https://cwe.mitre.org/data/definitions/653.html)), where
-applicable.
+Use the [report requirements](#report-requirements) below to assess the
+available evidence and identify gaps.
+
+[MITRE CWE-400](https://cwe.mitre.org/data/definitions/400.html) explains why
+resource consumption as an impact must be distinguished from its underlying
+weakness.
 
 ## Reporting Process - For Vulnerability Reporters
 
