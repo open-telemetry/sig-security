@@ -77,6 +77,9 @@ details to the extent known, and identify any gaps:
    observed behavior. Describe relevant limits and protections and why they
    do not prevent the impact. Include supporting source locations where
    known. State assumptions and unresolved questions.
+1. **Severity assessment:** a CVSS v4.0 Base score, `CVSS:4.0` vector, and
+   rationale for each Base metric. Follow the [severity guidance](#severity)
+   below.
 
 Code references must identify the reviewed revision. Distinguish verified facts
 from assumptions.
@@ -89,6 +92,23 @@ available evidence, and supplement it during assessment.
 Reports without supporting evidence may be closed if the reporter does not
 provide it after a request from Maintainers. A closed report may be reopened
 if supporting evidence is provided later.
+
+#### Severity
+
+Assess vulnerabilities using only the Base metrics from the [CVSS v4.0
+specification](https://www.first.org/cvss/v4.0/specification-document) and
+[calculator](https://www.first.org/cvss/calculator/4.0).
+
+For general-purpose libraries, document reasonable worst-case usage
+assumptions. A library flaw reachable through network input is not necessarily
+a local attack. A required nondefault configuration alone does not justify
+`AT:P`. Assess dependencies through their use in OTel rather than copying their
+scores.
+
+Define the vulnerable system being scored. An SDK and its host application can
+form one vulnerable system; host application impact is not automatically
+subsequent-system impact. Distinguish exposure of telemetry from exposure of
+credentials or unrelated application data.
 
 ### Reporting Methods
 
@@ -205,14 +225,17 @@ is a duplicate, or is a bug, hardening opportunity, or out-of-scope issue, with
 the reason. Missing evidence is uncertainty, not a low severity rating. A
 dependency advisory alone does not establish exploitability through an OTel
 component; apply the reachability and impact criteria in [CVE
-Management](#cve-management).
+Management](#cve-management). When prioritizing the response, record active
+exploitation, public disclosure, affected deployments, and available mitigations
+separately from severity.
 
 When processing a vulnerability report, Maintainers should:
 
 1. Acknowledge receipt of the report within 3 working days
 1. Invite Collaborators as needed
 1. Verify if the reported issue is actually a vulnerability
-1. Assess the severity and impact of the vulnerability
+1. Assess the severity and impact of the vulnerability using the
+   [severity guidance](#severity)
 1. Determine if the vulnerability is already publicly known or disclosed
 1. Negotiate an embargo period, if needed
 1. Request a CVE, if needed _(Admin)_
@@ -418,12 +441,6 @@ For more information on requesting CVEs through GitHub, see the
 [GitHub documentation on requesting CVE identification numbers](https://docs.github.com/code-security/security-advisories/working-with-repository-security-advisories/publishing-a-repository-security-advisory#requesting-a-cve-identification-number-optional).
 
 ### FAQ for Maintainers
-
-#### Q: How do I determine the severity of a vulnerability?
-
-**A:** Use the Common Vulnerability Scoring System (CVSS) to assess
-severity. GitHub provides a CVSS calculator in the Security Advisory interface,
-or you can use the [CVSS Calculator](https://www.first.org/cvss/calculator/3.1).
 
 #### Q: Should I fix the vulnerability before publishing the advisory?
 
