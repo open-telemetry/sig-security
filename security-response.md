@@ -63,7 +63,8 @@ artifact and, for SDKs and instrumentation, the application using it.
 
 Assess claimed failures of resource limits or tenant isolation against the
 artifact's supported use, configuration, and intended protections. Shared
-resources or missing per-tenant quotas alone do not establish a vulnerability.
+resources, unbounded fields, missing resource limits, or missing per-tenant
+quotas alone do not establish a vulnerability.
 
 Use the [report requirements](#report-requirements) below to assess the
 available evidence and identify gaps.
