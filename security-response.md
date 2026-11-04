@@ -53,6 +53,34 @@ vulnerabilities against components that provide compatibility with those
 projects, as well as the level of asymmetry in terms of resource usage leveraged
 by the attack.
 
+### Availability assessment
+
+Within the availability scope above, assess impact on the affected OTel
+artifact and, for SDKs and instrumentation, the application using it.
+
+- **Software vulnerabilities** let attacker-controlled input degrade or deny
+  availability through a design or implementation weakness. Examples include
+  crashes caused by faulty input handling, resource leaks, unsafe decompression
+  or other asymmetric resource consumption, and bypassed or ineffective
+  resource limits.
+- **Capacity and deployment issues** occur when telemetry volume or downstream
+  failures exceed processing capacity, buffering, or retry budgets without
+  exploiting a software weakness. Expected backpressure or telemetry drops
+  under these conditions do not, by themselves, establish a vulnerability.
+
+Assess claimed failures of resource limits or tenant isolation against the
+artifact's supported use, configuration, and intended protections. Shared
+resources, unbounded fields, missing resource limits, linear resource growth
+with input size or volume, or missing per-tenant quotas alone do not establish
+a vulnerability.
+
+Use the [report requirements](#report-requirements) below to assess the
+available evidence and identify gaps.
+
+[MITRE CWE-400](https://cwe.mitre.org/data/definitions/400.html) explains why
+resource consumption as an impact must be distinguished from its underlying
+weakness.
+
 ## Reporting Process - For Vulnerability Reporters
 
 ### Report requirements
