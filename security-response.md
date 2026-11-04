@@ -54,8 +54,9 @@ artifact and, for SDKs and instrumentation, the application using it.
 
 - **Software vulnerabilities** let attacker-controlled input degrade or deny
   availability through a design or implementation weakness. Examples include
-  resource leaks, unsafe decompression, and missing or ineffective controls
-  needed to limit resource consumption.
+  crashes caused by faulty input handling, resource leaks, unsafe decompression
+  or other asymmetric resource consumption, and bypassed or ineffective
+  resource limits.
 - **Capacity and deployment issues** occur when telemetry volume or downstream
   failures exceed processing capacity, buffering, or retry budgets without
   exploiting a software weakness. Expected backpressure or telemetry drops
@@ -63,8 +64,9 @@ artifact and, for SDKs and instrumentation, the application using it.
 
 Assess claimed failures of resource limits or tenant isolation against the
 artifact's supported use, configuration, and intended protections. Shared
-resources, unbounded fields, missing resource limits, or missing per-tenant
-quotas alone do not establish a vulnerability.
+resources, unbounded fields, missing resource limits, linear resource growth
+with input size or volume, or missing per-tenant quotas alone do not establish
+a vulnerability.
 
 Use the [report requirements](#report-requirements) below to assess the
 available evidence and identify gaps.
