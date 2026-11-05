@@ -40,11 +40,6 @@ attacks, users must require authentication for their endpoint communication
 following the guidance on the [Security section of our
 website](https://opentelemetry.io/docs/security/).
 
-Authentication alone does not exclude an availability report. Assess required
-access and privileges as exploitation prerequisites, subject to any explicit
-scope in the artifact's `THREAT_MODEL.md` as described above. Account for these
-prerequisites in the [severity assessment](#severity).
-
 When assessing availability-related impact, maintainers will also take into
 account the security policies of other projects (e.g. Prometheus) when assessing
 vulnerabilities against components that provide compatibility with those
