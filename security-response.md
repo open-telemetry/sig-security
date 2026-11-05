@@ -19,7 +19,7 @@ branch at the moment of the release. For instance, if the latest version is
 
 Security fixes are given priority and might be enough to cause a new version to
 be released. Each repository is entitled to establish their own complementary
-processes. SIG-Security in conjunction with the TC can advise in case
+processes. The Security SIG in conjunction with the TC can advise in case
 clarifications are required.
 
 ## Security model
@@ -144,6 +144,9 @@ In order for the vulnerability reports to reach maintainers as soon as possible,
 the preferred way is to use the `Report a vulnerability` button on the
 `Security` tab in the respective GitHub repository. It creates a private
 communication channel between the reporter and the maintainers.
+
+For reporting security issues against the website, please report them at
+<https://github.com/open-telemetry/opentelemetry.io/security/advisories>.
 
 If you are unable to or have strong reasons not to use the GitHub reporting
 workflow, please reach out to
