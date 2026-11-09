@@ -153,7 +153,8 @@ workflow, please reach out to
 [security@opentelemetry.io](mailto:security@opentelemetry.io)
 and we will provide instruction on how to report the vulnerability.
 
-Reports should be acknowledged within 3 working days.
+Reports should be acknowledged within a certain number of days, based on the
+repository's [Security Commitments Level](./docs/security-commitments-level.md).
 
 **Please avoid reporting any vulnerabilities as a generic public "Issue" in
 GitHub.**
@@ -262,7 +263,9 @@ separately from severity.
 
 When processing a vulnerability report, Maintainers should:
 
-1. Acknowledge receipt of the report within 3 working days
+1. Acknowledge receipt of the report within a certain number of days, based on
+   the repository's [Security Commitments
+   Level](./docs/security-commitments-level.md)
 1. Invite Collaborators as needed
 1. Verify if the reported issue is actually a vulnerability
 1. Assess the severity and impact of the vulnerability using the
