@@ -60,6 +60,7 @@ For more information about the maintainer role, see the [community repository](h
 
 ### Approvers
 
+- [Alex Boten](https://github.com/codeboten), Grafana Labs
 - [Trask Stalnaker](https://github.com/trask), Microsoft
 
 For more information about the approver role, see the [community repository](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#approver).
@@ -67,7 +68,6 @@ For more information about the approver role, see the [community repository](htt
 ### Emeritus
 
 - [Adriel Perkins](https://github.com/adrielp), Approver
-- [Alex Boten](https://github.com/codeboten), Maintainer
 - [Carter Socha](https://github.com/cartersocha), Maintainer
 - [Jeremy Corley](https://github.com/ms-jcorley), Maintainer
 - [Juraci Paix&#xE3;o Kr&#xF6;hling](https://github.com/jpkrohling), Maintainer
