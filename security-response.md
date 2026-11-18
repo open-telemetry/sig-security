@@ -214,7 +214,10 @@ Admin permissions, including:
 - Publishing the advisory
 - Requesting a CVE (via the "Request CVE" button on the advisory form)
 - Creating the temporary private fork
-- Merging pull requests in the temporary private fork
+
+Merging the fix through a public pull request, as described below, uses the
+repository's normal permissions and does not require an admin to bypass branch
+protections.
 
 Please follow [Request Repository Admin
 Permissions](https://github.com/open-telemetry/community/blob/main/guides/maintainer/github-admin-processes.md#request-repository-admin-permissions)
@@ -273,6 +276,10 @@ When processing a vulnerability report, Maintainers should:
 1. Create a Temporary Private Fork, if needed _(Admin)_
 1. Ensure work is progressing on a resolution in accordance with severity and
   embargo timeline
+1. Develop, review, and approve the fix in the temporary private fork
+1. On the coordinated release day, [open a public pull request for the approved
+   fix](#releasing-the-fix-through-a-public-pull-request), complete the normal
+   checks and approvals, merge it, and release the fix
 1. After a release containing the fix is published, publish the Advisory
   _(Admin)_
 
@@ -331,44 +338,40 @@ You can make changes to the private fork either on GitHub or locally:
 - **Locally**: Clone the temporary private fork, create a branch, make your
   changes, and push them back to the fork
 
-#### Creating Pull Requests and Merging Changes
+#### Creating and Reviewing Private Pull Requests
 
 1. From the security advisory page, click "Compare & pull request" to create a
    pull request for your changes
+1. Review and approve the fix in the temporary private fork. Run the available
+   build and test commands locally: CI/CD integrations and status checks do not
+   run in temporary private forks
+1. Keep the fix and its review private until the coordinated release day
 
-2. When all necessary changes are ready, scroll to the bottom of the advisory
-   page and click "Merge pull request(s)" to merge all open pull requests in the
-   temporary private fork
+#### Releasing the Fix Through a Public Pull Request
 
-Merging from a temporary private fork requires extra care because the
-repository's standard branch protections and rulesets typically block the
-merge. The merge is performed by GitHub against the upstream repository (not
-the fork), so the upstream branch protections apply. However, no CLA check or
-CI runs are attached to the PR, since neither runs in a private fork. As a
-result, the person performing the merge usually needs to temporarily relax
-the upstream protections, perform the merge, and then restore them.
+On the coordinated release day, transfer the approved fix to a public pull
+request instead of using the advisory's "Merge pull request(s)" button.
+Publishing a branch or pull request exposes the fix before a release is
+available. For embargoed vulnerabilities, agree on this disclosure point with
+the reporter and affected maintainers in advance. Allow time for required
+checks and approvals so the release can follow promptly.
 
-Before relaxing protections, make sure the fix has already been reviewed in
-the temporary private fork, since the usual review, CI, and CLA gates will
-all be bypassed at merge time.
+1. Rebase or cherry-pick the approved fix commits locally onto a branch based
+   on the latest upstream target branch. Push that branch to your public fork
+   and open a normal public pull request targeting the upstream repository
+1. Verify that the public diff contains only the approved fix. Review any
+   changes introduced by rebasing or resolving conflicts, and obtain the
+   public pull request's required approvals; private approvals do not transfer
+1. Let the repository's normal CI, CLA, and other required checks complete
+   successfully, then merge the public pull request without relaxing branch
+   protections or adding bypass permissions
+1. Promptly release a version containing the fix, then publish the advisory
+   to alert the community. Record the public pull request in the advisory
 
-The exact steps vary per repository, but the typical pattern is to
-temporarily:
-
-- Add yourself as a bypasser on the repository's main ruleset
-- Add yourself as a bypasser on the EasyCLA ruleset
-- Disable "Do not allow bypassing the above settings" on the main classic
-  branch protection rule (if the repository still uses one)
-
-After the merge completes, immediately revert each of these changes.
-
-Important notes about temporary private forks:
-
-- CI/CD integrations do not run in temporary private forks to maintain security
-- You cannot merge individual pull requests; all open PRs are merged together
-- Status checks will not run on PRs in temporary private forks
-- After merging changes and releasing a version that contains the fix, you can
-  publish the advisory to alert the community
+This workflow validates the fix against the current upstream code through the
+normal build and test pipeline, preserves required checks and reviews, and
+avoids privileged changes to branch protections. It also leaves a public
+record of the fix, its review, and its check results.
 
 For more details, see the [GitHub documentation on private forks](https://docs.github.com/code-security/security-advisories/working-with-repository-security-advisories/collaborating-in-a-temporary-private-fork-to-resolve-a-repository-security-vulnerability).
 
